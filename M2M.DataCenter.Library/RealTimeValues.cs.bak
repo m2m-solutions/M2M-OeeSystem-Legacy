@@ -1,0 +1,476 @@
+using System;
+using System.Collections.Generic;
+using System.Text;
+using System.Data;
+using System.Data.SqlClient;
+using System.Runtime.InteropServices;
+
+using Csla;
+using Csla.Data;
+
+namespace M2M.DataCenter
+{
+	[Serializable()]
+	public class RealTimeValues : BusinessBase<RealTimeValues>
+	{
+		#region Business Methods
+
+		private string m_MachineId = String.Empty;
+		private bool m_Auto = false;
+		private bool m_ProductionSwitch = false;
+		private string m_ArticleNumber = String.Empty;
+		private int m_Cycles = 0;
+		private int m_CyclesResettable = 0;
+		private int m_Moments = 0;
+		private int m_MomentsResettable = 0;
+		private int m_Uptime = 0;
+		private int m_UptimeResettable = 0;
+        private int m_CurrentRunRate = 0;
+
+		public string MachineId
+		{
+			get
+			{
+				CanReadProperty("MachineId");
+				return m_MachineId;
+			}
+		}
+
+		public bool Auto
+		{
+			get
+			{
+				CanReadProperty("Auto");
+				return m_Auto;
+			}
+			set
+			{
+				CanWriteProperty("Auto");
+				if (m_Auto != value)
+				{
+					m_Auto = value;
+					PropertyHasChanged("Auto");
+				}
+			}
+		}
+
+		public bool ProductionSwitch
+		{
+			get
+			{
+				CanReadProperty("ProductionSwitch");
+				return m_ProductionSwitch;
+			}
+			set
+			{
+				CanWriteProperty("ProductionSwitch");
+				if (m_ProductionSwitch != value)
+				{
+					m_ProductionSwitch = value;
+					PropertyHasChanged("ProductionSwitch");
+				}
+			}
+		}
+
+		public string ArticleNumber
+		{
+			get
+			{
+				CanReadProperty("ArticleNumber");
+				return m_ArticleNumber;
+			}
+			set
+			{
+				CanWriteProperty("ArticleNumber");
+				if (m_ArticleNumber != value)
+				{
+					m_ArticleNumber = value;
+					PropertyHasChanged("ArticleNumber");
+				}
+			}
+		}
+
+		public int Cycles
+		{
+			get
+			{
+				CanReadProperty("Cycles");
+				return m_Cycles;
+			}
+			set
+			{
+				CanWriteProperty("Cycles");
+				if (m_Cycles != value)
+				{
+					m_Cycles = value;
+					PropertyHasChanged("Cycles");
+				}
+			}
+		}
+
+		public int CyclesResettable
+		{
+			get
+			{
+				CanReadProperty("CyclesResettable");
+				return m_CyclesResettable;
+			}
+			set
+			{
+				CanWriteProperty("CyclesResettable");
+				if (m_CyclesResettable != value)
+				{
+					m_CyclesResettable = value;
+					PropertyHasChanged("CyclesResettable");
+				}
+			}
+		}
+
+		public int Moments
+		{
+			get
+			{
+				CanReadProperty("Moments");
+				return m_Moments;
+			}
+			set
+			{
+				CanWriteProperty("Moments");
+				if (m_Moments != value)
+				{
+					m_Moments = value;
+					PropertyHasChanged("Moments");
+				}
+			}
+		}
+
+		public int MomentsResettable
+		{
+			get
+			{
+				CanReadProperty("MomentsResettable");
+				return m_MomentsResettable;
+			}
+			set
+			{
+				CanWriteProperty("MomentsResettable");
+				if (m_MomentsResettable != value)
+				{
+					m_MomentsResettable = value;
+					PropertyHasChanged("MomentsResettable");
+				}
+			}
+		}
+
+		public int Uptime
+		{
+			get
+			{
+				CanReadProperty("Uptime");
+				return m_Uptime;
+			}
+			set
+			{
+				CanWriteProperty("Uptime");
+				if (m_Uptime != value)
+				{
+					m_Uptime = value;
+					PropertyHasChanged("Uptime");
+				}
+			}
+		}
+
+		public int UptimeResettable
+		{
+			get
+			{
+				CanReadProperty("UptimeResettable");
+				return m_UptimeResettable;
+			}
+			set
+			{
+				CanWriteProperty("UptimeResettable");
+				if (m_UptimeResettable != value)
+				{
+					m_UptimeResettable = value;
+					PropertyHasChanged("UptimeResettable");
+				}
+			}
+		}
+
+        public int CurrentRunRate
+        {
+            get
+            {
+                CanReadProperty("CurrentRunRate");
+                return m_CurrentRunRate;
+            }
+            set
+            {
+                CanWriteProperty("CurrentRunRate");
+                if (m_CurrentRunRate != value)
+                {
+                    m_CurrentRunRate = value;
+                    PropertyHasChanged("CurrentRunRate");
+                }
+            }
+        }
+
+		public string Status
+		{
+			get
+			{
+				if (ProductionSwitch)
+				{
+					return Auto ? "I drift" : "Stoppad";
+				}
+				else
+				{
+					return "Ej i produktion";
+				}
+			}
+		}
+
+		protected override object GetIdValue()
+		{
+			return m_MachineId;
+		}
+
+		#endregion
+
+		#region Validation Rules
+
+		protected override void AddBusinessRules()
+		{
+
+		}
+
+		#endregion
+
+		#region Authorization Rules
+
+		protected override void AddAuthorizationRules()
+		{
+
+		}
+
+		#endregion
+
+		#region Factory Methods
+
+		public static RealTimeValues NewRealTimeValues(string machineId)
+		{
+			return DataPortal.Create<RealTimeValues>(new Criteria(machineId));
+		}
+
+		public static RealTimeValues GetRealTimeValues(string machineId)
+		{
+			return DataPortal.Fetch<RealTimeValues>(new Criteria(machineId));
+		}
+
+		private RealTimeValues()
+		{
+			
+		}
+
+
+		#endregion
+
+		#region Data Access
+
+		[Serializable()]
+		protected class Criteria
+		{
+			private string m_MachineId = null;
+		
+			public string MachineId
+			{
+				get { return m_MachineId; }
+			}
+
+			public Criteria(string machineId)
+			{
+				m_MachineId = machineId;
+			}
+		}
+
+
+		protected void DataPortal_Create(Criteria criteria)
+		{
+			m_MachineId = criteria.MachineId;
+		}
+
+		private void DataPortal_Fetch(Criteria criteria)
+		{
+			using (SqlConnection connection = new SqlConnection(Database.SystemConnectionString))
+			{
+				connection.Open();
+				using (SqlCommand command = connection.CreateCommand())
+				{
+					command.CommandType = CommandType.Text;
+                    command.CommandText = @"SELECT MachineId,ProductionSwitch,Automat,ArticleNumber,Moments,MomentsResettable,Uptime,UptimeResettable,Cycles,CyclesResettable,CurrentRunRate" +
+	                                      @" FROM RealTimeValues" +
+	                                      @" WHERE MachineId=@MachineId";
+					command.Parameters.AddWithValue(@"@MachineId", criteria.MachineId);
+
+					using (SafeDataReader dataReader = new SafeDataReader(command.ExecuteReader()))
+					{
+						if (dataReader.Read())
+						{
+							m_MachineId = dataReader.GetString("MachineId");
+							m_Auto = dataReader.GetBoolean("Automat");
+							m_ProductionSwitch = dataReader.GetBoolean("ProductionSwitch");
+							m_ArticleNumber = dataReader.GetString("ArticleNumber");
+							m_Cycles = dataReader.GetInt32("Cycles");
+							m_CyclesResettable = dataReader.GetInt32("CyclesResettable");
+							m_Moments = dataReader.GetInt32("Moments");
+							m_MomentsResettable = dataReader.GetInt32("MomentsResettable");
+							m_Uptime = dataReader.GetInt32("Uptime");
+							m_UptimeResettable = dataReader.GetInt32("UptimeResettable");
+                            m_CurrentRunRate = dataReader.GetInt32("CurrentRunRate");
+						}
+					}
+				}
+			}
+
+		}
+
+		
+		private void Fetch(SafeDataReader dr)
+		{
+			m_MachineId = dr.GetString("MachineId");
+	
+			MarkOld();
+		}
+
+		protected override void DataPortal_Insert()
+		{
+			using (SqlConnection connection = new SqlConnection(Database.SystemConnectionString))
+			{
+				connection.Open();
+
+				using (SqlCommand command = connection.CreateCommand())
+				{
+					command.CommandType = CommandType.Text;
+					command.CommandText = @"INSERT INTO RealTimeValues " +
+                                          @"(MachineId,ProductionSwitch,Automat,ArticleNumber,Moments,MomentsResettable,Uptime,UptimeResettable,Cycles,CyclesResettable,CurrentRunRate)" +
+                                          @" VALUES " +
+	                                      @"(@MachineId,@ProductionSwitch,@Automat,@ArticleNumber,@Moments,@MomentsResettable,@Uptime,@UptimeResettable,@Cycles,@CyclesResettable,@CurrentRunRate) ";
+
+					command.Parameters.AddWithValue("@MachineId", m_MachineId);
+					command.Parameters.AddWithValue("@Automat", m_Auto);
+					command.Parameters.AddWithValue("@ProductionSwitch", m_ProductionSwitch);
+					command.Parameters.AddWithValue("@ArticleNumber", m_ArticleNumber);
+					command.Parameters.AddWithValue("@Cycles", m_Cycles);
+					command.Parameters.AddWithValue("@CyclesResettable", m_CyclesResettable);
+					command.Parameters.AddWithValue("@Moments", m_Moments);
+					command.Parameters.AddWithValue("@MomentsResettable", m_MomentsResettable);
+					command.Parameters.AddWithValue("@Uptime", m_Uptime);
+					command.Parameters.AddWithValue("@UptimeResettable", m_UptimeResettable);
+                    command.Parameters.AddWithValue("@CurrentRunRate", m_CurrentRunRate);
+
+					command.ExecuteNonQuery();
+
+					MarkOld();
+				}
+			}
+		}
+
+		protected override void DataPortal_Update()
+		{
+			if (!this.IsDirty)
+				return;
+
+			using (SqlConnection connection = new SqlConnection(Database.SystemConnectionString))
+			{
+				connection.Open();
+
+				using (SqlCommand command = connection.CreateCommand())
+				{
+					command.CommandType = CommandType.Text;
+					command.CommandText = @"UPDATE RealTimeValues" +
+	                                      @" SET ProductionSwitch=@ProductionSwitch," +
+		                                  @"Automat=@Automat," +
+		                                  @"ArticleNumber=@ArticleNumber," +
+		                                  @"Moments=@Moments," +
+		                                  @"MomentsResettable=@MomentsResettable," +
+		                                  @"Uptime=@Uptime," +
+		                                  @"UptimeResettable=@UptimeResettable," +
+		                                  @"Cycles=@Cycles," +
+                                          @"CyclesResettable=@CyclesResettable," +
+										  @"CurrentRunRate=@CurrentRunRate" +
+	                                      @" WHERE " +
+	                                      @"MachineId=@MachineId";
+
+					command.Parameters.AddWithValue("@Automat", m_Auto);
+					command.Parameters.AddWithValue("@ProductionSwitch", m_ProductionSwitch);
+					command.Parameters.AddWithValue("@ArticleNumber", m_ArticleNumber);
+					command.Parameters.AddWithValue("@Cycles", m_Cycles);
+					command.Parameters.AddWithValue("@CyclesResettable", m_CyclesResettable);
+					command.Parameters.AddWithValue("@Moments", m_Moments);
+					command.Parameters.AddWithValue("@MomentsResettable", m_MomentsResettable);
+					command.Parameters.AddWithValue("@Uptime", m_Uptime);
+					command.Parameters.AddWithValue("@UptimeResettable", m_UptimeResettable);
+					command.Parameters.AddWithValue("@MachineId", m_MachineId);
+
+					command.ExecuteNonQuery();
+
+					MarkOld();
+				}
+			}
+		}
+
+		internal void DeleteSelf()
+		{
+			if (!this.IsDirty)
+				return;
+
+			if (this.IsNew)
+				return;
+
+			using (SqlConnection connection = new SqlConnection(Database.SystemConnectionString))
+			{
+				connection.Open();
+
+				using (SqlCommand command = connection.CreateCommand())
+				{
+					command.CommandType = CommandType.Text;
+					command.CommandText = "DELETE RealTimeValues WHERE MachineId=@MachineId";
+
+					command.Parameters.AddWithValue("@MachineId", m_MachineId);
+
+					command.ExecuteNonQuery();
+				}
+			}
+
+			MarkNew();
+		}
+
+		#endregion
+
+		#region Exists
+
+		public static bool Exists(string machineId)
+		{
+			bool exists = false;
+			using (SqlConnection connection = new SqlConnection(Database.SystemConnectionString))
+			{
+				connection.Open();
+
+				using (SqlCommand command = connection.CreateCommand())
+				{
+					command.CommandType = CommandType.Text;
+                    command.CommandText = @"SELECT COUNT(*)" +
+                                          @" FROM RealTimeValues WHERE MachineId=@MachineId";
+					command.Parameters.AddWithValue(@"@MachineId", machineId);
+
+					int count = (int)command.ExecuteScalar();
+					exists = (count > 0);
+				}
+			}
+			return exists;
+		}
+
+		#endregion
+	}
+}

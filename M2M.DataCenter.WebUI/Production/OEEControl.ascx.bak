@@ -1,0 +1,64 @@
+<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="OEEControl.ascx.cs" Inherits="M2M.DataCenter.WebUI.Production.OEEControl" EnableViewState="False" %>
+<div class="white_frame">
+	<div class="header">
+		<div class="top">
+			<div class="bottom">
+				<div class="left">
+					<div class="right">
+						<div class="bottomleft">
+							<div class="bottomright">
+								<div class="topleft">
+									<div class="topright">
+										<div class="content">
+											<div class="oeeView">
+												<div class="item">
+													<div class="label">
+														Tillgänglighet (T)
+													</div>
+													<div class="input">
+														<asp:Label ID="lbAvailability" runat="server" Text="100,00%"></asp:Label>
+													</div>
+												</div>
+												<div class="item">
+													<div class="label">
+														Anläggningsutbyte (A)
+													</div>
+													 <div class="input">
+														<asp:Label ID="lbPerformance" runat="server" Text="100,00%"></asp:Label>
+													</div>
+												</div>
+												<div class="item">
+													 <div class="label">
+														 Kvalitetsutbyte (K)
+													</div>
+													<div class="input">
+														<asp:Label ID="lbQuality" runat="server" Text="100,00%"></asp:Label>
+													</div>
+												</div>
+												<div class="item">
+													<div class="label">
+														TAK
+													</div>
+													 <div class="input">
+														<asp:Label ID="lbOEE" runat="server" Text="100,00%"></asp:Label>
+													</div>
+												</div>
+												<div class="last">
+													<div class="input">
+														<asp:Label ID="lbTrend" CssClass="positive" runat="server" Text="+-0,00%"></asp:Label>
+													</div>
+												</div>
+												<div class="divider"></div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="clear">&nbsp;</div>
+	</div>
+</div>

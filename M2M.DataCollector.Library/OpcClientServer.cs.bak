@@ -1,0 +1,530 @@
+using System;
+using System.Collections.Generic;
+using System.Collections;
+using System.ComponentModel;
+using System.Data;
+using System.Diagnostics;
+using System.Text;
+using System.Configuration;
+using System.Net.Mail;
+using System.Runtime.InteropServices;
+
+using Csla;
+
+using OPC;
+using OPC.Common;
+using OPCDA;
+using OPCDA.NET;
+using M2M.DataCenter;
+using M2M.DataCenter.OPC;
+
+namespace M2M.DataCollector.Library
+{
+    public class LogRequestEventArgs : System.EventArgs
+    {
+        public enum LogRequestEventType
+        {
+            Informational,
+            Error
+        }
+
+        private LogRequestEventType m_LogType = LogRequestEventType.Informational;
+        private string m_Message = "";
+
+        public LogRequestEventArgs(LogRequestEventType logType, string message)
+            : base()
+        {
+            m_LogType = logType;
+            m_Message = message;
+        }
+
+        public LogRequestEventType LogType
+        {
+            get { return m_LogType; }
+        }
+
+        public string Message
+        {
+            get { return m_Message; }
+        }
+    }
+
+    [Serializable]
+    public class OpcClientServer
+    {
+        public delegate void LogRequest(object sender, LogRequestEventArgs e);
+
+        public event LogRequest OnLogRequest;
+
+        public OpcClientServer(string serviceName)
+        {
+            m_ServiceName = serviceName;
+        }
+
+        private OpcServer m_OpcServer = null;
+        private OpcGroup m_SubscribeGroup = null;
+        private TagDefinitionList m_TagDefinitions = null;
+        private string m_ServiceName = "";
+
+
+        public void Start()
+        {
+
+            try
+            {
+                LogInfo("Collecting data started");
+                m_OpcServer = new OpcServer();
+                m_OpcServer.ErrorsAsExecptions = true;
+                string opcServer = ApplicationSettings.OpcServerName;
+                LogInfo("Connecting to " + opcServer);
+                m_OpcServer.Connect(opcServer);
+
+                m_OpcServer.ShutdownRequested += new ShutdownRequestEventHandler(m_OpcServer_ShutdownRequested);
+                LogInfo("OpcServer succesfully connected");
+
+                LoadDefinitions();
+
+                OPCItemResult[] result;
+                //----- create the OPC group for data change callback handling
+                //      The item client handle is the array index of the associated write item
+                m_SubscribeGroup = m_OpcServer.AddGroup("DataChangeGroup", true, 200, 2);
+
+
+                // data changed callback handler
+                m_SubscribeGroup.DataChanged += new DataChangeEventHandler(SubscribeGroup_DataChanged);
+                m_SubscribeGroup.AdviseIOPCDataCallback();
+
+                // add all data change callback items to group
+                m_SubscribeGroup.AddItems(m_TagDefinitions.SubscribeItemDefs, out result);
+
+                for (int i = 0; i < result.Length; ++i)
+                {
+                    if (!HRESULTS.Succeeded(result[i].Error))
+                    {
+                        LogError(String.Format("AddItems to data change callback group, error 0x{0}, TagId: {1}", result[i].Error.ToString("X"), m_TagDefinitions.SubscribeItemDefs[i].ItemID));
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                LogError("Server start exception  " + ex.Message);
+            }
+        }
+
+        public void Stop()
+        {
+            try
+            {
+                m_TagDefinitions.RememberState();
+
+                if (m_SubscribeGroup != null)
+                    m_SubscribeGroup.Remove(false);
+                if (m_OpcServer != null)
+                    m_OpcServer.Disconnect();
+            }
+            catch (Exception ex)
+            {
+                LogError("Server stop exception " + ex.Message);
+            }
+        }
+
+        //----------------------------------------------------------------
+        // OPC Server data change callback handler
+        private void SubscribeGroup_DataChanged(object sender, DataChangeEventArgs e)
+        {
+            HandleDataChange(e);
+        }
+
+        private void WriteEvent(string machineId, string tagId, string article, int numberOfItems, bool acknowledge, SmartDate timeStamp)
+        {
+            Event newEvent = Event.NewEvent();
+            newEvent.TagId = tagId;
+            newEvent.ArticleNumber = article;
+            newEvent.MachineId = machineId;
+            newEvent.EventRaised = timeStamp;
+            newEvent.CurrentNumberOfItems = numberOfItems;
+
+            if (acknowledge)
+            {
+                newEvent.EventAcknowledged = newEvent.EventRaised;
+                newEvent.TimeForNextEvent = newEvent.EventRaised;
+            }
+
+            newEvent.Save();
+        }
+
+        private void UpdateActiveEvent(string machineId, string tagId, int numberOfItems, int reasonCode, SmartDate timeStamp)
+        {
+            int runRate = 0;
+            TimeSpan ellapsedTime;
+
+            Event activeEvent = Event.GetActiveEvent(machineId, tagId);
+
+            if (activeEvent != null)
+            {
+                ellapsedTime = timeStamp.Subtract(activeEvent.EventRaised.Date);
+
+                int currentNumberOfItems = numberOfItems - activeEvent.CurrentNumberOfItems;
+
+                if (currentNumberOfItems > 4)
+                    runRate = ((int)Math.Round(Math.Round(ellapsedTime.TotalMilliseconds)) / currentNumberOfItems);
+
+                activeEvent.EventAcknowledged = timeStamp;
+                activeEvent.RunRate = runRate;
+                activeEvent.ReasonCode = reasonCode;
+                activeEvent.Save();
+            }
+        }
+
+        private void WriteState(string machineId, string articleNumber, StateType stateType, int numberOfItems, SmartDate timeStamp)
+        {
+            State state = State.NewState();
+            state.MachineId = machineId;
+            state.ArticleNumber = articleNumber;
+            state.StateType = stateType;
+            state.TimeStampOnSet = timeStamp;
+            state.NumberOfItemsOnSet = numberOfItems;
+
+            state.Save();
+        }
+
+        private void UpdateState(string machineId, StateType stateType, int numberOfItems, SmartDate timeStamp)
+        {
+            try
+            {
+                State state = State.GetLatestState(machineId, stateType);
+                state.TimeStampOnReset = timeStamp;
+                state.NumberOfItemsOnReset = numberOfItems;
+                state = state.Save();
+
+                if (stateType == StateType.Auto)
+                {
+                    if (Maintenance.Exists(machineId))
+                    {
+                        Maintenance maintenance = Maintenance.GetMaintenanceObject(machineId);
+                        maintenance.Uptime = maintenance.Uptime + Convert.ToDecimal(state.EllapsedTime);
+                        maintenance.Save();
+                    }
+                }
+            }
+            catch { }
+        }
+
+        private void WriteRealTimeValue(string machineId, TagType tagType, object value)
+        {
+            if (value != null)
+            {
+                RealTimeValues realTimeValues = null;
+                if (RealTimeValues.Exists(machineId))
+                    realTimeValues = RealTimeValues.GetRealTimeValues(machineId);
+                else
+                    realTimeValues = RealTimeValues.NewRealTimeValues(machineId);
+
+                switch (tagType)
+                {
+                    case TagType.Auto:
+                        realTimeValues.Auto = Convert.ToBoolean(value);
+                        break;
+                    case TagType.ProductionSwitch:
+                        realTimeValues.ProductionSwitch = Convert.ToBoolean(value);
+                        break;
+                    case TagType.ArticleNumber:
+                        realTimeValues.ArticleNumber = FixDataString(Convert.ToString(value));
+                        break;
+                    case TagType.Cycles:
+                        realTimeValues.Cycles = Convert.ToInt32(value);
+                        break;
+                    case TagType.CyclesResettable:
+                        realTimeValues.CyclesResettable = Convert.ToInt32(value);
+                        break;
+                }
+
+                realTimeValues.Save();
+            }
+        }
+
+        private void WriteMaintenance(string machineId, TagType tagType, object value)
+        {
+            if (value != null && (tagType == TagType.Cycles || tagType == TagType.Moments))
+            {
+                int tmp = Convert.ToInt32(value);
+                Decimal newValue = Convert.ToDecimal(tmp);
+
+                Maintenance maintenance = null;
+                if (Maintenance.Exists(machineId))
+                {
+                    maintenance = Maintenance.GetMaintenanceObject(machineId);
+
+                    Decimal diff = newValue - maintenance.Moments;
+
+                    if (diff != 0)
+                    {
+                        if (diff > 2 || diff < 0)
+                            LogInfo(String.Format("Diff: {0}, Machine: {1}", diff, machineId));
+
+                        if (diff > 0 && diff < 10)
+                        {
+                            maintenance.Moments = newValue;
+                        }
+                        else
+                        {
+                            maintenance.Moments = newValue;
+                            maintenance.MomentsTransferred = maintenance.MomentsTransferred + diff;
+                        }
+
+
+                    }
+                }
+                else
+                {
+                    maintenance = Maintenance.NewMaintenanceObject(machineId);
+
+                    maintenance.Moments = newValue;
+                    maintenance.MomentsTransferred = newValue;
+                }
+
+                maintenance.Save();
+            }
+        }
+
+
+        private void m_OpcServer_ShutdownRequested(object sender, ShutdownRequestEventArgs e)
+        {
+            LogError(e.shutdownReason);
+        }
+
+        //---------------------------------------------------------
+        // LogEvent Helper Methods.
+
+        private void LogError(string message)
+        {
+            try
+            {
+                if (OnLogRequest != null)
+                    OnLogRequest(this, new LogRequestEventArgs(LogRequestEventArgs.LogRequestEventType.Error, message));
+            }
+            catch (Exception)
+            { }
+        }
+
+        public void LogInfo(string message)
+        {
+            try
+            {
+                if (OnLogRequest != null)
+                    OnLogRequest(this, new LogRequestEventArgs(LogRequestEventArgs.LogRequestEventType.Informational, message));
+            }
+            catch (Exception)
+            { }
+        }
+
+        //------------------------------------------------------------------------
+        // read the item definitions from the XML file
+        private void LoadDefinitions()
+        {
+            try
+            {
+                m_TagDefinitions = new TagDefinitionList();
+                m_TagDefinitions.LoadItemDefs();
+            }
+            catch (Exception ex)
+            {
+                LogError("ItemDefs load error " + ex.Message);
+            }
+        }
+
+        private object Read(string itemName)
+        {
+            object result = null;
+            OPCItemState output;
+
+            SyncIOGroup group = new SyncIOGroup(m_OpcServer);
+            group.Read(OPCDATASOURCE.OPC_DS_CACHE, itemName, out output);
+
+            if (output != null)
+                result = output.DataValue;
+
+            group.Dispose();
+
+            return result;
+        }
+
+        private string FixDataString(string datastring)
+        {
+            int index = datastring.IndexOf('\0');
+            if (index >= 0)
+                return datastring.Substring(0, index);
+
+            return datastring;
+        }
+
+        private bool IsValueSet(object value, VarEnum dataType)
+        {
+            switch (dataType)
+            {
+                case VarEnum.VT_BOOL: return Convert.ToBoolean(value);
+                case VarEnum.VT_BSTR: return !String.IsNullOrEmpty(value.ToString());
+                default: return (Convert.ToDouble(value) != 0.0);
+            }
+        }
+
+        private void WriteCollectedState(string tagId, OPCItemState state)
+        {
+            try
+            {
+                if (state.DataValue != null)
+                {
+                    CollectedState newState = CollectedState.NewCollectedState();
+
+                    newState.TagId = tagId;
+                    newState.TimeStampUTC = new SmartDate(state.TimeStampNet.ToUniversalTime());
+                    newState.DataValue = state.DataValue;
+                    newState.Quality = state.Quality;
+
+                    newState.Save();
+                }
+            }
+            catch (Exception ex)
+            {
+                string message = String.Format("Error in WriteCollectedState. TagId: {0}, Value: {1}, Timestamp: {2}, ErrorMessage={3}", tagId, state.DataValue, state.TimeStamp, ex.Message);
+
+                Exception innerException = ex.InnerException;
+
+                while (innerException != null)
+                {
+                    message += ", " + innerException.Message;
+                    innerException = innerException.InnerException;
+                }
+
+                LogError(message);
+            }
+        }
+
+        private void HandleDataChange(DataChangeEventArgs e)
+        {
+            foreach (OPCItemState state in e.sts)
+            {
+                int index = state.HandleClient;   // use the client handle as the association index
+
+                string tagId = m_TagDefinitions.SubscribeItemDefs[index].ItemID;
+                VarEnum dataType = m_TagDefinitions.SubscribeItemDefs[index].RequestedDataType;
+                TagDefinitionList.TagDefinition tagDefinition = m_TagDefinitions.GetSubscribeTag(tagId);
+
+                if (HRESULTS.Succeeded(state.Error))
+                {
+                    try
+                    {
+                        WriteCollectedState(tagId, state);
+
+                        if (tagDefinition.WriteRealTimeValue)
+                        {
+                            WriteRealTimeValue(tagDefinition.MachineId, tagDefinition.TagType, state.DataValue);
+                        }
+
+                        if (tagDefinition.WriteMaintenance)
+                        {
+                            WriteMaintenance(tagDefinition.MachineId, tagDefinition.TagType, state.DataValue);
+                        }
+
+                        if (m_TagDefinitions.IsValueChanged(tagId, state.DataValue, dataType))
+                        {
+                            string articleNumber = "";
+                            int numberOfCycles = 0;
+                            int numberOfItems = 0;
+                            RealTimeValues realTimeValues = RealTimeValues.GetRealTimeValues(tagDefinition.MachineId);
+                            if (realTimeValues != null)
+                            {
+                                articleNumber = realTimeValues.ArticleNumber;
+                                numberOfCycles = realTimeValues.Cycles;
+                                numberOfItems = realTimeValues.CyclesResettable;
+                            }
+
+                            if (IsValueSet(state.DataValue, dataType) && tagDefinition.ActionOnSet)
+                            {
+
+
+                                if (tagDefinition.WriteState)
+                                {
+                                    if (tagDefinition.WriteAutoState)
+                                    {
+                                        WriteState(tagDefinition.MachineId, articleNumber, StateType.Auto, numberOfCycles, new SmartDate(state.TimeStampNet));
+                                    }
+                                    else if (tagDefinition.WriteNoProductionState)
+                                    {
+                                        UpdateState(tagDefinition.MachineId, StateType.NoProduction, numberOfCycles, new SmartDate(state.TimeStampNet));
+                                    }
+                                    else if (tagDefinition.WriteArticleSwitchState)
+                                    {
+                                        UpdateState(tagDefinition.MachineId, StateType.ArticleSwitch, numberOfCycles, new SmartDate(state.TimeStampNet));
+                                        WriteState(tagDefinition.MachineId, articleNumber, StateType.ArticleSwitch, numberOfCycles, new SmartDate(state.TimeStampNet));
+                                    }
+                                }
+
+                                if (tagDefinition.WriteEventOnSet)
+                                {
+                                    WriteEvent(tagDefinition.MachineId, tagId, articleNumber, numberOfItems, false, new SmartDate(state.TimeStampNet));
+                                }
+                                else if (tagDefinition.WriteCompleteEventOnSet)
+                                {
+                                    WriteEvent(tagDefinition.MachineId, tagId, articleNumber, numberOfItems, true, new SmartDate(state.TimeStampNet));
+                                }
+                                else if (tagDefinition.UpdateEventOnSet)
+                                {
+                                    UpdateActiveEvent(tagDefinition.MachineId, tagId, numberOfItems, 0, new SmartDate(state.TimeStampNet));
+                                }
+                            }
+                            else if (!IsValueSet(state.DataValue, dataType) && tagDefinition.ActionOnReset)
+                            {
+
+
+                                if (tagDefinition.WriteState)
+                                {
+                                    if (tagDefinition.WriteAutoState)
+                                    {
+                                        UpdateState(tagDefinition.MachineId, StateType.Auto, numberOfCycles, new SmartDate(state.TimeStampNet));
+                                    }
+                                    else if (tagDefinition.WriteNoProductionState)
+                                    {
+                                        WriteState(tagDefinition.MachineId, articleNumber, StateType.NoProduction, numberOfCycles, new SmartDate(state.TimeStampNet));
+                                    }
+                                }
+
+                                if (tagDefinition.WriteEventOnReset)
+                                {
+                                    WriteEvent(tagDefinition.MachineId, tagId, articleNumber, numberOfItems, false, new SmartDate(state.TimeStampNet));
+                                }
+                                else if (tagDefinition.WriteCompleteEventOnReset)
+                                {
+                                    WriteEvent(tagDefinition.MachineId, tagId, articleNumber, numberOfItems, true, new SmartDate(state.TimeStampNet));
+                                }
+                                else if (tagDefinition.UpdateEventOnReset)
+                                {
+                                    UpdateActiveEvent(tagDefinition.MachineId, tagId, numberOfItems, 0, new SmartDate(state.TimeStampNet));
+                                }
+                            }
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        string message = String.Format("Error in HandleDataChange. TagId: {0}, Value: {1}, Timestamp: {2}, ErrorMessage={3}", tagId, state.DataValue, state.TimeStamp, ex.Message);
+
+                        Exception innerException = ex.InnerException;
+
+                        while (innerException != null)
+                        {
+                            message += ", " + innerException.Message;
+                            innerException = innerException.InnerException;
+                        }
+
+                        LogError(message);
+                    }
+                }
+                else
+                {
+                    LogError("Item '" + tagId + "' reports error 0x" + state.Error.ToString("X"));
+                }
+            }
+
+        }
+    }
+}

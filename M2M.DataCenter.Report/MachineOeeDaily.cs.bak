@@ -1,0 +1,132 @@
+namespace M2M.DataCenter.Reports
+{
+    using System;
+    using System.ComponentModel;
+    using System.Drawing;
+    using System.Windows.Forms;
+    using Telerik.Reporting;
+    using Telerik.Reporting.Drawing;
+    using Telerik.Reporting.Charting;
+    using M2M.DataCenter.Utilities;
+using System.Collections;
+    using System.Globalization;
+    using System.Collections.Generic;
+
+    /// <summary>
+    /// Summary description for Machine.
+    /// </summary>
+    [Description("Innehåller nyckeltal (TAK) för en enskild maskin")]
+    [DisplayName("Dagsrapport - TAK på maskinnivå")]
+    public partial class MachineOeeDaily : Telerik.Reporting.Report
+    {
+        #region Properties
+
+        MachineOee m_OeeData = null;
+        MachineStoppage m_StoppageData = null;
+       
+        #endregion
+
+        public MachineOeeDaily()
+        {
+            /// <summary>
+            /// Required for telerik Reporting designer support
+            /// </summary>
+            InitializeComponent();
+
+           
+            this.ReportParameters["DivisionId"].UI.AvailableValues.DataSource = M2MDataCenter.GetDivisionList();
+            this.ReportParameters["DivisionId"].UI.AvailableValues.ValueMember = "DivisionId";
+            this.ReportParameters["DivisionId"].UI.AvailableValues.DisplayMember = "DisplayName";
+
+            this.ReportParameters["MachineId"].UI.AvailableValues.DataSource = M2MDataCenter.GetMachineList();
+            this.ReportParameters["MachineId"].UI.AvailableValues.ValueMember = "MachineId";
+            this.ReportParameters["MachineId"].UI.AvailableValues.DisplayMember = "DisplayName";
+            this.ReportParameters["MachineId"].UI.AvailableValues.Filters.AddRange(new Telerik.Reporting.Data.Filter[] {
+            new Telerik.Reporting.Data.Filter("=Fields.DivisionId", Telerik.Reporting.Data.FilterOperator.Equal, "=Parameters.DivisionId")});
+            
+
+            this.ReportParameters["ShiftType"].UI.AvailableValues.DataSource = EnumHelper.ToList2(typeof(ShiftType));
+            this.ReportParameters["ShiftType"].UI.AvailableValues.ValueMember = "Value";
+            
+
+            this.ReportParameters["Date"].Value = DateTime.Today.AddDays(-1);
+            this.ReportParameters["ShiftType"].Value = EnumHelper.GetDescription2(ShiftType.NotDefined);
+
+        }
+
+        private void Machine_NeedDataSource(object sender, EventArgs e)
+        {
+            string divisionId = (string)ReportParameters["DivisionId"].Value;
+            string machineId = (string)ReportParameters["MachineId"].Value;
+            ShiftType shift = (ShiftType)Enum.Parse(typeof(ShiftType), EnumHelper.GetKey2(typeof(ShiftType), (string)ReportParameters["ShiftType"].Value));
+            DateTimeFormatInfo dtfi = new DateTimeFormatInfo();
+            DateTime startDate = (DateTime)ReportParameters["Date"].Value;
+            DateTime endDate = startDate.AddDays(1);
+            
+            m_OeeData = new MachineOee(divisionId, machineId, shift, startDate, endDate);
+            m_StoppageData = new MachineStoppage(divisionId, machineId, shift, startDate, endDate);
+            
+            (sender as Telerik.Reporting.Processing.Report).DataSource = m_OeeData;
+            
+        }
+
+        private void chartTotalOee_NeedDataSource(object sender, EventArgs e)
+        {
+            (sender as Telerik.Reporting.Processing.Chart).DataSource = m_OeeData.GetTotalData();
+        }
+
+        private void listArticles_NeedDataSource(object sender, EventArgs e)
+        {
+            (sender as Telerik.Reporting.Processing.Table).DataSource = m_OeeData.GetArticleData();
+        }
+
+        private void tableArticles_NeedDataSource(object sender, EventArgs e)
+        {
+            (sender as Telerik.Reporting.Processing.Table).DataSource = m_OeeData.GetArticleData();
+        }
+
+        private void list1_NeedDataSource(object sender, EventArgs e)
+        {
+            (sender as Telerik.Reporting.Processing.Table).DataSource = m_OeeData.GetTotalData();
+        }
+
+        private void chartStopCount_NeedDataSource(object sender, EventArgs e)
+        {
+            try
+            {
+                (sender as Telerik.Reporting.Processing.Chart).DataSource = m_StoppageData.GetTopStopCounts(5);
+            }
+            catch (System.Exception ex)
+            {
+                // An error has occurred while filling the data set. Please check the exception for more information.
+                System.Diagnostics.Debug.WriteLine(ex.Message);
+            }
+        }
+
+        private void chartStopTime_NeedDataSource(object sender, EventArgs e)
+        {
+            try
+            {
+                (sender as Telerik.Reporting.Processing.Chart).DataSource = m_StoppageData.GetTopStopTimes(5);
+            }
+            catch (System.Exception ex)
+            {
+                // An error has occurred while filling the data set. Please check the exception for more information.
+                System.Diagnostics.Debug.WriteLine(ex.Message);
+            }
+        }
+
+        private void tableStops_NeedDataSource(object sender, EventArgs e)
+        {
+            try
+            {
+                (sender as Telerik.Reporting.Processing.Table).DataSource = m_StoppageData.GetGroupedStops();
+            }
+            catch (System.Exception ex)
+            {
+                // An error has occurred while filling the data set. Please check the exception for more information.
+                System.Diagnostics.Debug.WriteLine(ex.Message);
+            }
+        }
+    }
+}

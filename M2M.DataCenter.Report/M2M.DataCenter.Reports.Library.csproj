@@ -1,0 +1,379 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{CA5E58D2-908B-46F1-B045-A6FB08E6E651}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>M2M.DataCenter.Report</RootNamespace>
+    <AssemblyName>M2M.DataCenter.Report</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <UpgradeBackupLocation />
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Csla">
+      <HintPath>..\CommonReferences\Csla 3.8.3.0\Csla.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Design" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Telerik.Reporting, Version=10.2.16.1025, Culture=neutral, PublicKeyToken=a9d7983dfcc261be, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\CommonReferences\Telerik Reporting 10.2.16.1025\Telerik.Reporting.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BusinessObjects\AggregatedDataContainer.cs" />
+    <Compile Include="BusinessObjects\AggregatedTotalDataItem.cs" />
+    <Compile Include="BusinessObjects\ChangeOverItem.cs" />
+    <Compile Include="BusinessObjects\ChartHelper.cs" />
+    <Compile Include="BusinessObjects\ChangeOverContainer.cs" />
+    <Compile Include="BusinessObjects\ChangeOverData.cs" />
+    <Compile Include="BusinessObjects\ProductionData.cs" />
+    <Compile Include="BusinessObjects\StoppageSummary.cs" />
+    <Compile Include="BusinessObjects\MachineOee.cs" />
+    <Compile Include="BusinessObjects\MachineStoppage.cs" />
+    <Compile Include="BusinessObjects\ReportExplorer.cs" />
+    <Compile Include="BusinessObjects\ReportUtilities.cs" />
+    <Compile Include="ChangeOverMonthly.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ChangeOverMonthly.designer.cs">
+      <DependentUpon>ChangeOverMonthly.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ArticleStoppageAnalyzeMonthly.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ArticleStoppageAnalyzeMonthly.designer.cs">
+      <DependentUpon>ArticleStoppageAnalyzeMonthly.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ArticleStoppageAnalyzeWeekly.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ArticleStoppageAnalyzeWeekly.designer.cs">
+      <DependentUpon>ArticleStoppageAnalyzeWeekly.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ChangeOverWeekly.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ChangeOverWeekly.designer.cs">
+      <DependentUpon>ChangeOverWeekly.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NpbOee.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="NpbOee.designer.cs">
+      <DependentUpon>NpbOee.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PlantProductionWeekly.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="PlantProductionWeekly.designer.cs">
+      <DependentUpon>PlantProductionWeekly.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DivisionProductionWeekly.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="DivisionProductionWeekly.designer.cs">
+      <DependentUpon>DivisionProductionWeekly.cs</DependentUpon>
+    </Compile>
+    <Compile Include="StoppageAnalyzeMonthly.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="StoppageAnalyzeMonthly.designer.cs">
+      <DependentUpon>StoppageAnalyzeMonthly.cs</DependentUpon>
+    </Compile>
+    <Compile Include="StoppageAnalyzeDaily.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="StoppageAnalyzeDaily.designer.cs">
+      <DependentUpon>StoppageAnalyzeDaily.cs</DependentUpon>
+    </Compile>
+    <Compile Include="StoppageAnalyzeWeekly.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="StoppageAnalyzeWeekly.designer.cs">
+      <DependentUpon>StoppageAnalyzeWeekly.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EmptyReport.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="EmptyReport.designer.cs">
+      <DependentUpon>EmptyReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NpbMonthly.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="NpbMonthly.designer.cs">
+      <DependentUpon>NpbMonthly.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NpbWeekly.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="NpbWeekly.designer.cs">
+      <DependentUpon>NpbWeekly.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DivisionOeeMonthly.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="DivisionOeeMonthly.designer.cs">
+      <DependentUpon>DivisionOeeMonthly.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DivisionOeeDaily.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="DivisionOeeDaily.designer.cs">
+      <DependentUpon>DivisionOeeDaily.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DivisionOeeWeekly.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="DivisionOeeWeekly.designer.cs">
+      <DependentUpon>DivisionOeeWeekly.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DivisionStoppageWeekly.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="DivisionStoppageWeekly.designer.cs">
+      <DependentUpon>DivisionStoppageWeekly.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DivisionStoppageMonthly.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="DivisionStoppageMonthly.designer.cs">
+      <DependentUpon>DivisionStoppageMonthly.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MachineStoppageWeekly.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="MachineStoppageWeekly.designer.cs">
+      <DependentUpon>MachineStoppageWeekly.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MachineOeeWeekly.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="MachineOeeWeekly.designer.cs">
+      <DependentUpon>MachineOeeWeekly.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MachineOeeDaily.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="MachineOeeDaily.designer.cs">
+      <DependentUpon>MachineOeeDaily.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MachineOeeMonthly.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="MachineOeeMonthly.designer.cs">
+      <DependentUpon>MachineOeeMonthly.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MachineStoppageMonthly.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="MachineStoppageMonthly.designer.cs">
+      <DependentUpon>MachineStoppageMonthly.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="ChangeOverMonthly.resx">
+      <DependentUpon>ChangeOverMonthly.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ArticleStoppageAnalyzeMonthly.resx">
+      <DependentUpon>ArticleStoppageAnalyzeMonthly.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ArticleStoppageAnalyzeWeekly.resx">
+      <DependentUpon>ArticleStoppageAnalyzeWeekly.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ChangeOverWeekly.resx">
+      <DependentUpon>ChangeOverWeekly.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NpbOee.resx">
+      <DependentUpon>NpbOee.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PlantProductionWeekly.resx">
+      <DependentUpon>PlantProductionWeekly.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DivisionProductionWeekly.resx">
+      <DependentUpon>DivisionProductionWeekly.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\licenses.licx" />
+    <EmbeddedResource Include="StoppageAnalyzeMonthly.resx">
+      <DependentUpon>StoppageAnalyzeMonthly.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="StoppageAnalyzeDaily.resx">
+      <DependentUpon>StoppageAnalyzeDaily.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="StoppageAnalyzeWeekly.resx">
+      <DependentUpon>StoppageAnalyzeWeekly.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EmptyReport.resx">
+      <DependentUpon>EmptyReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NpbMonthly.resx">
+      <DependentUpon>NpbMonthly.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NpbWeekly.resx">
+      <DependentUpon>NpbWeekly.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DivisionOeeMonthly.resx">
+      <DependentUpon>DivisionOeeMonthly.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DivisionOeeDaily.resx">
+      <DependentUpon>DivisionOeeDaily.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DivisionOeeWeekly.resx">
+      <DependentUpon>DivisionOeeWeekly.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DivisionStoppageWeekly.resx">
+      <DependentUpon>DivisionStoppageWeekly.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DivisionStoppageMonthly.resx">
+      <DependentUpon>DivisionStoppageMonthly.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MachineOeeWeekly.resx">
+      <DependentUpon>MachineOeeWeekly.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MachineStoppageWeekly.resx">
+      <DependentUpon>MachineStoppageWeekly.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MachineOeeDaily.resx">
+      <DependentUpon>MachineOeeDaily.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MachineOeeMonthly.resx">
+      <DependentUpon>MachineOeeMonthly.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MachineStoppageMonthly.resx">
+      <DependentUpon>MachineStoppageMonthly.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\M2M.DataCenter.Library\M2M.DataCenter.Library.csproj">
+      <Project>{5C0071EB-D02E-43D7-A372-746F77ED7EC5}</Project>
+      <Name>M2M.DataCenter.Library</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\M2M.DataCenter.Localization\M2M.DataCenter.Localization.csproj">
+      <Project>{AA52ABFE-4232-41B4-B7B1-C5A1F5E99159}</Project>
+      <Name>M2M.DataCenter.Localization</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\M2M.DataCenter.Utilities\M2M.DataCenter.Utilities.csproj">
+      <Project>{64A9DB8D-28CD-4646-8195-0EF7EA68DCC5}</Project>
+      <Name>M2M.DataCenter.Utilities</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Properties\DataSources\" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\reportLogo.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\reportLogo2.gif" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+  <PropertyGroup>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
+</Project>

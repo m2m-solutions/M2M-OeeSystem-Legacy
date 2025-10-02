@@ -1,0 +1,59 @@
+<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="UptimeControl.ascx.cs" Inherits="M2M.DataCenter.WebUI.Production.UptimeControl" EnableViewState="false" %>
+<div class="white_frame">
+	<div class="header">
+		<div class="top">
+			<div class="bottom">
+				<div class="left">
+					<div class="right">
+						<div class="bottomleft">
+							<div class="bottomright">
+								<div class="topleft">
+									<div class="topright">
+										<div class="content">
+											<div class="uptimeView">
+												<div class="item">
+													<div class="label">
+														Drifttid automat totalt
+													</div>
+													<div class="input">
+														<asp:Label ID="lbTotalUptime" runat="server"></asp:Label>
+													</div>
+												</div>
+												<div class="item">
+													<div class="label">
+														Drifttid automat
+													</div>
+													 <div class="input">
+														<asp:Label ID="lbUptime" runat="server"></asp:Label>
+													</div>
+												</div>
+												<div class="item">
+													 <div class="label">
+														 Antal totalt
+													</div>
+													<div class="input">
+														<asp:Label ID="lbTotalNumberOf" runat="server"></asp:Label>
+													</div>
+												</div>
+												<div class="item">
+													<div class="label">
+														Antal
+													</div>
+													 <div class="input">
+														<asp:Label ID="lbNumberOf" runat="server"></asp:Label>
+													</div>
+												</div>
+												<div class="divider"></div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="clear">&nbsp;</div>
+	</div>
+</div>

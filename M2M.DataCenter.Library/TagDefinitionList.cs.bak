@@ -1,0 +1,273 @@
+using System;
+using System.Collections.Generic;
+using System.Text;
+using System.Runtime.InteropServices;
+
+using OPCDA.NET;
+using M2M.DataCenter;
+
+namespace M2M.DataCenter.OPC
+{
+	public class TagDefinitionList
+	{
+		public class TagDefinition
+		{
+			private string m_MachineId = String.Empty;
+			private string m_AccessPath = String.Empty;
+			private TagType m_TagType = TagType.NotApplicable;
+			private Actions m_Actions = Actions.NoAction;
+			
+			public string MachineId
+			{
+				get
+				{
+					return m_MachineId;
+				}
+			}
+
+			public string AccessPath
+			{
+				get
+				{
+					return m_AccessPath;
+				}
+			}
+
+			public TagType TagType
+			{
+				get
+				{
+					return m_TagType;
+				}
+			}
+
+			public Actions Actions
+			{
+				get
+				{
+					return m_Actions;
+				}
+			}
+
+			public bool ActionOnSet
+			{
+				get
+				{
+					return (WriteEventOnSet || UpdateEventOnSet || WriteCompleteEventOnSet || WriteNoProductionState || WriteArticleSwitchState || WriteAutoState);
+				}
+			}
+
+			public bool ActionOnReset
+			{
+				get
+				{
+					return (WriteEventOnReset || UpdateEventOnReset || WriteCompleteEventOnReset || WriteNoProductionState || WriteArticleSwitchState || WriteAutoState);
+				}
+			}
+
+			public bool WriteEventOnSet
+			{
+				get
+				{
+					return ((m_Actions & Actions.WriteEventOnSet) == Actions.WriteEventOnSet);
+				}
+			}
+
+			public bool UpdateEventOnReset
+			{
+				get
+				{
+					return ((m_Actions & Actions.UpdateEventOnReset) == Actions.UpdateEventOnReset);
+				}
+			}
+
+			public bool WriteEventOnReset
+			{
+				get
+				{
+					return ((m_Actions & Actions.WriteEventOnReset) == Actions.WriteEventOnReset);
+				}
+			}
+
+			public bool UpdateEventOnSet
+			{
+				get
+				{
+					return ((m_Actions & Actions.UpdateEventOnSet) == Actions.UpdateEventOnSet);
+				}
+			}
+
+			public bool WriteCompleteEventOnSet
+			{
+				get
+				{
+					return ((m_Actions & Actions.WriteCompleteEventOnSet) == Actions.WriteCompleteEventOnSet);
+				}
+			}
+
+			public bool WriteCompleteEventOnReset
+			{
+				get
+				{
+					return ((m_Actions & Actions.WriteCompleteEventOnReset) == Actions.WriteCompleteEventOnReset);
+				}
+			}
+
+			public bool WriteNoProductionState
+			{
+				get
+				{
+					return ((m_Actions & Actions.WriteNoProductionState) == Actions.WriteNoProductionState);
+				}
+			}
+
+			public bool WriteArticleSwitchState
+			{
+				get
+				{
+					return ((m_Actions & Actions.WriteArticleSwitchState) == Actions.WriteArticleSwitchState);
+				}
+			}
+
+			public bool WriteAutoState
+			{
+				get
+				{
+					return ((m_Actions & Actions.WriteAutoState) == Actions.WriteAutoState);
+				}
+			}
+
+			public bool WriteState
+			{
+				get
+				{
+					return (WriteNoProductionState || WriteArticleSwitchState || WriteAutoState);
+				}
+			}
+
+			public bool WriteRealTimeValue
+			{
+				get
+				{
+					return ((m_Actions & Actions.WriteRealTimeValue) == Actions.WriteRealTimeValue);
+				}
+			}
+
+            public bool WriteReasonCode
+            {
+                get
+                {
+                    return ((m_Actions & Actions.WriteReasonCode) == Actions.WriteReasonCode);
+                }
+            }
+
+            public bool WriteMaintenance
+            {
+                get
+                {
+                    return ((m_Actions & Actions.TransferToTekla) == Actions.TransferToTekla);
+                }
+            }
+
+			public TagDefinition(string machineId, string accessPath, TagType tagType, Actions actions)
+			{
+				m_MachineId = machineId;
+				m_AccessPath = accessPath;
+				m_TagType = tagType;
+				m_Actions = actions;
+			}
+		}
+
+		private Dictionary<string, TagDefinition> m_SubscribeTags = null;
+		private List<OPCItemDef> m_SubscribeItemDefs;
+		private TagValueCollection m_TagValues = null;
+
+		public OPCItemDef[] SubscribeItemDefs
+		{
+			get
+			{
+				return (OPCItemDef[])m_SubscribeItemDefs.ToArray();
+			}
+		}
+
+		public TagDefinitionList()
+		{
+			m_SubscribeTags = new Dictionary<string, TagDefinition>();
+			m_SubscribeItemDefs = new List<OPCItemDef>();
+			m_TagValues = TagValueCollection.GetTagValueCollection();
+		}
+
+		public void LoadItemDefs()
+		{
+			TagInfoList subscribeTags = TagInfoList.GetTagInfoList(Actions.Subscribe);
+
+			int index = 0;
+
+			foreach (TagInfoListItem tag in subscribeTags)
+			{
+				m_SubscribeTags.Add(tag.TagId, new TagDefinition(tag.MachineId, tag.AccessPath, tag.TagType, tag.Actions));
+				m_SubscribeItemDefs.Add(new OPCItemDef(tag.TagId, true, index, (VarEnum)tag.DataType));
+
+				index++;
+			}
+		}
+
+		public TagDefinition GetSubscribeTag(string tagId)
+		{
+			return m_SubscribeTags[tagId];
+		}
+
+		public bool IsValueChanged(string tagId, object newValue, VarEnum dataType)
+		{
+			if (newValue != null)
+			{
+				if (dataType == VarEnum.VT_BSTR)
+				{
+					newValue = FixDataString((string)newValue);
+				}
+				else if (dataType == VarEnum.VT_UI4)
+				{
+					newValue = Convert.ToInt32(newValue);
+				}
+				else
+				{
+					newValue = (ValueType)newValue;
+				}
+
+				TagValue tagValue = m_TagValues.GetItem(tagId);
+
+				if (tagValue != null)
+				{
+					
+					
+					if (!tagValue.DataValue.Equals(newValue))
+					{
+						tagValue.DataValue = newValue;
+						return true;
+					}
+				}
+				else
+				{
+					m_TagValues.Add(tagId, newValue);
+					return true;
+				}
+			}
+
+			return false;
+		}
+
+		private string FixDataString(string datastring)
+		{
+			int index = datastring.IndexOf('\0');
+			if (index >= 0)
+				return datastring.Substring(0, index);
+
+			return datastring;
+		}
+		
+		public void RememberState()
+		{
+			m_TagValues.Save();
+		}
+	}
+}

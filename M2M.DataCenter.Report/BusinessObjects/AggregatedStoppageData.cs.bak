@@ -1,0 +1,217 @@
+﻿using System;
+using System.Collections;
+using System.Linq;
+using System.Text;
+using System.Globalization;
+using M2M.DataCenter.Utilities;
+
+namespace M2M.DataCenter
+{
+    public class AggregatedStoppageData : CollectionBase
+    {
+        public AggregatedStoppageData()
+        {
+            // default constructor
+        }
+
+        public int Add(StoppageItem item)
+        {
+            return List.Add(item);
+        }
+
+        public void Remove(StoppageItem item)
+        {
+            List.Remove(item);
+        }
+
+        public StoppageItem this[int index]
+        {
+            get
+            {
+                return ((StoppageItem)List[index]);
+            }
+            set
+            {
+                List[index] = value;
+            }
+        }
+
+        //public void Sort()
+        //{
+        //    IComparer DateSorter = new AscendingDateSorter();
+        //    InnerList.Sort(DateSorter);
+        //}
+
+        public enum XTypes
+        {
+            None = 0,
+            Reason = 1,
+            Other = 2
+        }
+
+        public class StoppageItem
+        {
+            private XTypes m_XType = XTypes.None;
+            private TimeSpan m_StopTime = new TimeSpan(0);
+            private TimeSpan m_NoProductionTime = new TimeSpan(0);
+            private TimeSpan m_AutoTime = new TimeSpan(0);
+            private TimeSpan m_TotalTime = new TimeSpan(0);
+            private double m_StopTimePart = 0;
+            private int m_StopCount = 0;
+            private string m_DisplayName = "";
+            
+            public StoppageItem()
+            {
+
+            }
+
+            public XTypes XType
+            {
+                get
+                {
+                    return m_XType;
+                }
+                set
+                {
+                    m_XType = value;
+                }
+            }
+
+            public TimeSpan StopTime
+            {
+                get
+                {
+                    return m_StopTime;
+                }
+                set
+                {
+                    m_StopTime = value;
+                }
+            }
+
+            public double StopTimePart
+            {
+                get
+                {
+                    return m_StopTimePart;
+                }
+                set
+                {
+                    m_StopTimePart = value;
+                }
+            }
+
+            public double StopTimeInSeconds
+            {
+                get
+                {
+                    return m_StopTime.TotalSeconds;
+                }
+            }
+
+            public TimeSpan NoProductionTime
+            {
+                get
+                {
+                    return m_NoProductionTime;
+                }
+                set
+                {
+                    m_NoProductionTime = value;
+                }
+            }
+
+            public TimeSpan TotalTime
+            {
+                get
+                {
+                    return m_TotalTime;
+                }
+                set
+                {
+                    m_TotalTime = value;
+                }
+            }
+
+            public TimeSpan AutoTime
+            {
+                get
+                {
+                    return m_AutoTime;
+                }
+                set
+                {
+                    m_AutoTime = value;
+                }
+            }
+
+            public TimeSpan AverageStopTime
+            {
+                get
+                {
+                    if (m_StopCount > 0)
+                    {
+                        return new TimeSpan(0, 0, (int)StopTimeInSeconds/m_StopCount);
+                    }
+
+                    return new TimeSpan(0);
+                }
+            }
+
+            public double StopCount
+            {
+                get
+                {
+                    return (double)m_StopCount;
+                }
+                set
+                {
+                    m_StopCount = (int)value;
+                }
+            }
+
+            public string DisplayName
+            {
+                get
+                {
+                    return m_DisplayName;
+                }
+                set
+                {
+                    m_DisplayName = value;
+                }
+            }
+
+            public string XLabel
+            {
+                get
+                {
+                    if (m_XType == XTypes.Reason)
+                    {
+                        return m_DisplayName;
+                    }
+                    else if (m_XType == XTypes.Other)
+                    {
+                        return "Övriga";
+                    }
+
+                    return "";
+                }
+            }
+        }
+
+        //private class AscendingDateSorter : IComparer
+        //{
+        //    public int Compare(Object x, Object y)
+        //    {
+        //        AggregatedStoppageData.StoppageItem item1 = (AggregatedStoppageData.StoppageItem)x;
+        //        IComparable ic1 = (IComparable)item1.Date;
+
+        //        AggregatedStoppageData.StoppageItem item2 = (AggregatedStoppageData.StoppageItem)y;
+        //        IComparable ic2 = (IComparable)item2.Date;
+
+        //        return ic1.CompareTo(ic2);
+        //    }
+        //}
+    }
+}

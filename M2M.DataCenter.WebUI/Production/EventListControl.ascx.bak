@@ -1,0 +1,35 @@
+<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="EventListControl.ascx.cs" Inherits="M2M.DataCenter.WebUI.Production.EventListControl" EnableViewState="false" %>
+<%@ Register Assembly="Telerik.Web.UI" Namespace="Telerik.Web.UI" TagPrefix="telerik" %>
+<div class="content">
+	<telerik:RadGrid ID="gridEvents" runat="server" PageSize="20" AllowPaging="True" Skin="Default" AutoGenerateColumns="False" GridLines="None" OnNeedDataSource="gridEvents_NeedDataSource" OnItemDataBound="gridEvents_ItemDataBound">
+		<MasterTableView AllowCustomPaging="false" NoMasterRecordsText="Det finns inga h&#228;ndelser inom valt intervall">
+			<Columns>
+				<telerik:GridBoundColumn DataField="EventId" DataType="System.Guid" HeaderText="EventId" ReadOnly="True" UniqueName="Id" Visible="False" >
+				</telerik:GridBoundColumn>
+				<telerik:GridBoundColumn DataField="EventRaisedAsDateTime" DataType="System.DateTime" HeaderText="Tidpunkt" ReadOnly="True" UniqueName="EventRaisedAsDateTime">
+				</telerik:GridBoundColumn>
+				<telerik:GridBoundColumn DataField="EllapsedTime" DataType="System.TimeSpan" HeaderText="Tidsåtgång" ReadOnly="True" UniqueName="EllapsedTime">
+				</telerik:GridBoundColumn>
+				<telerik:GridBoundColumn DataField="DisplayName" HeaderText="H&#228;ndelse" ReadOnly="True" UniqueName="DisplayName">
+					<ItemStyle Font-Bold="True"/>
+				</telerik:GridBoundColumn>
+				<telerik:GridBoundColumn DataField="TagType" HeaderText="Typ" ReadOnly="True" UniqueName="TagType">
+				</telerik:GridBoundColumn>
+				<telerik:GridBoundColumn DataField="Category" HeaderText="Kategori" ReadOnly="True" UniqueName="Category">
+				</telerik:GridBoundColumn>
+				<telerik:GridBoundColumn DataField="ArticleNumber" HeaderText="Artikel" ReadOnly="True" UniqueName="ArticleNumber">
+				</telerik:GridBoundColumn>
+				<telerik:GridBoundColumn DataField="PaceAsString" HeaderStyle-HorizontalAlign="Right" ItemStyle-HorizontalAlign="Right" HeaderText="Hastighet" ReadOnly="True" UniqueName="PaceAsString">
+				</telerik:GridBoundColumn>
+				<telerik:GridBoundColumn DataField="Acknowledged" HeaderText="Ack" ReadOnly="True" UniqueName="Acknowledged" Visible="False">
+				</telerik:GridBoundColumn>
+				<telerik:GridBoundColumn DataField="AcknowledgedTime" DataType="System.DateTime" HeaderText="AckTime" Visible="False" UniqueName="AcknowledgedTime">
+				</telerik:GridBoundColumn>
+				<telerik:GridBoundColumn DataField="Complete" HeaderText="Comp" ReadOnly="True" UniqueName="Complete" Visible="False">
+				</telerik:GridBoundColumn>
+			</Columns>
+			<PagerStyle Mode="NextPrevAndNumeric" PagerTextFormat="Byt sida: {4} &amp;nbsp;|&amp;nbsp; Visar sida {0} av {1}, post {2} - {3} av {5}." />
+		</MasterTableView>
+		
+	</telerik:RadGrid>
+</div>

@@ -1,0 +1,1005 @@
+body
+{
+	background-image: url(CustomerSpecifics/TopHeader.gif);
+	background-repeat: repeat-x;
+	margin: 0px auto 0px auto;
+	padding: 0;
+	background-color: #fff;
+	font-family: Verdana;
+	font-size: 11px;
+	font-weight: bold;
+	text-align: center;
+	color: #969696;
+}
+
+a
+{
+	color: #969696;
+	text-decoration: none;
+}
+
+a:hover
+{
+	text-decoration: underline;
+}
+
+.body_header
+{
+	width: 960px;
+	
+} 
+
+#masterpage
+{
+	text-align: left;
+	margin: 0 auto;
+	width: 960px;
+	
+}
+
+
+/*** MasterPage Layout ***/
+
+#masterpage_header
+{
+	width: 100%;
+	
+	margin-top: 16px;
+}
+
+#masterpage_header .menu
+{
+	margin: 0px auto;	
+}
+
+#masterpage_content 
+{
+	padding: 20px 0 10px 0;
+	width: 100%;
+	
+}
+
+#masterpage_content .content
+{
+}
+
+#masterpage_footer
+{
+	text-align: center;
+	width: 100%;
+}
+
+/* rounded corners */
+.grey_frame .top
+{
+	background: url(images/GreyDot.gif) 0 0 repeat-x #f3f3f3;
+	width: 100%;
+}
+
+.grey_frame .topspecial
+{
+	background: #f3f3f3;
+	width: 100%;
+}
+
+.grey_frame .bottom
+{
+	background: url(images/GreyDot.gif) 0 100% repeat-x;
+}
+
+.grey_frame .left
+{
+	background: url(images/GreyDot.gif) 0 0 repeat-y;
+}
+
+.grey_frame .right
+{
+	background: url(images/GreyDot.gif) 100% 0 repeat-y;
+}
+
+.grey_frame .bottomleft
+{
+	background: url(images/FrameGreyBL.gif) no-repeat 0 100%;
+	
+}
+
+.grey_frame .bottomright
+{
+	background: url(images/FrameGreyBR.gif) 100% 100% no-repeat;
+}
+
+.grey_frame .topleft
+{
+	
+	background: url(images/FrameGreyTL.gif) 0 0 no-repeat;
+}
+
+.grey_frame .topright
+{
+	background: url(images/FrameGreyTR.gif) 100% 0 no-repeat;
+	padding: 10px;
+}
+
+.grey_frame .content
+{
+	
+	
+}
+
+.clear
+{
+	font-size: 1px;
+	height: 1px;
+}
+
+.white_frame
+{
+	text-align: center;
+}
+
+.white_frame .top
+{
+	background: url(images/GreyDot.gif) 0 0 repeat-x #fff;
+	width: 100%;
+}
+
+.white_frame .bottom
+{
+	background: url(images/GreyDot.gif) 0 100% repeat-x;
+}
+
+.white_frame .left
+{
+	background: url(images/GreyDot.gif) 0 0 repeat-y;
+}
+
+.white_frame .right
+{
+	background: url(images/GreyDot.gif) 100% 0 repeat-y;
+}
+
+.white_frame .bottomleft
+{
+	background: url(images/FrameWhiteBL.gif) no-repeat 0 100%;
+	
+}
+
+.white_frame .bottomright
+{
+	background: url(images/FrameWhiteBR.gif) 100% 100% no-repeat;
+}
+
+.white_frame .topleft
+{
+	
+	background: url(images/FrameWhiteTL.gif) 0 0 no-repeat;
+}
+
+.white_frame .topright
+{
+	background: url(images/FrameWhiteTR.gif) 100% 0 no-repeat;
+	
+}
+
+.white_frame .content
+{
+	text-align: left;
+	color: #969696;
+	
+}
+
+.divUser
+{
+	width: 700px;
+	min-width: 700px;
+	text-align: right;
+	float: left;
+}
+
+.divRight
+{
+	text-align: right;
+}
+
+.divLanguage
+{
+    text-align: right;
+    padding-top:55px;
+}
+
+.divUserInfo
+{
+	background: url(CustomerSpecifics/userInfo.gif) no-repeat;
+	margin: 0 0 0 auto;
+	padding-left: 50px;
+	padding-top: 15px;
+	width: 208px;
+	height: 45px;
+	text-align: left;
+	font-size: 11px;
+}
+
+.divUserInfo a
+{
+	font-weight: normal;
+	color: #fff;
+	text-decoration: underline;
+}
+
+.divUserInfo a:hover
+{
+	color: #faba00;
+}
+
+.userRow1
+{
+	margin: 3px 10px 0px 10px; 
+	width: 189px;
+	font-weight: normal;
+}
+
+.userRow2
+{
+	margin: 3px 10px 0px 10px; 
+	width: 189px;
+	font-weight: bold;
+	float: left;
+}
+
+.userRow2 span
+{
+	float: left;
+}
+
+.divContentTop
+{
+    margin: 0 10px;
+    width: 940px;
+    border-bottom: solid 1px #c2c2c2;
+}
+
+
+
+.divContent 
+{
+	width: 960px;
+	padding: 0;
+	margin: 0;
+}
+
+
+.subMenu
+{
+	width: 900px;
+	min-height: 21px;
+	_height: 21px;
+	margin: 0;
+	margin-bottom: -1px;
+	font-size: 10px !important;
+	margin-left: 20px;
+}
+
+.all .subMenuItem
+{
+	float: left;
+	list-style-type: none;
+	margin: 0;
+	margin-left: -1px;
+	padding: 0;
+	min-height: 21px;
+	_height: 21px;
+}
+
+.first .subMenuItem
+{
+	float: left;
+	list-style-type: none;
+	padding: 0;
+	margin: 0;
+	min-height: 21px;
+	_height: 21px;
+}
+
+.subMenuItem li.left
+{
+	float: left;
+	background: transparent url(images/TabItemLeft.gif) no-repeat;
+	width: 5px;
+	min-height: 21px;
+	_height: 21px;
+}
+
+.subMenuItem li.middle
+{
+	float: left;
+	padding: 2px 10px 0 10px;
+	background: transparent url(images/TabItemMiddle.gif) repeat-x;
+	width: auto;
+	min-height: 19px;
+	_height: 19px;
+	
+}
+
+.subMenuItem li.middle a
+{
+    color: #969696;
+    font-size: 11px;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.subMenuItem li.right
+{
+	float: left;
+	background: transparent url(images/TabItemRight.gif) no-repeat;
+	width: 5px;
+	min-height: 21px;
+	_height: 21px;
+}	
+
+.all .subMenuItemSelected
+{
+	float: left;
+	list-style-type: none;
+	margin: 0;
+	margin-left: -1px;
+	padding: 0;
+	min-height: 21px;
+	_height: 21px;
+}
+
+.first .subMenuItemSelected
+{
+	float: left;
+	list-style-type: none;
+	padding: 0;
+	margin: 0;
+	min-height: 21px;
+	_height: 21px;
+}
+
+
+
+.subMenuItemSelected li.left
+{
+	float: left;
+	background: transparent url(images/TabItemLeftActive.gif) no-repeat;
+	width: 5px;
+	min-height: 21px;
+	_height: 21px;
+}
+
+.subMenuItemSelected li.middle
+{
+	float: left;
+	padding: 2px 10px 0 10px;
+	background: transparent url(images/TabItemMiddleActive.gif) repeat-x;
+	width: auto;
+	min-height: 19px;
+	_height: 19px;
+}
+
+.subMenuItemSelected li.middle a 
+{
+	color: #969696;
+	font-size: 11px;
+	font-weight: bold;
+	text-decoration: none;
+}
+
+.subMenuItemSelected li.right
+{
+	float: left;
+	background: transparent url(images/TabItemRightActive.gif) no-repeat;
+	width: 5px;
+	min-height: 21px;
+	_height: 21px;
+}	
+
+.divInfo,
+.divStatus,
+.divFilter,
+.divEvents,
+.divOEE,
+.divGraph,
+.divUptime,
+.divFullGraph,
+.divAbout,
+.divHelp
+{
+	float: left;
+	padding: 5px 10px;
+}
+
+.divInfo
+{
+	font-size: 12px; 
+	font-weight: bold;
+	color: #000;
+}
+
+.divInfoLine
+{
+	width: 100%;
+}
+
+.divInfoLine .label
+{
+	padding-top: 3px;
+	width: 90px;
+	float: left;
+	overflow:visible;
+}
+
+.divInfoLine .title
+{
+    padding-top: 3px;
+    padding-left: 20px;
+    width: 67%;
+    overflow: visible;
+    font-weight: bold;
+    font-size: 12px;
+    color: #969696;
+    float: left;
+}
+
+.divInfoLine .button
+{
+    padding-top: 3px;
+}
+
+.divStatus,.divAbout
+{
+	width: 300px;
+}
+
+.divInfo
+{
+	width: 600px;
+}
+
+.divGraph
+{
+	width: 450px;
+}
+
+.divFilter, .divOEE, .divFullGraph, .divEvents, .divUptime, divHelp 
+{
+    width: 920px;
+}
+
+.divAbout 
+{
+    margin-left: 310px;
+}
+
+.divHelp .content
+{
+    font-family: calibri;
+    font-size: medium;
+    font-weight: normal;
+    font-style: normal;
+    color: #000000;
+}
+
+.divHelp li
+{
+    margin-bottom: 5px;
+}
+
+.divHelp li
+{
+    margin-bottom: 5px;
+    color: #faba00;
+}
+
+.divHelp span
+{
+    color: #000000;
+}
+
+.divider
+{
+	width: 100%;
+	height: 1px;
+	font-size: 1px;
+	clear: both;
+	
+}
+
+.filterView
+{
+	width: 100%;
+	font-size: 11px;
+	font-weight: bold;
+}
+
+.filterView .item
+{
+	float: left;
+	padding-left: 20px;
+	margin:0 3px;
+}
+
+.filterView .input
+{
+	
+}
+
+.filterView .last
+{
+	float: left;
+	padding-top: 14px;
+	padding-left: 90px;
+}
+
+.filterView label
+{
+	clear: both;
+}
+
+.statusView
+{
+	width: 100%;
+	height: 25px;
+}
+
+.statusView .item
+{
+	float: left;
+	padding-left: 0px;
+	width: 140px;
+	vertical-align: middle; 
+	text-align: center;
+}
+
+.statusView .label
+{
+    padding-top: 6px;
+	float: left;	
+	font-size: 10px;
+	font-weight: bold;
+}
+
+.statusView .input
+{
+    padding-top: 5px;
+	color: #000;
+	font-size: 11px;
+	font-weight: bold;
+	margin-left: 5px;
+}
+
+.oeeView
+{
+    font-family: Calibri;
+	width: 100%;
+	position: relative; 
+	height:47px;
+	font-weight: bold;
+}
+
+.oeeView .oeeLeft,
+.oeeView .oeeItem,
+.oeeView .oeeRight
+{
+	position:absolute;
+}
+
+.oeeView .oeeLeft
+{
+    width: 97px;
+    height: 35px;
+    padding-top: 9px;
+    padding-left: 8px;
+    background:transparent url(images/OeeBoxLeft.png) no-repeat;
+}
+
+.oeeView .leftItem
+{
+    height: 20px;
+    width: 88px;
+    
+}
+
+.oeeView .leftPrefix,
+.oeeView .leftInput
+{
+    font-size: 14px;
+    color: #bababa;
+}
+
+.oeeView .leftPrefix
+{
+    float: left;
+    padding-right: 5px;
+}
+
+.oeeView .leftInput
+{
+    
+}
+
+.oeeView .oeeItem
+{
+	width: 120px;
+}
+
+.oeeView .oeePrefix
+{
+    float: left;
+    padding-right: 10px;
+    font-size: 23px;
+    color: #000000;
+}
+
+.oeeView .oeeInput
+{
+    padding-top: 5px;
+    font-size: 19px;
+    color: #bababa;
+}
+
+.oeeView .oeeLabel
+{
+    padding-left: 0px;
+    padding-top: 0px;
+    font-size: 10px;
+    color: #bababa;
+}
+
+
+.oeeView .oeeRight
+{
+    width: 352px;
+    height: 47px;
+    background:transparent url(images/OeeBoxRight.png) no-repeat;
+}
+
+.oeeView .rightFirst
+{
+    text-align: right;
+    position:absolute;
+    width: 70px;
+    font-size: 16px;
+    color: #bababa;
+}
+
+.oeeView .rightItem
+{
+    position:absolute;
+    width: 200px;
+    font-size: 28px;
+    color: #000000;
+}
+
+.oeeView .rightLast
+{
+    position:absolute;
+}
+
+.oeeView .rightPrefix
+{
+    float: left;
+    padding-right: 10px;
+    color: #000000;
+}
+
+.oeeView .rightInput
+{
+    color: #000000;
+}
+
+.oeeView .lastInput
+{
+    text-align: center;
+    width: 60px;
+    font-size: 18px;
+    color: #bababa;
+}
+
+.oeeView .lastLabel
+{
+    width: 60px;
+    text-align: center;
+    font-size: 10px;
+    color: #bababa;
+    font-size: 10px;
+}
+
+
+.positive
+{
+	color: Green;
+}
+
+.negative
+{
+	color: Red;
+}
+
+.nochange
+{
+	color: Black;
+}
+
+.uptimeView
+{
+	width: 100%;
+}
+
+.uptimeView .item
+{
+	float: left;
+	padding-left: 20px;
+	width: 200px;
+	vertical-align: middle; 
+	text-align: center;
+}
+
+.uptimeView .label
+{
+	font-size: 11px;
+	font-weight: bold;
+}
+
+.uptimeView .item .input
+{
+	margin-top: 5px;
+	color: #000;
+	font-size: 14px;
+	font-weight: bold;
+}
+
+.uptimeView .last .input
+{
+	font-size: 30px;
+	font-weight: bold;
+}
+
+.statusViewFacility
+{
+	width: 100%;
+}
+
+.statusViewFacility .item
+{
+	float: left;
+	padding-left: 20px;
+	width: 120px;
+	vertical-align: middle; 
+	text-align: center;
+}
+
+.statusViewFacility .label
+{
+	font-size: 11px;
+	font-weight: bold;
+}
+
+.statusViewFacility .item .input
+{
+	margin-top: 0;
+	color: #000;
+	font-size: 14px;
+	font-weight: bold;
+}
+
+input.buttonSmallWhiteOnWhite
+{
+	background-color: transparent;
+	background-image: url(images/buttonSmallWhiteOnWhite.gif);
+	background-repeat: no-repeat;
+	width: 118px;
+	height: 21px;
+	padding: 0 0 3px 0;
+	margin-top: 0;
+	text-align: center;
+	font-size: 10px;
+	font-weight: bold;
+	text-decoration: none;
+	color: #969696;
+	border-top-style: none;
+	border-right-style: none;
+	border-left-style: none;
+	border-bottom-style: none;
+}
+
+input.buttonSmallWhiteOnWhite:hover, input.buttonSmallWhiteOnWhite:active, input.buttonSmallWhiteOnWhite:focus
+ {
+	background-color: transparent;
+	background-image: url(images/buttonSmallWhiteOnWhite.gif);
+	background-repeat: no-repeat;
+	width: 118px;
+	height: 21px;
+	padding: 0 0 3px 0;
+	margin-top: 0;
+	text-align: center;
+	font-size: 10px;
+	font-weight: bold;
+	text-decoration: none;
+	color: #515151;
+	border-top-style: none;
+	border-right-style: none;
+	border-left-style: none;
+	border-bottom-style: none;
+}
+
+.sgridHeader
+{
+	color: #000;
+	padding: 0px 4px 5px 4px;
+}
+
+.sgridPager
+{
+	color: #000;
+}
+
+.sgridPager a
+{
+	padding-top: 5px;
+	color: #000;
+}
+
+.sgridItem, .sgridItemAlternate, .sgridItemSpecial
+{
+	font-weight: normal;
+	padding: 2px 2px;
+	color: #6f6f6f;
+}
+
+.sgridItem
+{
+	background-color: #f7f7f7;
+}
+
+.sgridItemAlternate, .sgridItemSpecialAlternate
+{
+	
+}
+
+.sgridItemSpecial
+{
+	font-weight: bold !important;
+}
+
+#loginpage
+{
+	margin: 0 auto;
+	width: 960px;
+	padding: 0;
+}
+
+/*** MasterPage Layout ***/
+
+#login_content 
+{
+	width: 100%;
+	text-align: center;
+	margin-top: 80px;
+}
+
+
+#login_footer
+{
+	text-align: center;
+	width: 100%;
+	margin-top: 10px;
+}
+
+.divLogin
+{
+	width: 400px;
+	padding: 50px 0;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.loginView
+{
+	width: 100%;
+}
+
+.loginControl
+{
+	margin: 0px auto 0px auto;
+}
+
+.loginLabel
+{
+	text-align: left;
+	padding-bottom: 4px;
+}
+
+.loginLabel label
+{
+	
+}
+
+.loginTextBox
+{
+	margin-left: 4px;
+	margin-bottom: 4px;
+	width: 250px;
+}
+
+.loginButton
+{
+	margin-top: 5px;
+	margin-right: 6px;
+}
+
+.sradGridSelection, .sradGridSelectionHover
+{
+	cursor: hand;
+	cursor: pointer; 
+	background-color: #eeeeee;
+}
+
+.sradGridSelection td, .sradGridSelectionHover td
+{
+	padding-left: 4px;
+	padding-right: 4px;
+	font-weight: normal;
+}
+
+.groupBox
+{
+    padding-left:10px;
+    padding-right: 10px;
+}
+
+
+.vertical
+{
+    height: 1px;
+	width: 1px;
+	font-size: 1px;
+	float: left; 
+}
+
+.RadGrid_Default .rgCaption
+{
+    font-weight: bold;
+    
+}   
+
+.RadGrid_Default .rgMasterTable
+{
+	width: 100% !important;
+}
+
+div.RadScheduler .rsHorizontalHeaderTable, div.RadScheduler .rsContentTable, div.RadScheduler .rsAllDayTable
+    {
+        width: /*\**/ 100%\9 !important;
+    }
+    * + html div.RadScheduler .rsHorizontalHeaderTable, * + html div.RadScheduler .rsContentTable, * + html div.RadScheduler .rsAllDayTable
+    {
+        width: auto !important;
+    }
+
+    .RadScheduler .rsTopWrap tr.rsHidden
+    {
+        display: block;
+    }
+
+    * + html .RadScheduler .rsVerticalHeaderTable tr.rsMainHeader div.rsMainHeader
+    {
+        width: auto;
+    }
+
+.maximize input[type=text] 
+{ 
+    width:100%; 
+}
+
+.rgGroupCol
+{  
+    background-color: White !important;       
+} 
+
+div.RadScheduler .rsTimePickers {
+    display: block !important;
+} 
+  

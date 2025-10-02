@@ -1,0 +1,200 @@
+using System;
+using System.Collections.Generic;
+using System.Text;
+using System.Data;
+using System.Data.SqlClient;
+using System.Runtime.InteropServices;
+
+using Csla;
+using Csla.Data;
+
+namespace M2M.DataCenter
+{
+	[Serializable()]
+	public class TagValue : BusinessBase<TagValue>
+	{
+		#region Business Methods
+
+		private string m_TagId = String.Empty;
+		private object m_DataValue = null;
+
+		public string TagId
+		{
+			get
+			{
+				CanReadProperty("TagId");
+				return m_TagId;
+			}
+		}
+
+		public object DataValue
+		{
+			get
+			{
+				CanReadProperty("DataValue");
+				return m_DataValue;
+			}
+			set
+			{
+				CanWriteProperty("DataValue");
+				if (m_DataValue != value)
+				{
+					m_DataValue= value;
+					PropertyHasChanged("DataValue");
+				}
+			}
+		}
+
+		protected override object GetIdValue()
+		{
+			return m_TagId;
+		}
+
+		#endregion
+
+		#region Validation Rules
+
+		protected override void AddBusinessRules()
+		{
+
+		}
+
+		#endregion
+
+		#region Authorization Rules
+
+		protected override void AddAuthorizationRules()
+		{
+
+		}
+
+		#endregion
+
+		#region Factory Methods
+
+		internal static TagValue NewTagValue(string tagId, object dataValue)
+		{
+			return new TagValue(tagId, dataValue);
+		}
+
+		internal static TagValue GetTagValue(SafeDataReader dr)
+		{
+			return new TagValue(dr);
+		}
+
+		private TagValue()
+		{
+			MarkAsChild();
+		}
+
+		private TagValue(string tagId, object dataValue)
+			: this()
+		{
+			m_TagId = tagId;
+			m_DataValue = dataValue;
+		}
+
+		private TagValue(SafeDataReader dr)
+			: this()
+		{
+			Fetch(dr);
+		}
+
+		#endregion
+
+		#region Data Access
+
+		private void Fetch(SafeDataReader dr)
+		{
+			m_TagId = dr.GetString("TagId");
+			m_DataValue = dr.GetValue("DataValue");
+
+			MarkOld();
+		}
+
+		internal void Insert()
+		{
+			if (!this.IsDirty)
+				return;
+
+			using (SqlConnection connection = new SqlConnection(Database.SystemConnectionString))
+			{
+				connection.Open();
+
+				using (SqlCommand command = connection.CreateCommand())
+				{
+					command.CommandType = CommandType.Text;
+					command.CommandText = "INSERT INTO TagValues (" +
+											"TagId," +
+											"DataValue" +
+											") VALUES (" +
+											"@TagId," +
+											"@DataValue)";
+
+					command.Parameters.AddWithValue("@TagId", m_TagId);
+					command.Parameters.AddWithValue("@DataValue", m_DataValue);
+
+					command.ExecuteNonQuery();
+				}
+			}
+
+			MarkOld();
+		}
+
+		internal void Update()
+		{
+			if (!this.IsDirty)
+				return;
+
+			using (SqlConnection connection = new SqlConnection(Database.SystemConnectionString))
+			{
+				connection.Open();
+
+				using (SqlCommand command = connection.CreateCommand())
+				{
+					command.CommandType = CommandType.Text;
+					command.CommandText = "UPDATE TagValues SET " +
+											"DataValue=@DataValue" +
+											" WHERE " +
+											"TagId=@TagId";
+
+					command.Parameters.AddWithValue("@DataValue", m_DataValue);
+					command.Parameters.AddWithValue("@TagId", m_TagId);
+					
+					command.ExecuteNonQuery();
+				}
+			}
+
+			MarkOld();
+		}
+
+		internal void DeleteSelf()
+		{
+			if (!this.IsDirty)
+				return;
+
+			if (this.IsNew)
+				return;
+
+			using (SqlConnection connection = new SqlConnection(Database.SystemConnectionString))
+			{
+				connection.Open();
+ 
+				using (SqlCommand command = connection.CreateCommand())
+				{
+					command.CommandType = CommandType.Text;
+					command.CommandText = "DELETE FROM TagValues WHERE " +
+					                        "TagId=@TagId";
+					
+					command.Parameters.AddWithValue("@TagId", m_TagId);
+			
+					command.ExecuteNonQuery();
+				}
+			}
+
+			MarkNew();
+		}
+
+		#endregion
+	}
+}

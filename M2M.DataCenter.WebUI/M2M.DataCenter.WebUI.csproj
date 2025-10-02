@@ -1,0 +1,821 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{2366D1D5-3ADF-4105-BEC2-2B35BBBD99B2}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>M2M.DataCenter.WebUI</RootNamespace>
+    <AssemblyName>M2M.DataCenter.WebUI</AssemblyName>
+    <ApplicationIcon>
+    </ApplicationIcon>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>4.0</OldToolsVersion>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <TargetFrameworkProfile />
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <Use64BitIISExpress />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <IncludeIisSettings>false</IncludeIisSettings>
+    <IncludeAppPool>false</IncludeAppPool>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>
+    </DocumentationFile>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <PublishDatabases>true</PublishDatabases>
+    <IncludeIisSettings>false</IncludeIisSettings>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Csla, Version=3.8.3.0, Culture=neutral, PublicKeyToken=93be5fdc093e4c30, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\CommonReferences\Csla 3.8.3.0\Csla.dll</HintPath>
+    </Reference>
+    <Reference Include="NLog">
+      <HintPath>..\CommonReferences\NLog 1.0.0.505\NLog.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.ServiceProcess" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Extensions.Design" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Web.Mobile" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="Telerik.Reporting, Version=10.2.16.1025, Culture=neutral, PublicKeyToken=a9d7983dfcc261be, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\CommonReferences\Telerik Reporting 10.2.16.1025\Telerik.Reporting.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.ReportViewer.WebForms, Version=10.2.16.1025, Culture=neutral, PublicKeyToken=a9d7983dfcc261be, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\CommonReferences\Telerik Reporting 10.2.16.1025\Telerik.ReportViewer.WebForms.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.Web.UI, Version=2016.1.225.40, Culture=neutral, PublicKeyToken=121fae78165ba3d4, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\CommonReferences\Telerik Web 2016.3.1027.40\Telerik.Web.UI.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.Web.UI.Skins, Version=2016.1.225.40, Culture=neutral, PublicKeyToken=121fae78165ba3d4, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\CommonReferences\Telerik Web 2016.3.1027.40\Telerik.Web.UI.Skins.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Admin\Templates\AdvancedFormCS.ascx" />
+    <Content Include="Analyze\AnalyzePage.aspx" />
+    <Content Include="Help\AboutPage.aspx" />
+    <Content Include="Help\HelpOeeControl_de.ascx" />
+    <Content Include="Help\HelpOeeControl.ascx" />
+    <Content Include="Help\HelpOeeControl_sv.ascx" />
+    <Content Include="Help\HelpPage.aspx" />
+    <Content Include="images\OeeBoxLeft.png" />
+    <Content Include="images\OeeBoxRight.png" />
+    <Content Include="images\OeeSystemLogo.png" />
+    <Content Include="images\SingleMinus.gif" />
+    <Content Include="images\SinglePlus.gif" />
+    <Content Include="MonitorPage.aspx" />
+    <Content Include="Production\DeviceUnitListControl.ascx" />
+    <Content Include="Production\DeviceUnitPage.aspx" />
+    <Content Include="Production\StatusControl.ascx" />
+    <Content Include="Report\FilterChangeOverWeekly.ascx" />
+    <Content Include="Report\FilterArticleStoppageAnalyzeWeekly.ascx" />
+    <Content Include="Report\FilterArticleStoppageAnalyzeMonthly.ascx" />
+    <Content Include="Report\FilterChangeOverMonthly.ascx" />
+    <Content Include="Report\FilterNpbOee.ascx" />
+    <Content Include="Report\FilterPlantProductionWeekly.ascx" />
+    <Content Include="Report\FilterDivisionProductionWeekly.ascx" />
+    <Content Include="Report\FilterStoppageAnalyzeWeekly.ascx" />
+    <Content Include="Report\FilterStoppageAnalyzeMonthly.ascx" />
+    <Content Include="Report\FilterStoppageAnalyzeDaily.ascx" />
+    <Content Include="Report\FilterNpbWeekly.ascx" />
+    <Content Include="Report\FilterNpbMonthly.ascx" />
+    <Content Include="Report\FilterMachineStoppageWeekly.ascx" />
+    <Content Include="Report\FilterMachineStoppageMonthly.ascx" />
+    <Content Include="Report\FilterMachineOeeWeekly.ascx" />
+    <Content Include="Report\FilterMachineOeeMonthly.ascx" />
+    <Content Include="Report\FilterMachineOeeDaily.ascx" />
+    <Content Include="Report\FilterDivisionStoppageWeekly.ascx" />
+    <Content Include="Report\FilterDivisionStoppageMonthly.ascx" />
+    <Content Include="Report\FilterDivisionOeeMonthly.ascx" />
+    <Content Include="Report\FilterDivisionOeeDaily.ascx" />
+    <Content Include="Report\FilterDivisionOeeWeekly.ascx" />
+    <Content Include="Report\ReportFilterBase.ascx" />
+    <Content Include="Status\StatusPage.aspx" />
+    <Content Include="Production\StoppageListControl.ascx" />
+    <Content Include="Production\ToggleControl.ascx" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AdministrationPage.aspx.cs">
+      <SubType>ASPXCodeBehind</SubType>
+      <DependentUpon>AdministrationPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AdministrationPage.aspx.designer.cs">
+      <DependentUpon>AdministrationPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\AdvancedFormTemplate\AdvancedFormCS.ascx.cs">
+      <DependentUpon>AdvancedFormCS.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\AdvancedFormTemplate\AdvancedFormCS.ascx.designer.cs">
+      <DependentUpon>AdvancedFormCS.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\AdvancedFormTemplate\BooleanAttributeControlCS.ascx.cs">
+      <DependentUpon>BooleanAttributeControlCS.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\AdvancedFormTemplate\BooleanAttributeControlCS.ascx.designer.cs">
+      <DependentUpon>BooleanAttributeControlCS.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\AdvancedFormTemplate\MultipleValuesResourceControlCS.ascx.cs">
+      <DependentUpon>MultipleValuesResourceControlCS.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\AdvancedFormTemplate\MultipleValuesResourceControlCS.ascx.designer.cs">
+      <DependentUpon>MultipleValuesResourceControlCS.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\AdvancedFormTemplate\ResourceControlCS.ascx.cs">
+      <DependentUpon>ResourceControlCS.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\AdvancedFormTemplate\ResourceControlCS.ascx.designer.cs">
+      <DependentUpon>ResourceControlCS.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\ArticleListControl.ascx.cs">
+      <DependentUpon>ArticleListControl.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\ArticleListControl.ascx.designer.cs">
+      <DependentUpon>ArticleListControl.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\CategoryListControl.ascx.cs">
+      <DependentUpon>CategoryListControl.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\CategoryListControl.ascx.designer.cs">
+      <DependentUpon>CategoryListControl.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\ProductionSchemeControl.ascx.cs">
+      <DependentUpon>ProductionSchemeControl.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\MachineEditControl.ascx.cs">
+      <DependentUpon>MachineEditControl.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\MachineEditControl.ascx.designer.cs">
+      <DependentUpon>MachineEditControl.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\DivisionEditControl.ascx.cs">
+      <DependentUpon>DivisionEditControl.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\DivisionEditControl.ascx.designer.cs">
+      <DependentUpon>DivisionEditControl.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\DivisionListControl.ascx.cs">
+      <DependentUpon>DivisionListControl.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\DivisionListControl.ascx.designer.cs">
+      <DependentUpon>DivisionListControl.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\MachineControl.ascx.cs">
+      <DependentUpon>MachineControl.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\MachineControl.ascx.designer.cs">
+      <DependentUpon>MachineControl.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\DivisionControl.ascx.cs">
+      <DependentUpon>DivisionControl.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\DivisionControl.ascx.designer.cs">
+      <DependentUpon>DivisionControl.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\MachineListControl.ascx.cs">
+      <DependentUpon>MachineListControl.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\MachineListControl.ascx.designer.cs">
+      <DependentUpon>MachineListControl.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\FacilityControl.ascx.cs">
+      <DependentUpon>FacilityControl.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\FacilityControl.ascx.designer.cs">
+      <DependentUpon>FacilityControl.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\ProductionSchemeControl.ascx.designer.cs">
+      <DependentUpon>ProductionSchemeControl.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\SchedulerPage.aspx.cs">
+      <DependentUpon>SchedulerPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\SchedulerPage.aspx.designer.cs">
+      <DependentUpon>SchedulerPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\SystemSettingsControl.ascx.cs">
+      <DependentUpon>SystemSettingsControl.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\SystemSettingsControl.ascx.designer.cs">
+      <DependentUpon>SystemSettingsControl.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\Templates\AdvancedFormCS.ascx.cs">
+      <DependentUpon>AdvancedFormCS.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\Templates\AdvancedFormCS.ascx.designer.cs">
+      <DependentUpon>AdvancedFormCS.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\UserSettingsControl.ascx.cs">
+      <DependentUpon>UserSettingsControl.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\UserSettingsControl.ascx.designer.cs">
+      <DependentUpon>UserSettingsControl.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Common\ResponseControl.ascx.cs">
+      <DependentUpon>ResponseControl.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Common\ResponseControl.ascx.designer.cs">
+      <DependentUpon>ResponseControl.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Analyze\AnalyzePage.aspx.cs">
+      <DependentUpon>AnalyzePage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Analyze\AnalyzePage.aspx.designer.cs">
+      <DependentUpon>AnalyzePage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Help\AboutPage.aspx.cs">
+      <DependentUpon>AboutPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Help\AboutPage.aspx.designer.cs">
+      <DependentUpon>AboutPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Help\HelpOeeControl_de.ascx.cs">
+      <DependentUpon>HelpOeeControl_de.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Help\HelpOeeControl_de.ascx.designer.cs">
+      <DependentUpon>HelpOeeControl_de.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Help\HelpOeeControl.ascx.cs">
+      <DependentUpon>HelpOeeControl.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Help\HelpOeeControl.ascx.designer.cs">
+      <DependentUpon>HelpOeeControl.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Help\HelpOeeControl_sv.ascx.cs">
+      <DependentUpon>HelpOeeControl_sv.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Help\HelpOeeControl_sv.ascx.designer.cs">
+      <DependentUpon>HelpOeeControl_sv.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Help\HelpPage.aspx.cs">
+      <DependentUpon>HelpPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Help\HelpPage.aspx.designer.cs">
+      <DependentUpon>HelpPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Common\articles.asmx.cs">
+      <DependentUpon>articles.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="MonitorPage.aspx.cs">
+      <DependentUpon>MonitorPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MonitorPage.aspx.designer.cs">
+      <DependentUpon>MonitorPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Production\DeviceUnitListControl.ascx.cs">
+      <DependentUpon>DeviceUnitListControl.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Production\DeviceUnitListControl.ascx.designer.cs">
+      <DependentUpon>DeviceUnitListControl.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Production\DeviceUnitPage.aspx.cs">
+      <DependentUpon>DeviceUnitPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Production\DeviceUnitPage.aspx.designer.cs">
+      <DependentUpon>DeviceUnitPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Production\DivisionListControl.ascx.cs">
+      <DependentUpon>DivisionListControl.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Production\DivisionListControl.ascx.designer.cs">
+      <DependentUpon>DivisionListControl.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Production\DivisionPage.aspx.cs">
+      <DependentUpon>DivisionPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Production\DivisionPage.aspx.designer.cs">
+      <DependentUpon>DivisionPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Production\FacilityPage.aspx.cs">
+      <DependentUpon>FacilityPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Production\FacilityPage.aspx.designer.cs">
+      <DependentUpon>FacilityPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Production\ImageHandler.ashx.cs">
+      <DependentUpon>ImageHandler.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Production\MachinePage.aspx.cs">
+      <DependentUpon>MachinePage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Production\MachinePage.aspx.designer.cs">
+      <DependentUpon>MachinePage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Production\StatusControl.ascx.cs">
+      <DependentUpon>StatusControl.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Production\StatusControl.ascx.designer.cs">
+      <DependentUpon>StatusControl.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="Report\FilterChangeOverWeekly.ascx.cs">
+      <DependentUpon>FilterChangeOverWeekly.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Report\FilterChangeOverWeekly.ascx.designer.cs">
+      <DependentUpon>FilterChangeOverWeekly.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Report\FilterArticleStoppageAnalyzeWeekly.ascx.cs">
+      <DependentUpon>FilterArticleStoppageAnalyzeWeekly.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Report\FilterArticleStoppageAnalyzeWeekly.ascx.designer.cs">
+      <DependentUpon>FilterArticleStoppageAnalyzeWeekly.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Report\FilterArticleStoppageAnalyzeMonthly.ascx.cs">
+      <DependentUpon>FilterArticleStoppageAnalyzeMonthly.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Report\FilterArticleStoppageAnalyzeMonthly.ascx.designer.cs">
+      <DependentUpon>FilterArticleStoppageAnalyzeMonthly.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Report\FilterChangeOverMonthly.ascx.cs">
+      <DependentUpon>FilterChangeOverMonthly.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Report\FilterChangeOverMonthly.ascx.designer.cs">
+      <DependentUpon>FilterChangeOverMonthly.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Report\FilterNpbOee.ascx.cs">
+      <DependentUpon>FilterNpbOee.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Report\FilterNpbOee.ascx.designer.cs">
+      <DependentUpon>FilterNpbOee.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Report\FilterPlantProductionWeekly.ascx.cs">
+      <DependentUpon>FilterPlantProductionWeekly.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Report\FilterPlantProductionWeekly.ascx.designer.cs">
+      <DependentUpon>FilterPlantProductionWeekly.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Report\FilterDivisionProductionWeekly.ascx.cs">
+      <DependentUpon>FilterDivisionProductionWeekly.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Report\FilterDivisionProductionWeekly.ascx.designer.cs">
+      <DependentUpon>FilterDivisionProductionWeekly.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Report\FilterStoppageAnalyzeWeekly.ascx.cs">
+      <DependentUpon>FilterStoppageAnalyzeWeekly.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Report\FilterStoppageAnalyzeWeekly.ascx.designer.cs">
+      <DependentUpon>FilterStoppageAnalyzeWeekly.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Report\FilterStoppageAnalyzeMonthly.ascx.cs">
+      <DependentUpon>FilterStoppageAnalyzeMonthly.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Report\FilterStoppageAnalyzeMonthly.ascx.designer.cs">
+      <DependentUpon>FilterStoppageAnalyzeMonthly.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Report\FilterStoppageAnalyzeDaily.ascx.cs">
+      <DependentUpon>FilterStoppageAnalyzeDaily.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Report\FilterStoppageAnalyzeDaily.ascx.designer.cs">
+      <DependentUpon>FilterStoppageAnalyzeDaily.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Report\FilterNpbWeekly.ascx.cs">
+      <DependentUpon>FilterNpbWeekly.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Report\FilterNpbWeekly.ascx.designer.cs">
+      <DependentUpon>FilterNpbWeekly.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Report\FilterNpbMonthly.ascx.cs">
+      <DependentUpon>FilterNpbMonthly.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Report\FilterNpbMonthly.ascx.designer.cs">
+      <DependentUpon>FilterNpbMonthly.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Report\FilterMachineStoppageWeekly.ascx.cs">
+      <DependentUpon>FilterMachineStoppageWeekly.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Report\FilterMachineStoppageWeekly.ascx.designer.cs">
+      <DependentUpon>FilterMachineStoppageWeekly.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Report\FilterMachineStoppageMonthly.ascx.cs">
+      <DependentUpon>FilterMachineStoppageMonthly.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Report\FilterMachineStoppageMonthly.ascx.designer.cs">
+      <DependentUpon>FilterMachineStoppageMonthly.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Report\FilterMachineOeeWeekly.ascx.cs">
+      <DependentUpon>FilterMachineOeeWeekly.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Report\FilterMachineOeeWeekly.ascx.designer.cs">
+      <DependentUpon>FilterMachineOeeWeekly.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Report\FilterMachineOeeMonthly.ascx.cs">
+      <DependentUpon>FilterMachineOeeMonthly.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Report\FilterMachineOeeMonthly.ascx.designer.cs">
+      <DependentUpon>FilterMachineOeeMonthly.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Report\FilterMachineOeeDaily.ascx.cs">
+      <DependentUpon>FilterMachineOeeDaily.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Report\FilterMachineOeeDaily.ascx.designer.cs">
+      <DependentUpon>FilterMachineOeeDaily.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Report\FilterDivisionStoppageWeekly.ascx.cs">
+      <DependentUpon>FilterDivisionStoppageWeekly.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Report\FilterDivisionStoppageWeekly.ascx.designer.cs">
+      <DependentUpon>FilterDivisionStoppageWeekly.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Report\FilterDivisionStoppageMonthly.ascx.cs">
+      <DependentUpon>FilterDivisionStoppageMonthly.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Report\FilterDivisionStoppageMonthly.ascx.designer.cs">
+      <DependentUpon>FilterDivisionStoppageMonthly.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Report\FilterDivisionOeeMonthly.ascx.cs">
+      <DependentUpon>FilterDivisionOeeMonthly.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Report\FilterDivisionOeeMonthly.ascx.designer.cs">
+      <DependentUpon>FilterDivisionOeeMonthly.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Report\FilterDivisionOeeDaily.ascx.cs">
+      <DependentUpon>FilterDivisionOeeDaily.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Report\FilterDivisionOeeDaily.ascx.designer.cs">
+      <DependentUpon>FilterDivisionOeeDaily.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Report\FilterDivisionOeeWeekly.ascx.cs">
+      <DependentUpon>FilterDivisionOeeWeekly.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Report\FilterDivisionOeeWeekly.ascx.designer.cs">
+      <DependentUpon>FilterDivisionOeeWeekly.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Report\ReportFilterBase.ascx.cs">
+      <DependentUpon>ReportFilterBase.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Report\ReportFilterBase.ascx.designer.cs">
+      <DependentUpon>ReportFilterBase.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Status\StatusPage.aspx.cs">
+      <DependentUpon>StatusPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Status\StatusPage.aspx.designer.cs">
+      <DependentUpon>StatusPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Production\StoppageListControl.ascx.cs">
+      <DependentUpon>StoppageListControl.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Production\StoppageListControl.ascx.designer.cs">
+      <DependentUpon>StoppageListControl.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Production\ToggleControl.ascx.cs">
+      <DependentUpon>ToggleControl.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Production\ToggleControl.ascx.designer.cs">
+      <DependentUpon>ToggleControl.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Report\ReportPage.aspx.cs">
+      <DependentUpon>ReportPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Report\ReportPage.aspx.designer.cs">
+      <DependentUpon>ReportPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Defibrillator.aspx.cs">
+      <DependentUpon>Defibrillator.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Defibrillator.aspx.designer.cs">
+      <DependentUpon>Defibrillator.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="M2MDataCenter.Master.cs">
+      <DependentUpon>M2MDataCenter.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="M2MDataCenter.Master.designer.cs">
+      <DependentUpon>M2MDataCenter.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Production\MachineListControl.ascx.cs">
+      <DependentUpon>MachineListControl.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Production\MachineListControl.ascx.designer.cs">
+      <DependentUpon>MachineListControl.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Production\EventListControl.ascx.cs">
+      <DependentUpon>EventListControl.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Production\EventListControl.ascx.designer.cs">
+      <DependentUpon>EventListControl.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Production\FilterControl.ascx.cs">
+      <DependentUpon>FilterControl.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Production\FilterControl.ascx.designer.cs">
+      <DependentUpon>FilterControl.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Production\OEEControl.ascx.cs">
+      <DependentUpon>OEEControl.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Production\OEEControl.ascx.designer.cs">
+      <DependentUpon>OEEControl.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Status\StatusControl.ascx.cs">
+      <DependentUpon>StatusControl.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Status\StatusControl.ascx.designer.cs">
+      <DependentUpon>StatusControl.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Production\UptimeControl.ascx.cs">
+      <DependentUpon>UptimeControl.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Production\UptimeControl.ascx.designer.cs">
+      <DependentUpon>UptimeControl.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Logon.aspx.cs">
+      <SubType>ASPXCodeBehind</SubType>
+      <DependentUpon>Logon.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Logon.aspx.designer.cs">
+      <DependentUpon>Logon.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Report\ReportViewer.aspx.cs">
+      <DependentUpon>ReportViewer.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Report\ReportViewer.aspx.designer.cs">
+      <DependentUpon>ReportViewer.aspx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\M2M.DataCenter.Library\M2M.DataCenter.Library.csproj">
+      <Project>{5C0071EB-D02E-43D7-A372-746F77ED7EC5}</Project>
+      <Name>M2M.DataCenter.Library</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\M2M.DataCenter.Localization\M2M.DataCenter.Localization.csproj">
+      <Project>{AA52ABFE-4232-41B4-B7B1-C5A1F5E99159}</Project>
+      <Name>M2M.DataCenter.Localization</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\M2M.DataCenter.Report\M2M.DataCenter.Reports.Library.csproj">
+      <Project>{CA5E58D2-908B-46F1-B045-A6FB08E6E651}</Project>
+      <Name>M2M.DataCenter.Reports.Library</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\M2M.DataCenter.Utilities\M2M.DataCenter.Utilities.csproj">
+      <Project>{64A9DB8D-28CD-4646-8195-0EF7EA68DCC5}</Project>
+      <Name>M2M.DataCenter.Utilities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\M2M.Monitor.Library\M2M.Monitor.Library.csproj">
+      <Project>{e8c1c93e-8e9a-496c-8ace-bc85effb3edf}</Project>
+      <Name>M2M.Monitor.Library</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\M2M.OeeCalculator.Library\M2M.OeeCalculator.Library.csproj">
+      <Project>{4EDB9BB5-A4B6-4217-B7E1-AB5857D61DDE}</Project>
+      <Name>M2M.OeeCalculator.Library</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\M2M.StoppageCalculator.Library\M2M.StoppageCalculator.Library.csproj">
+      <Project>{82CA60C9-7AEE-4F7D-8C20-CF05CA337E5F}</Project>
+      <Name>M2M.StoppageCalculator.Library</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Admin\MachineControl.ascx" />
+    <Content Include="Admin\DivisionControl.ascx" />
+    <Content Include="images\splash.gif" />
+    <Content Include="Production\MachineListControl.ascx" />
+    <Content Include="Production\EventListControl.ascx" />
+    <Content Include="Production\FilterControl.ascx" />
+    <Content Include="Production\OEEControl.ascx" />
+    <Content Include="Status\StatusControl.ascx" />
+    <Content Include="Production\UptimeControl.ascx" />
+    <Content Include="images\buttonSmallWhiteOnWhite.gif" />
+    <Content Include="images\FrameGreyBL.gif" />
+    <Content Include="images\FrameGreyBR.gif" />
+    <Content Include="images\FrameGreyTL.gif" />
+    <Content Include="images\FrameGreyTR.gif" />
+    <Content Include="images\FrameWhiteBL.gif" />
+    <Content Include="images\FrameWhiteBR.gif" />
+    <Content Include="images\FrameWhiteTL.gif" />
+    <Content Include="images\FrameWhiteTR.gif" />
+    <Content Include="images\GreyDot.gif" />
+    <Content Include="images\TabItemLeft.gif" />
+    <Content Include="images\TabItemLeftActive.gif" />
+    <Content Include="images\TabItemMiddle.gif" />
+    <Content Include="images\TabItemMiddleActive.gif" />
+    <Content Include="images\TabItemRight.gif" />
+    <Content Include="images\TabItemRightActive.gif" />
+    <Content Include="images\TopHeader.gif" />
+    <Content Include="images\userInfo.gif" />
+    <Content Include="Logon.aspx" />
+    <Content Include="M2M.Classic.css" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\licenses.licx" />
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <SubType>Designer</SubType>
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="AdministrationPage.aspx" />
+    <Content Include="Admin\AdvancedFormTemplate\AdvancedForm.js" />
+    <Content Include="Admin\AdvancedFormTemplate\AdvancedFormCS.ascx" />
+    <Content Include="Admin\AdvancedFormTemplate\BooleanAttributeControlCS.ascx" />
+    <Content Include="Admin\AdvancedFormTemplate\MultipleValuesResourceControlCS.ascx" />
+    <Content Include="Admin\AdvancedFormTemplate\ResourceControlCS.ascx" />
+    <Content Include="Admin\ArticleListControl.ascx" />
+    <Content Include="Admin\CategoryListControl.ascx" />
+    <Content Include="Admin\ProductionSchemeControl.ascx" />
+    <Content Include="Admin\MachineEditControl.ascx" />
+    <Content Include="Admin\DivisionEditControl.ascx" />
+    <Content Include="Admin\DivisionListControl.ascx" />
+    <Content Include="Admin\MachineListControl.ascx" />
+    <Content Include="Admin\FacilityControl.ascx" />
+    <Content Include="Admin\SchedulerPage.aspx" />
+    <Content Include="Admin\SystemSettingsControl.ascx" />
+    <Content Include="Admin\Templates\AdvancedForm.js" />
+    <Content Include="Admin\UserSettingsControl.ascx" />
+    <Content Include="Common\ResponseControl.ascx" />
+    <Content Include="GenericErrorPage.htm" />
+    <Content Include="images\error.png" />
+    <Content Include="images\information.png" />
+    <Content Include="images\warning.png" />
+    <Content Include="Common\articles.asmx" />
+    <Content Include="Production\DivisionListControl.ascx" />
+    <Content Include="Production\DivisionPage.aspx" />
+    <Content Include="Production\FacilityPage.aspx" />
+    <Content Include="Production\MachinePage.aspx" />
+    <Content Include="Report\ReportPage.aspx" />
+    <Content Include="Defibrillator.aspx" />
+    <Content Include="Global.asax" />
+    <Content Include="M2MDataCenter.Master" />
+    <Content Include="Report\ReportViewer.aspx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{967B4E0D-AD0C-4609-AB67-0FA40C0206D8}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="CustomerSpecifics\" />
+    <Folder Include="data\ImportFiles\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Production\ImageHandler.ashx" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\PublishProfiles\M2M.DataCenter.pubxml" />
+    <None Include="Properties\PublishProfiles\Profile1.pubxml" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>47150</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:47150/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>

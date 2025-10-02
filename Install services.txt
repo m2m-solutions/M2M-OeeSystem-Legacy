@@ -1,0 +1,11 @@
+# M2M.DataCenter.WindowsService
+
+## Installing the service
+To install the service, run Windows PowerShell as Administrator and type in the following:
+sc.exe create M2M.DataCollector binPath=[Path]\M2M.DataCollector.exe displayName="M2M DataCollector" depend=MSSQLSERVER start=auto
+
+Run as administrator as console to add event log
+
+sc.exe create M2M.DataCollector binPath="D:\Program Files (x86)\M2M Solutions\M2M.DataCollector\M2M.DataCollector.exe" displayName="M2M DataCollector" depend=MSSQLSERVER start=auto
+sc.exe create M2M.OeeCalculator binPath="D:\Program Files (x86)\M2M Solutions\M2M.OeeCalculator\M2M.OeeCalculator.exe" displayName="M2M OeeCalculator" depend=MSSQLSERVER start=auto
+sc.exe create M2M.StoppageCalculator binPath="D:\Program Files (x86)\M2M Solutions\M2M.StoppageCalculator\M2M.StoppageCalculator.exe" displayName="M2M StoppageCalculator" depend=MSSQLSERVER start=auto

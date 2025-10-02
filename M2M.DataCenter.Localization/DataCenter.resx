@@ -1,0 +1,2074 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Active" xml:space="preserve">
+    <value>Active</value>
+  </data>
+  <data name="Administration" xml:space="preserve">
+    <value>Administration</value>
+  </data>
+  <data name="AllDivisions" xml:space="preserve">
+    <value>All divisions</value>
+  </data>
+  <data name="Article" xml:space="preserve">
+    <value>Article</value>
+  </data>
+  <data name="Articles" xml:space="preserve">
+    <value>Articles</value>
+  </data>
+  <data name="Availability" xml:space="preserve">
+    <value>Availability</value>
+  </data>
+  <data name="Availability.Abbr" xml:space="preserve">
+    <value>A</value>
+  </data>
+  <data name="AvailabilityLoss" xml:space="preserve">
+    <value>Loss in availability</value>
+  </data>
+  <data name="AvailabilityWithAbbr" xml:space="preserve">
+    <value>Availability (A)</value>
+  </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="Category" xml:space="preserve">
+    <value>Category</value>
+  </data>
+  <data name="Chart.States.Item.NotInProduction" xml:space="preserve">
+    <value>No production
+({0})</value>
+  </data>
+  <data name="Chart.States.Item.Running" xml:space="preserve">
+    <value>Running
+({0})</value>
+  </data>
+  <data name="Chart.States.Item.Stopped" xml:space="preserve">
+    <value>Stopped
+({0})</value>
+  </data>
+  <data name="Chart.States.Title" xml:space="preserve">
+    <value>Distribution of time</value>
+  </data>
+  <data name="Chart.Stops.Item" xml:space="preserve">
+    <value>{0}
+Ocurrencies: {1}
+Time consumed: {2}</value>
+  </data>
+  <data name="Chart.Stops.Title" xml:space="preserve">
+    <value>Distribution of stops</value>
+  </data>
+  <data name="Chart.StopTimes.Item" xml:space="preserve">
+    <value>{0}
+Ocurrencies: {1}
+Time consumed: {2}</value>
+  </data>
+  <data name="Chart.StopTimes.Title" xml:space="preserve">
+    <value>Distribution of stop times</value>
+  </data>
+  <data name="DateFrom" xml:space="preserve">
+    <value>Date, from</value>
+  </data>
+  <data name="DateTo" xml:space="preserve">
+    <value>Date, to</value>
+  </data>
+  <data name="Days" xml:space="preserve">
+    <value>Days</value>
+  </data>
+  <data name="Days.Abbr" xml:space="preserve">
+    <value>Days</value>
+  </data>
+  <data name="Division" xml:space="preserve">
+    <value>Division</value>
+  </data>
+  <data name="Divisions" xml:space="preserve">
+    <value>Divisions</value>
+  </data>
+  <data name="ElapsedTime" xml:space="preserve">
+    <value>Time consumed</value>
+  </data>
+  <data name="Event" xml:space="preserve">
+    <value>Event</value>
+  </data>
+  <data name="Grid.PagerTextFormat" xml:space="preserve">
+    <value>Change page: {4} | Showing page {0} of {1}, item {2} - {3} of {5}.</value>
+  </data>
+  <data name="Hours" xml:space="preserve">
+    <value>Hours</value>
+  </data>
+  <data name="Hours.Abbr" xml:space="preserve">
+    <value>H</value>
+  </data>
+  <data name="IgnoreNoProduction" xml:space="preserve">
+    <value>Ignore non-production time</value>
+  </data>
+  <data name="Information" xml:space="preserve">
+    <value>Information</value>
+  </data>
+  <data name="Loading" xml:space="preserve">
+    <value>Loading...</value>
+  </data>
+  <data name="Logon.Button.Text" xml:space="preserve">
+    <value>Log on</value>
+  </data>
+  <data name="Logon.Failure" xml:space="preserve">
+    <value>Failed to logon. Please, try again.</value>
+  </data>
+  <data name="Logon.Password" xml:space="preserve">
+    <value>Password</value>
+  </data>
+  <data name="Logon.PasswordRequired" xml:space="preserve">
+    <value>Password is required</value>
+  </data>
+  <data name="Logon.Title" xml:space="preserve">
+    <value>M2M OeeSystem - logon</value>
+  </data>
+  <data name="Logon.UserName" xml:space="preserve">
+    <value>User name</value>
+  </data>
+  <data name="Logon.UserNameRequired" xml:space="preserve">
+    <value>User name is required</value>
+  </data>
+  <data name="Machine" xml:space="preserve">
+    <value>Machine</value>
+  </data>
+  <data name="Machines" xml:space="preserve">
+    <value>Machines</value>
+  </data>
+  <data name="Master.Logon" xml:space="preserve">
+    <value>You're logged on as</value>
+  </data>
+  <data name="Master.Logout" xml:space="preserve">
+    <value>Log out</value>
+  </data>
+  <data name="Minutes" xml:space="preserve">
+    <value>Minutes</value>
+  </data>
+  <data name="Minutes.Abbr" xml:space="preserve">
+    <value>Min</value>
+  </data>
+  <data name="NotAvailable" xml:space="preserve">
+    <value>Not available</value>
+  </data>
+  <data name="NotInProduction" xml:space="preserve">
+    <value>No production</value>
+  </data>
+  <data name="Oee" xml:space="preserve">
+    <value>OEE</value>
+  </data>
+  <data name="Pace" xml:space="preserve">
+    <value>Pace</value>
+  </data>
+  <data name="MomentUnit.Strokes" xml:space="preserve">
+    <value>Strokes</value>
+  </data>
+  <data name="MomentUnit.Welds" xml:space="preserve">
+    <value>Welds</value>
+  </data>
+  <data name="Performance" xml:space="preserve">
+    <value>Performance</value>
+  </data>
+  <data name="Performance.Abbr" xml:space="preserve">
+    <value>P</value>
+  </data>
+  <data name="PerformanceLoss" xml:space="preserve">
+    <value>Loss in performance</value>
+  </data>
+  <data name="PerformanceWithAbbr" xml:space="preserve">
+    <value>Performance (P)</value>
+  </data>
+  <data name="Production" xml:space="preserve">
+    <value>Production</value>
+  </data>
+  <data name="Quality" xml:space="preserve">
+    <value>Quality</value>
+  </data>
+  <data name="Quality.Abbr" xml:space="preserve">
+    <value>Q</value>
+  </data>
+  <data name="QualityLoss" xml:space="preserve">
+    <value>Loss in quality</value>
+  </data>
+  <data name="QualityWithAbbr" xml:space="preserve">
+    <value>Quality (Q)</value>
+  </data>
+  <data name="Report.MachineOeeDaily.Description" xml:space="preserve">
+    <value>Key figures (OEE) and downtime tracking for a single machine</value>
+  </data>
+  <data name="Report.MachineOeeDaily.DisplayName" xml:space="preserve">
+    <value>Machine - Daily report - OEE and downtime tracking</value>
+  </data>
+  <data name="Report.MachineOeeDaily.SubHeader" xml:space="preserve">
+    <value>Daily report</value>
+  </data>
+  <data name="Reports" xml:space="preserve">
+    <value>Reports</value>
+  </data>
+  <data name="Running" xml:space="preserve">
+    <value>Running</value>
+  </data>
+  <data name="Seconds" xml:space="preserve">
+    <value>Seconds</value>
+  </data>
+  <data name="Seconds.Abbr" xml:space="preserve">
+    <value>Sec</value>
+  </data>
+  <data name="Shift" xml:space="preserve">
+    <value>Shift</value>
+  </data>
+  <data name="ShowAllAlerts" xml:space="preserve">
+    <value>Show all alerts</value>
+  </data>
+  <data name="ShowAllDivisions" xml:space="preserve">
+    <value>Show all divisions </value>
+  </data>
+  <data name="ShowDivision" xml:space="preserve">
+    <value>Show division</value>
+  </data>
+  <data name="ShowNoAlerts" xml:space="preserve">
+    <value>Don\'t show alerts</value>
+  </data>
+  <data name="StateType.ArticleSwitch" xml:space="preserve">
+    <value>Article switch</value>
+  </data>
+  <data name="StateType.Auto" xml:space="preserve">
+    <value>Running</value>
+  </data>
+  <data name="StateType.NoProduction" xml:space="preserve">
+    <value>No production</value>
+  </data>
+  <data name="Stopped" xml:space="preserve">
+    <value>Stopped</value>
+  </data>
+  <data name="TagType.ArticleNumber" xml:space="preserve">
+    <value>Article</value>
+  </data>
+  <data name="TagType.Auto" xml:space="preserve">
+    <value>Auto</value>
+  </data>
+  <data name="TagType.CommunicationError" xml:space="preserve">
+    <value>Communication failure</value>
+  </data>
+  <data name="TagType.CurrentRunRate" xml:space="preserve">
+    <value>Current pace</value>
+  </data>
+  <data name="TagType.Cycles" xml:space="preserve">
+    <value>Cycles</value>
+  </data>
+  <data name="TagType.ExpectedRestart" xml:space="preserve">
+    <value>Expected restart (OPC)</value>
+  </data>
+  <data name="TagType.Informational" xml:space="preserve">
+    <value>Info</value>
+  </data>
+  <data name="TagType.MainAlarm" xml:space="preserve">
+    <value>Main alert</value>
+  </data>
+  <data name="TagType.Moments" xml:space="preserve">
+    <value>Moments</value>
+  </data>
+  <data name="TagType.ProductionSwitch" xml:space="preserve">
+    <value>Production switch</value>
+  </data>
+  <data name="TagType.ReasonCode" xml:space="preserve">
+    <value>Reason code</value>
+  </data>
+  <data name="TagType.Stop" xml:space="preserve">
+    <value>Stop</value>
+  </data>
+  <data name="TagType.UnexpectedRestart" xml:space="preserve">
+    <value>Unexpected restart (OPC)</value>
+  </data>
+  <data name="TagType.UnidentifiedStop" xml:space="preserve">
+    <value>Unidentified stop</value>
+  </data>
+  <data name="TimeStamp" xml:space="preserve">
+    <value>Time stamp</value>
+  </data>
+  <data name="Trend" xml:space="preserve">
+    <value>Trend</value>
+  </data>
+  <data name="Type" xml:space="preserve">
+    <value>Type</value>
+  </data>
+  <data name="Update" xml:space="preserve">
+    <value>Update</value>
+  </data>
+  <data name="UserRoles.Administrator" xml:space="preserve">
+    <value>Administrator</value>
+  </data>
+  <data name="UserRoles.Manager" xml:space="preserve">
+    <value>Manager</value>
+  </data>
+  <data name="UserRoles.Operator" xml:space="preserve">
+    <value>Operator</value>
+  </data>
+  <data name="Warning.EmptyRecord" xml:space="preserve">
+    <value>No values in selected interval</value>
+  </data>
+  <data name="Warning.EmptyRecord.Divisions" xml:space="preserve">
+    <value>No divisions in facility</value>
+  </data>
+  <data name="Warning.EmptyRecord.Events" xml:space="preserve">
+    <value>No events in selected interval</value>
+  </data>
+  <data name="Warning.EmptyRecord.Machines" xml:space="preserve">
+    <value>No machines at division</value>
+  </data>
+  <data name="Warning.NoEventTypesSelected" xml:space="preserve">
+    <value>N. B. Neither information nor alerts are selected. Choose at least one.</value>
+  </data>
+  <data name="AllShifts" xml:space="preserve">
+    <value>All shifts</value>
+  </data>
+  <data name="MilliSeconds" xml:space="preserve">
+    <value>Milliseconds</value>
+  </data>
+  <data name="MilliSeconds.Abbr" xml:space="preserve">
+    <value>Ms</value>
+  </data>
+  <data name="SelectShift" xml:space="preserve">
+    <value>Choose shift</value>
+  </data>
+  <data name="Warning.NoShiftSelected" xml:space="preserve">
+    <value>No shift selected</value>
+  </data>
+  <data name="Description" xml:space="preserve">
+    <value>Description</value>
+  </data>
+  <data name="Moments" xml:space="preserve">
+    <value>Moments</value>
+  </data>
+  <data name="Moments.Transferred" xml:space="preserve">
+    <value>Moments transferred</value>
+  </data>
+  <data name="MomentUnit.Cycles" xml:space="preserve">
+    <value>Cycles</value>
+  </data>
+  <data name="NotAvailable2" xml:space="preserve">
+    <value>Not available</value>
+  </data>
+  <data name="Report" xml:space="preserve">
+    <value>Report</value>
+  </data>
+  <data name="Report.MachineOeeMonthly.Description" xml:space="preserve">
+    <value>Key figures (OEE) for a single machine</value>
+  </data>
+  <data name="Report.MachineOeeMonthly.DisplayName" xml:space="preserve">
+    <value>Machine - Monthly report - OEE</value>
+  </data>
+  <data name="Report.MachineOeeMonthly.SubHeader" xml:space="preserve">
+    <value>Monthly report</value>
+  </data>
+  <data name="Report.MachineOeeWeekly.Description" xml:space="preserve">
+    <value>Key figures (OEE) for a single machine</value>
+  </data>
+  <data name="Report.MachineOeeWeekly.DisplayName" xml:space="preserve">
+    <value>Machine - Weekly report - OEE</value>
+  </data>
+  <data name="Report.MachineOeeWeekly.SubHeader" xml:space="preserve">
+    <value>Weekly report</value>
+  </data>
+  <data name="Report.MachineStoppageMonthly.Description" xml:space="preserve">
+    <value>Downtime tracking for a single machine</value>
+  </data>
+  <data name="Report.MachineStoppageMonthly.DisplayName" xml:space="preserve">
+    <value>Machine - Monthly report - Downtime tracking</value>
+  </data>
+  <data name="Report.MachineStoppageMonthly.SubHeader" xml:space="preserve">
+    <value>Monthly report</value>
+  </data>
+  <data name="Report.MachineStoppageWeekly.Description" xml:space="preserve">
+    <value>Downtime tracking for a single machine</value>
+  </data>
+  <data name="Report.MachineStoppageWeekly.DisplayName" xml:space="preserve">
+    <value>Machine - Weekly report - Downtime tracking</value>
+  </data>
+  <data name="Report.MachineStoppageWeekly.SubHeader" xml:space="preserve">
+    <value>Weekly report</value>
+  </data>
+  <data name="Status" xml:space="preserve">
+    <value>Status</value>
+  </data>
+  <data name="Uptime" xml:space="preserve">
+    <value>Uptime</value>
+  </data>
+  <data name="Uptime.Transferred" xml:space="preserve">
+    <value>Uptime transferred</value>
+  </data>
+  <data name="Warning.EmptyRecord.Reports" xml:space="preserve">
+    <value>No reports available</value>
+  </data>
+  <data name="ReportViewer.CurrentPageToolTip" xml:space="preserve">
+    <value>Current Page</value>
+  </data>
+  <data name="ReportViewer.ExportButtonText" xml:space="preserve">
+    <value>Export</value>
+  </data>
+  <data name="ReportViewer.ExportSelectFormatText" xml:space="preserve">
+    <value>Export to the selected format</value>
+  </data>
+  <data name="ReportViewer.ExportToolTip" xml:space="preserve">
+    <value>Export</value>
+  </data>
+  <data name="ReportViewer.FirstPageToolTip" xml:space="preserve">
+    <value>First page</value>
+  </data>
+  <data name="ReportViewer.ZoomToWholePage" xml:space="preserve">
+    <value>Full Page</value>
+  </data>
+  <data name="ReportViewer.LastPageToolTip" xml:space="preserve">
+    <value>Last page</value>
+  </data>
+  <data name="ReportViewer.ProcessingReportMessage" xml:space="preserve">
+    <value>Generating report...</value>
+  </data>
+  <data name="ReportViewer.NextPageToolTip" xml:space="preserve">
+    <value>Next page</value>
+  </data>
+  <data name="ReportViewer.ZoomToPageWidth" xml:space="preserve">
+    <value>Page Width</value>
+  </data>
+  <data name="ReportViewer.PreviousPageToolTip" xml:space="preserve">
+    <value>Previous page</value>
+  </data>
+  <data name="ReportViewer.PrintToolTip" xml:space="preserve">
+    <value>Print</value>
+  </data>
+  <data name="ReportViewer.RefreshToolTip" xml:space="preserve">
+    <value>Refresh</value>
+  </data>
+  <data name="ReportViewer.ParametersToolTip" xml:space="preserve">
+    <value>Click to close parameters area|Click to open parameters area</value>
+  </data>
+  <data name="ReportViewer.ReportParametersSelectAllText" xml:space="preserve">
+    <value>- select all -</value>
+  </data>
+  <data name="ReportViewer.ReportParametersInvalidValueText" xml:space="preserve">
+    <value>Invalid value.</value>
+  </data>
+  <data name="ReportViewer.ReportParametersFalseValueLabel" xml:space="preserve">
+    <value>False</value>
+  </data>
+  <data name="ReportViewer.ReportParametersNullText" xml:space="preserve">
+    <value>NULL</value>
+  </data>
+  <data name="ReportViewer.ReportParametersTrueValueLabel" xml:space="preserve">
+    <value>True</value>
+  </data>
+  <data name="ReportViewer.ReportParametersPreviewButtonText" xml:space="preserve">
+    <value>Preview</value>
+  </data>
+  <data name="ReportViewer.ReportParametersSelectAValueText" xml:space="preserve">
+    <value>- select a value -</value>
+  </data>
+  <data name="ReportViewer.LabelOf" xml:space="preserve">
+    <value>of</value>
+  </data>
+  <data name="ReportViewer.ReportParametersInputDataError" xml:space="preserve">
+    <value>Please input data for all parameters.</value>
+  </data>
+  <data name="ReportViewer.ReportParametersNoValueText" xml:space="preserve">
+    <value>Value required.</value>
+  </data>
+  <data name="ReportViewer.DocumentMapToolTip" xml:space="preserve">
+    <value>Hide document map|Show document map</value>
+  </data>
+  <data name="ReportViewer.TogglePageLayoutToolTip" xml:space="preserve">
+    <value>Switch to interactive view|Switch to print preview</value>
+  </data>
+  <data name="AvailableProductionTime.Abbr" xml:space="preserve">
+    <value>Available prod. time</value>
+  </data>
+  <data name="BatchNumber" xml:space="preserve">
+    <value>Batch number</value>
+  </data>
+  <data name="Categories" xml:space="preserve">
+    <value>Categories</value>
+  </data>
+  <data name="Date" xml:space="preserve">
+    <value>Date</value>
+  </data>
+  <data name="Downtime" xml:space="preserve">
+    <value>Downtime</value>
+  </data>
+  <data name="DowntimeCauses" xml:space="preserve">
+    <value>Downtime causes</value>
+  </data>
+  <data name="DowntimeTracking" xml:space="preserve">
+    <value>Downtime tracking</value>
+  </data>
+  <data name="EffectiveProductionTime" xml:space="preserve">
+    <value>Effective production time</value>
+  </data>
+  <data name="Facility" xml:space="preserve">
+    <value>Facility</value>
+  </data>
+  <data name="IdentifiedStopTime" xml:space="preserve">
+    <value>Stoptime within selected categories</value>
+  </data>
+  <data name="MachineNotInProduction" xml:space="preserve">
+    <value>Machine not in production</value>
+  </data>
+  <data name="Month" xml:space="preserve">
+    <value>Month</value>
+  </data>
+  <data name="NumberOfPreviousEvents" xml:space="preserve">
+    <value>Number of previous events</value>
+  </data>
+  <data name="NumberOfStops" xml:space="preserve">
+    <value>Number of stops</value>
+  </data>
+  <data name="Oee.Abbr" xml:space="preserve">
+    <value>OEE</value>
+  </data>
+  <data name="OeeOverview" xml:space="preserve">
+    <value>OEE overview</value>
+  </data>
+  <data name="OeePerDay" xml:space="preserve">
+    <value>OEE per production day</value>
+  </data>
+  <data name="OrderStart" xml:space="preserve">
+    <value>Order start</value>
+  </data>
+  <data name="OrderStop" xml:space="preserve">
+    <value>Order end</value>
+  </data>
+  <data name="OtherStopTime" xml:space="preserve">
+    <value>Other stoptime</value>
+  </data>
+  <data name="Pace.Abbr" xml:space="preserve">
+    <value>Pace</value>
+  </data>
+  <data name="Page.Title.Administration" xml:space="preserve">
+    <value>M2M OeeSystem - Administration</value>
+  </data>
+  <data name="Page.Title.Division" xml:space="preserve">
+    <value>M2M OeeSystem - Division {0}</value>
+  </data>
+  <data name="Page.Title.Facility" xml:space="preserve">
+    <value>M2M OeeSystem - All divisions</value>
+  </data>
+  <data name="Page.Title.Logon" xml:space="preserve">
+    <value>M2M OeeSystem - Logon</value>
+  </data>
+  <data name="Page.Title.Machine" xml:space="preserve">
+    <value>M2M OeeSystem - Division {0} - Machine {1}</value>
+  </data>
+  <data name="Page.Title.Report" xml:space="preserve">
+    <value>M2M OeeSystem - Reports</value>
+  </data>
+  <data name="Page.Title.ReportViewer" xml:space="preserve">
+    <value>M2M OeeSystem - Report - {0}</value>
+  </data>
+  <data name="PartOfTotalStops" xml:space="preserve">
+    <value>Part of total reg. downtime</value>
+  </data>
+  <data name="Period" xml:space="preserve">
+    <value>Period</value>
+  </data>
+  <data name="ProducedItems" xml:space="preserve">
+    <value>Produced items</value>
+  </data>
+  <data name="ProducedItems.Abbr" xml:space="preserve">
+    <value>Items</value>
+  </data>
+  <data name="ProductionTime" xml:space="preserve">
+    <value>Production time</value>
+  </data>
+  <data name="ProductionTime.Abbr" xml:space="preserve">
+    <value>Prod. time</value>
+  </data>
+  <data name="Copyright" xml:space="preserve">
+    <value>Copyright© 2017, M2M Solutions AB</value>
+  </data>
+  <data name="Of" xml:space="preserve">
+    <value>Of</value>
+  </data>
+  <data name="Page" xml:space="preserve">
+    <value>Page</value>
+  </data>
+  <data name="GeneratedBy" xml:space="preserve">
+    <value>Generated by M2M OeeSystem</value>
+  </data>
+  <data name="Report.MachineOeeDaily.Header" xml:space="preserve">
+    <value>Overview</value>
+  </data>
+  <data name="Report.MachineOeeMonthly.Header" xml:space="preserve">
+    <value>OEE</value>
+  </data>
+  <data name="Report.MachineOeeWeekly.Header" xml:space="preserve">
+    <value>OEE</value>
+  </data>
+  <data name="Report.MachineStoppageMonthly.Header" xml:space="preserve">
+    <value>Downtime tracking</value>
+  </data>
+  <data name="Report.MachineStoppageWeekly.Header" xml:space="preserve">
+    <value>Downtime tracking</value>
+  </data>
+  <data name="ScheduledTime" xml:space="preserve">
+    <value>Scheduled time</value>
+  </data>
+  <data name="Settings" xml:space="preserve">
+    <value>Settings</value>
+  </data>
+  <data name="SetupTime" xml:space="preserve">
+    <value>Set-up time</value>
+  </data>
+  <data name="StopDistribution" xml:space="preserve">
+    <value>Distribution of stops</value>
+  </data>
+  <data name="StopTimeDistribution" xml:space="preserve">
+    <value>Distribution of downtime</value>
+  </data>
+  <data name="System" xml:space="preserve">
+    <value>System</value>
+  </data>
+  <data name="TimeConsumed.Average" xml:space="preserve">
+    <value>Time consumed average</value>
+  </data>
+  <data name="TimeConsumed.Total" xml:space="preserve">
+    <value>Time consumed total</value>
+  </data>
+  <data name="TimePerUnit" xml:space="preserve">
+    <value>Time per unit</value>
+  </data>
+  <data name="TotalStopCount" xml:space="preserve">
+    <value>Number of stops</value>
+  </data>
+  <data name="User" xml:space="preserve">
+    <value>User</value>
+  </data>
+  <data name="Users" xml:space="preserve">
+    <value>Users</value>
+  </data>
+  <data name="Warning.Chart.InvalidPerformance" xml:space="preserve">
+    <value>Cannot show chart. Performance over 100%.</value>
+  </data>
+  <data name="Week" xml:space="preserve">
+    <value>Week</value>
+  </data>
+  <data name="Year" xml:space="preserve">
+    <value>Year</value>
+  </data>
+  <data name="All" xml:space="preserve">
+    <value>All</value>
+  </data>
+  <data name="Other" xml:space="preserve">
+    <value>Other</value>
+  </data>
+  <data name="Selected" xml:space="preserve">
+    <value>Selected</value>
+  </data>
+  <data name="UnidentifiedStops" xml:space="preserve">
+    <value>Unidentified stops</value>
+  </data>
+  <data name="Week.Abbr" xml:space="preserve">
+    <value>W</value>
+  </data>
+  <data name="CategoryMissing" xml:space="preserve">
+    <value>No category</value>
+  </data>
+  <data name="Day" xml:space="preserve">
+    <value>Day</value>
+  </data>
+  <data name="IdealPaceWithUnit" xml:space="preserve">
+    <value>Ideal pace (cycles/h)</value>
+  </data>
+  <data name="PaceWithUnit" xml:space="preserve">
+    <value>Pace (cycles/h)</value>
+  </data>
+  <data name="Add" xml:space="preserve">
+    <value>Add new</value>
+  </data>
+  <data name="AddNewArticle" xml:space="preserve">
+    <value>Add new article</value>
+  </data>
+  <data name="AddNewCategory" xml:space="preserve">
+    <value>Add new category</value>
+  </data>
+  <data name="AddNewDivision" xml:space="preserve">
+    <value>Add new division</value>
+  </data>
+  <data name="AddNewMachine" xml:space="preserve">
+    <value>Add new machine</value>
+  </data>
+  <data name="AddNewUser" xml:space="preserve">
+    <value>Add new user</value>
+  </data>
+  <data name="Address" xml:space="preserve">
+    <value>Address</value>
+  </data>
+  <data name="Alert" xml:space="preserve">
+    <value>Alert</value>
+  </data>
+  <data name="Category.DeleteText.Part1" xml:space="preserve">
+    <value>Do you want to remove </value>
+  </data>
+  <data name="Category.DeleteText.Part2" xml:space="preserve">
+    <value>as category?</value>
+  </data>
+  <data name="Common" xml:space="preserve">
+    <value>Common</value>
+  </data>
+  <data name="CompanyName" xml:space="preserve">
+    <value>Company name</value>
+  </data>
+  <data name="ConfirmDeletion" xml:space="preserve">
+    <value>Confirm deletion</value>
+  </data>
+  <data name="ConfirmUserDeletion" xml:space="preserve">
+    <value>Delete this user?</value>
+  </data>
+  <data name="Culture" xml:space="preserve">
+    <value>Language</value>
+  </data>
+  <data name="DataCollection" xml:space="preserve">
+    <value>Data collection</value>
+  </data>
+  <data name="DataCollectorService" xml:space="preserve">
+    <value>Data collector service</value>
+  </data>
+  <data name="DataCollectorServiceRequired" xml:space="preserve">
+    <value>Data collector service is  required</value>
+  </data>
+  <data name="DaysBack" xml:space="preserve">
+    <value>Days back</value>
+  </data>
+  <data name="Delete" xml:space="preserve">
+    <value>Delete</value>
+  </data>
+  <data name="DeleteTitle" xml:space="preserve">
+    <value>Confirm deletion</value>
+  </data>
+  <data name="Display" xml:space="preserve">
+    <value>Display</value>
+  </data>
+  <data name="DisplayName" xml:space="preserve">
+    <value>Display name</value>
+  </data>
+  <data name="Edit" xml:space="preserve">
+    <value>Edit</value>
+  </data>
+  <data name="EveryMinute" xml:space="preserve">
+    <value>Minute(s)</value>
+  </data>
+  <data name="FilterStartDate" xml:space="preserve">
+    <value>Start date (filter)</value>
+  </data>
+  <data name="Id" xml:space="preserve">
+    <value>Id</value>
+  </data>
+  <data name="IdealCycleTimeOrPace" xml:space="preserve">
+    <value>Ideal cycletime/pace</value>
+  </data>
+  <data name="ImportOpcItems" xml:space="preserve">
+    <value>Import OPC items</value>
+  </data>
+  <data name="Inverted" xml:space="preserve">
+    <value>Inverted</value>
+  </data>
+  <data name="LastModified" xml:space="preserve">
+    <value>Last modified</value>
+  </data>
+  <data name="Modules" xml:space="preserve">
+    <value>Modules</value>
+  </data>
+  <data name="MomentUnit" xml:space="preserve">
+    <value>Unit for moment</value>
+  </data>
+  <data name="No" xml:space="preserve">
+    <value>No</value>
+  </data>
+  <data name="OeeCalculate" xml:space="preserve">
+    <value>Precalculate</value>
+  </data>
+  <data name="OeeServer" xml:space="preserve">
+    <value>OEE Server</value>
+  </data>
+  <data name="OpcItem" xml:space="preserve">
+    <value>OPC item</value>
+  </data>
+  <data name="OpcServerRequired" xml:space="preserve">
+    <value>OPC Server is  required</value>
+  </data>
+  <data name="Password" xml:space="preserve">
+    <value>Password</value>
+  </data>
+  <data name="PreCalculation" xml:space="preserve">
+    <value>Pre-calculation</value>
+  </data>
+  <data name="PreCalculationInterval" xml:space="preserve">
+    <value>Calculation interval</value>
+  </data>
+  <data name="PreCalculatorService" xml:space="preserve">
+    <value>Pre-calculator service</value>
+  </data>
+  <data name="PreCalculatorServiceRequired" xml:space="preserve">
+    <value>Pre-calculator service is  required</value>
+  </data>
+  <data name="RequiredFieldsNote" xml:space="preserve">
+    <value>Fields marked with * are mandatory</value>
+  </data>
+  <data name="Role" xml:space="preserve">
+    <value>Role</value>
+  </data>
+  <data name="RunRateUnit.CyclesPerHour" xml:space="preserve">
+    <value>Cycles/h</value>
+  </data>
+  <data name="RunRateUnit.CyclesPerMinute" xml:space="preserve">
+    <value>Cycles/min</value>
+  </data>
+  <data name="RunRateUnit.CycleTimeInMilliSeconds" xml:space="preserve">
+    <value>Cycle time in ms</value>
+  </data>
+  <data name="Save" xml:space="preserve">
+    <value>Save</value>
+  </data>
+  <data name="SaveChanges" xml:space="preserve">
+    <value>Save changes</value>
+  </data>
+  <data name="Scheduler.AdvancedAllDayEvent" xml:space="preserve">
+    <value>All day</value>
+  </data>
+  <data name="Scheduler.AdvancedCalendarCancel" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="Scheduler.AdvancedCalendarOK" xml:space="preserve">
+    <value>OK</value>
+  </data>
+  <data name="Scheduler.AdvancedCalendarToday" xml:space="preserve">
+    <value>Today</value>
+  </data>
+  <data name="Scheduler.AdvancedClose" xml:space="preserve">
+    <value>Close</value>
+  </data>
+  <data name="Scheduler.AdvancedDaily" xml:space="preserve">
+    <value>Daily</value>
+  </data>
+  <data name="Scheduler.AdvancedDay" xml:space="preserve">
+    <value>Day</value>
+  </data>
+  <data name="Scheduler.AdvancedDays" xml:space="preserve">
+    <value>day(s)</value>
+  </data>
+  <data name="Scheduler.AdvancedDescription" xml:space="preserve">
+    <value>Shift:</value>
+  </data>
+  <data name="Scheduler.AdvancedDone" xml:space="preserve">
+    <value>Done</value>
+  </data>
+  <data name="Scheduler.AdvancedEditAppointment" xml:space="preserve">
+    <value>Edit Appointment</value>
+  </data>
+  <data name="Scheduler.AdvancedEndAfter" xml:space="preserve">
+    <value>End after:</value>
+  </data>
+  <data name="Scheduler.AdvancedEndByThisDate" xml:space="preserve">
+    <value>End by:</value>
+  </data>
+  <data name="Scheduler.AdvancedEndDateRequired" xml:space="preserve">
+    <value>End date is required</value>
+  </data>
+  <data name="Scheduler.AdvancedEndTimeRequired" xml:space="preserve">
+    <value>End time is required</value>
+  </data>
+  <data name="Scheduler.AdvancedEvery" xml:space="preserve">
+    <value>Every</value>
+  </data>
+  <data name="Scheduler.AdvancedEveryWeekday" xml:space="preserve">
+    <value>Every weekday</value>
+  </data>
+  <data name="Scheduler.AdvancedFirst" xml:space="preserve">
+    <value>first</value>
+  </data>
+  <data name="Scheduler.AdvancedFourth" xml:space="preserve">
+    <value>forth</value>
+  </data>
+  <data name="Scheduler.AdvancedFrom" xml:space="preserve">
+    <value>Start time:</value>
+  </data>
+  <data name="Scheduler.AdvancedHourly" xml:space="preserve">
+    <value>Hourly</value>
+  </data>
+  <data name="Scheduler.AdvancedHours" xml:space="preserve">
+    <value>hour(s)</value>
+  </data>
+  <data name="Scheduler.AdvancedInvalidNumber" xml:space="preserve">
+    <value>Invalid number</value>
+  </data>
+  <data name="Scheduler.AdvancedLast" xml:space="preserve">
+    <value>last</value>
+  </data>
+  <data name="Scheduler.AdvancedMaskDay" xml:space="preserve">
+    <value>day</value>
+  </data>
+  <data name="Scheduler.AdvancedMaskWeekday" xml:space="preserve">
+    <value>weekday</value>
+  </data>
+  <data name="Scheduler.AdvancedMaskWeekendDay" xml:space="preserve">
+    <value>weekend day</value>
+  </data>
+  <data name="Scheduler.AdvancedMonthly" xml:space="preserve">
+    <value>Monthly</value>
+  </data>
+  <data name="Scheduler.AdvancedMonths" xml:space="preserve">
+    <value>month(s)</value>
+  </data>
+  <data name="Scheduler.AdvancedNewAppointment" xml:space="preserve">
+    <value>New Appointment</value>
+  </data>
+  <data name="Scheduler.AdvancedNoEndDate" xml:space="preserve">
+    <value>No end date</value>
+  </data>
+  <data name="Scheduler.AdvancedOccurrences" xml:space="preserve">
+    <value>occurrences</value>
+  </data>
+  <data name="Scheduler.AdvancedOf" xml:space="preserve">
+    <value>of</value>
+  </data>
+  <data name="Scheduler.AdvancedOfEvery" xml:space="preserve">
+    <value>of every</value>
+  </data>
+  <data name="Scheduler.AdvancedRecurEvery" xml:space="preserve">
+    <value>Recur every</value>
+  </data>
+  <data name="Scheduler.AdvancedRecurrence" xml:space="preserve">
+    <value>Recurrence</value>
+  </data>
+  <data name="Scheduler.AdvancedReset" xml:space="preserve">
+    <value>reset exceptions</value>
+  </data>
+  <data name="Scheduler.AdvancedSecond" xml:space="preserve">
+    <value>second</value>
+  </data>
+  <data name="Scheduler.AdvancedStartDateRequired" xml:space="preserve">
+    <value>Start date is required</value>
+  </data>
+  <data name="Scheduler.AdvancedStartTimeBeforeEndTime" xml:space="preserve">
+    <value>Start time must be before end time</value>
+  </data>
+  <data name="Scheduler.AdvancedStartTimeRequired" xml:space="preserve">
+    <value>Start time is required</value>
+  </data>
+  <data name="Scheduler.AdvancedSubject" xml:space="preserve">
+    <value>Applies to:</value>
+  </data>
+  <data name="Scheduler.AdvancedSubjectRequired" xml:space="preserve">
+    <value>Shift is required</value>
+  </data>
+  <data name="Scheduler.AdvancedThe" xml:space="preserve">
+    <value>The</value>
+  </data>
+  <data name="Scheduler.AdvancedThird" xml:space="preserve">
+    <value>third</value>
+  </data>
+  <data name="Scheduler.AdvancedTo" xml:space="preserve">
+    <value>End time:</value>
+  </data>
+  <data name="Scheduler.AdvancedWeekly" xml:space="preserve">
+    <value>Weekly</value>
+  </data>
+  <data name="Scheduler.AdvancedWeeks" xml:space="preserve">
+    <value>week(s) on</value>
+  </data>
+  <data name="Scheduler.AdvancedWorking" xml:space="preserve">
+    <value>Working...</value>
+  </data>
+  <data name="Scheduler.AdvancedYearly" xml:space="preserve">
+    <value>Yearly</value>
+  </data>
+  <data name="Scheduler.AllDay" xml:space="preserve">
+    <value>all day</value>
+  </data>
+  <data name="Scheduler.Cancel" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="Scheduler.ConfirmCancel" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="Scheduler.ConfirmDeleteText" xml:space="preserve">
+    <value>Are you sure you want to delete this appointment?</value>
+  </data>
+  <data name="Scheduler.ConfirmDeleteTitle" xml:space="preserve">
+    <value>Confirm deletion</value>
+  </data>
+  <data name="Scheduler.ConfirmOK" xml:space="preserve">
+    <value>OK</value>
+  </data>
+  <data name="Scheduler.ConfirmRecurrenceDeleteOccurrence" xml:space="preserve">
+    <value>Delete only this occurrence.</value>
+  </data>
+  <data name="Scheduler.ConfirmRecurrenceDeleteSeries" xml:space="preserve">
+    <value>Delete the series.</value>
+  </data>
+  <data name="Scheduler.ConfirmRecurrenceDeleteTitle" xml:space="preserve">
+    <value>Deleting a recurring appointment</value>
+  </data>
+  <data name="Scheduler.ConfirmRecurrenceEditOccurrence" xml:space="preserve">
+    <value>Edit only this occurrence.</value>
+  </data>
+  <data name="Scheduler.ConfirmRecurrenceEditSeries" xml:space="preserve">
+    <value>Edit the series.</value>
+  </data>
+  <data name="Scheduler.ConfirmRecurrenceEditTitle" xml:space="preserve">
+    <value>Editing a recurring appointment</value>
+  </data>
+  <data name="Scheduler.ConfirmRecurrenceMoveOccurrence" xml:space="preserve">
+    <value>Move only this occurrence.</value>
+  </data>
+  <data name="Scheduler.ConfirmRecurrenceMoveSeries" xml:space="preserve">
+    <value>Move the series.</value>
+  </data>
+  <data name="Scheduler.ConfirmRecurrenceMoveTitle" xml:space="preserve">
+    <value>Moving a recurring appointment</value>
+  </data>
+  <data name="Scheduler.ConfirmRecurrenceResizeOccurrence" xml:space="preserve">
+    <value>Resize only this occurrence.</value>
+  </data>
+  <data name="Scheduler.ConfirmRecurrenceResizeSeries" xml:space="preserve">
+    <value>Resize the series.</value>
+  </data>
+  <data name="Scheduler.ConfirmRecurrenceResizeTitle" xml:space="preserve">
+    <value>Resizing a recurring appointment</value>
+  </data>
+  <data name="Scheduler.ConfirmResetExceptionsText" xml:space="preserve">
+    <value>Do you want to delete all existing recurrence exceptions?</value>
+  </data>
+  <data name="Scheduler.ConfirmResetExceptionsTitle" xml:space="preserve">
+    <value>Confirm reset exceptions</value>
+  </data>
+  <data name="Scheduler.ContextMenuAddAppointment" xml:space="preserve">
+    <value>New Appointment</value>
+  </data>
+  <data name="Scheduler.ContextMenuAddRecurringAppointment" xml:space="preserve">
+    <value>New Recurring Appointment</value>
+  </data>
+  <data name="Scheduler.ContextMenuDelete" xml:space="preserve">
+    <value>Delete</value>
+  </data>
+  <data name="Scheduler.ContextMenuEdit" xml:space="preserve">
+    <value>Edit</value>
+  </data>
+  <data name="Scheduler.ContextMenuGoToToday" xml:space="preserve">
+    <value>Go to today</value>
+  </data>
+  <data name="Scheduler.HeaderDay" xml:space="preserve">
+    <value>Day</value>
+  </data>
+  <data name="Scheduler.HeaderMonth" xml:space="preserve">
+    <value>Month</value>
+  </data>
+  <data name="Scheduler.HeaderMultiDay" xml:space="preserve">
+    <value>Multi-day</value>
+  </data>
+  <data name="Scheduler.HeaderNextDay" xml:space="preserve">
+    <value>next day</value>
+  </data>
+  <data name="Scheduler.HeaderPrevDay" xml:space="preserve">
+    <value>previous day</value>
+  </data>
+  <data name="Scheduler.HeaderTimeline" xml:space="preserve">
+    <value>Timeline</value>
+  </data>
+  <data name="Scheduler.HeaderToday" xml:space="preserve">
+    <value>today</value>
+  </data>
+  <data name="Scheduler.HeaderWeek" xml:space="preserve">
+    <value>Week</value>
+  </data>
+  <data name="Scheduler.Save" xml:space="preserve">
+    <value>Save</value>
+  </data>
+  <data name="Scheduler.Show24Hours" xml:space="preserve">
+    <value>Show 24 hours...</value>
+  </data>
+  <data name="Scheduler.ShowAdvancedForm" xml:space="preserve">
+    <value>Options</value>
+  </data>
+  <data name="Scheduler.ShowBusinessHours" xml:space="preserve">
+    <value>Show business hours...</value>
+  </data>
+  <data name="Scheduler.ShowMore" xml:space="preserve">
+    <value>more...</value>
+  </data>
+  <data name="SelectOpc" xml:space="preserve">
+    <value>- select opc -</value>
+  </data>
+  <data name="ServiceStartFailure" xml:space="preserve">
+    <value>Failed to start service.</value>
+  </data>
+  <data name="ServiceStopFailure" xml:space="preserve">
+    <value>Failed to stop service.</value>
+  </data>
+  <data name="SettingsNotSaved" xml:space="preserve">
+    <value>Failed to save settings</value>
+  </data>
+  <data name="SettingsSaved" xml:space="preserve">
+    <value>Settings saved</value>
+  </data>
+  <data name="Start" xml:space="preserve">
+    <value>Start</value>
+  </data>
+  <data name="Stop" xml:space="preserve">
+    <value>Stop</value>
+  </data>
+  <data name="Unit" xml:space="preserve">
+    <value>Unit</value>
+  </data>
+  <data name="UserName" xml:space="preserve">
+    <value>User name</value>
+  </data>
+  <data name="Warning.EmptyRecord.Alerts" xml:space="preserve">
+    <value>No alerts defined</value>
+  </data>
+  <data name="Warning.EmptyRecord.Articles" xml:space="preserve">
+    <value>No articles defined</value>
+  </data>
+  <data name="Warning.EmptyRecord.Categories" xml:space="preserve">
+    <value>No categories defined</value>
+  </data>
+  <data name="Warning.EmptyRecord.Tags" xml:space="preserve">
+    <value>No OPC tags imported</value>
+  </data>
+  <data name="Yes" xml:space="preserve">
+    <value>Yes</value>
+  </data>
+  <data name="SelectDivisions" xml:space="preserve">
+    <value>Select division(s)</value>
+  </data>
+  <data name="UserAdded" xml:space="preserve">
+    <value>User {0} added</value>
+  </data>
+  <data name="UserDeleted" xml:space="preserve">
+    <value>User {0} removed</value>
+  </data>
+  <data name="UserDeleteNotPossible" xml:space="preserve">
+    <value>Cannot remove active user</value>
+  </data>
+  <data name="UserNotAdded" xml:space="preserve">
+    <value>Failed to add user {0}</value>
+  </data>
+  <data name="UserNotDeleted" xml:space="preserve">
+    <value>Failed to remove user {0}</value>
+  </data>
+  <data name="UserNotUpdated" xml:space="preserve">
+    <value>Failed to update user {0}</value>
+  </data>
+  <data name="UserUpdated" xml:space="preserve">
+    <value>User {0} updated</value>
+  </data>
+  <data name="AddScheme" xml:space="preserve">
+    <value>Add individal scheme</value>
+  </data>
+  <data name="Scheduler" xml:space="preserve">
+    <value>Scheduler</value>
+  </data>
+  <data name="NoCategory" xml:space="preserve">
+    <value>No category</value>
+  </data>
+  <data name="OK" xml:space="preserve">
+    <value>OK</value>
+  </data>
+  <data name="Warning.Title" xml:space="preserve">
+    <value>Warning message</value>
+  </data>
+  <data name="DateUntil" xml:space="preserve">
+    <value>Date, until</value>
+  </data>
+  <data name="OeeCalculateInfo" xml:space="preserve">
+    <value> (Precalculation of data will be started within {0} minutes)</value>
+  </data>
+  <data name="Report.DivisionStoppageMonthly.Description" xml:space="preserve">
+    <value>Downtime tracking for a single division/line</value>
+  </data>
+  <data name="Report.DivisionStoppageMonthly.DisplayName" xml:space="preserve">
+    <value>Division - Monthly report - Downtime tracking</value>
+  </data>
+  <data name="Report.DivisionStoppageMonthly.Header" xml:space="preserve">
+    <value>Downtime tracking</value>
+  </data>
+  <data name="Report.DivisionStoppageMonthly.SubHeader" xml:space="preserve">
+    <value>Monthly report</value>
+  </data>
+  <data name="Stops" xml:space="preserve">
+    <value>Stops</value>
+  </data>
+  <data name="Chart.Stop.Distribution" xml:space="preserve">
+    <value>{0} stops per 1000 cycles. Total number of stops: {1}</value>
+  </data>
+  <data name="AddNewShift" xml:space="preserve">
+    <value>Add new shift</value>
+  </data>
+  <data name="Shift.DeleteText.Part1" xml:space="preserve">
+    <value>Do you want to remove the shift </value>
+  </data>
+  <data name="Warning.EmptyRecord.Shift" xml:space="preserve">
+    <value>No shifts defined</value>
+  </data>
+  <data name="Report.DivisionOeeDaily.Description" xml:space="preserve">
+    <value>Key figures (OEE) and downtime tracking for a single division/line</value>
+  </data>
+  <data name="Report.DivisionOeeDaily.DisplayName" xml:space="preserve">
+    <value>Division - Daily report - OEE and downtime tracking</value>
+  </data>
+  <data name="Report.DivisionOeeDaily.Header" xml:space="preserve">
+    <value>Overview</value>
+  </data>
+  <data name="Report.DivisionOeeDaily.SubHeader" xml:space="preserve">
+    <value>Daily report</value>
+  </data>
+  <data name="Report.DivisionStoppageWeekly.Description" xml:space="preserve">
+    <value>Downtime tracking for a single division/line</value>
+  </data>
+  <data name="Report.DivisionStoppageWeekly.DisplayName" xml:space="preserve">
+    <value>Division - Weekly report - Downtime tracking</value>
+  </data>
+  <data name="Report.DivisionStoppageWeekly.Header" xml:space="preserve">
+    <value>Downtime tracking</value>
+  </data>
+  <data name="Report.DivisionStoppageWeekly.SubHeader" xml:space="preserve">
+    <value>Weekly report</value>
+  </data>
+  <data name="MachineNotConnected" xml:space="preserve">
+    <value>No contact with machine</value>
+  </data>
+  <data name="SecondaryFailure" xml:space="preserve">
+    <value>Secondary failure</value>
+  </data>
+  <data name="SecondaryFailures" xml:space="preserve">
+    <value>Secondary failures</value>
+  </data>
+  <data name="DeviceUnitLevel.0" xml:space="preserve">
+    <value>Facility</value>
+  </data>
+  <data name="DeviceUnitLevel.1" xml:space="preserve">
+    <value>Module</value>
+  </data>
+  <data name="DeviceUnitLevel.2" xml:space="preserve">
+    <value>Machine</value>
+  </data>
+  <data name="DeviceUnitLevel.3" xml:space="preserve">
+    <value>Track</value>
+  </data>
+  <data name="StoppageGraphGroupCount" xml:space="preserve">
+    <value>Number of causes in stoptime graphs</value>
+  </data>
+  <data name="Report.DivisionOeeMonthly.Description" xml:space="preserve">
+    <value>Key figures (OEE) for a single division/line</value>
+  </data>
+  <data name="Report.DivisionOeeMonthly.DisplayName" xml:space="preserve">
+    <value>Division - Monthly report - OEE</value>
+  </data>
+  <data name="Report.DivisionOeeMonthly.Header" xml:space="preserve">
+    <value>OEE</value>
+  </data>
+  <data name="Report.DivisionOeeMonthly.SubHeader" xml:space="preserve">
+    <value>Monthly report</value>
+  </data>
+  <data name="Report.DivisionOeeWeekly.Description" xml:space="preserve">
+    <value>Key figures (OEE) for a single division/line</value>
+  </data>
+  <data name="Report.DivisionOeeWeekly.DisplayName" xml:space="preserve">
+    <value>Division - Weekly report - OEE</value>
+  </data>
+  <data name="Report.DivisionOeeWeekly.Header" xml:space="preserve">
+    <value>OEE</value>
+  </data>
+  <data name="Report.DivisionOeeWeekly.SubHeader" xml:space="preserve">
+    <value>Weekly report</value>
+  </data>
+  <data name="ArticleDeleteFailed" xml:space="preserve">
+    <value>Failed to delete article</value>
+  </data>
+  <data name="ArticleDeleteSuccess" xml:space="preserve">
+    <value>Article successfully deleted</value>
+  </data>
+  <data name="ArticleDuplicate" xml:space="preserve">
+    <value>Article already in list</value>
+  </data>
+  <data name="ArticleInsertFailed" xml:space="preserve">
+    <value>Failed to add article</value>
+  </data>
+  <data name="ArticleInsertSuccess" xml:space="preserve">
+    <value>Article successfully added</value>
+  </data>
+  <data name="ArticleUpdateFailed" xml:space="preserve">
+    <value>Failed to update article</value>
+  </data>
+  <data name="ArticleUpdateSuccess" xml:space="preserve">
+    <value>Article successfully updated</value>
+  </data>
+  <data name="Grid.PageSizeLabelText" xml:space="preserve">
+    <value>Page size</value>
+  </data>
+  <data name="Npb.Module" xml:space="preserve">
+    <value>Module</value>
+  </data>
+  <data name="Npb.PackagingCenter" xml:space="preserve">
+    <value>Packaging Center</value>
+  </data>
+  <data name="Report.NpbMonthly.Description" xml:space="preserve">
+    <value>Key figures (OEE) and downtime tracking for a unit</value>
+  </data>
+  <data name="Report.NpbMonthly.DisplayName" xml:space="preserve">
+    <value>Unit - Monthly Summary - OEE and downtime tracking</value>
+  </data>
+  <data name="Report.NpbMonthly.Header" xml:space="preserve">
+    <value>Monthly report</value>
+  </data>
+  <data name="Report.NpbWeekly.Description" xml:space="preserve">
+    <value>Key figures (OEE) and downtime tracking for a module</value>
+  </data>
+  <data name="Report.NpbWeekly.DisplayName" xml:space="preserve">
+    <value>Module - Weekly Summary - OEE and downtime tracking</value>
+  </data>
+  <data name="Report.NpbWeekly.Header" xml:space="preserve">
+    <value>Weekly report</value>
+  </data>
+  <data name="ActualProductionTime" xml:space="preserve">
+    <value>Actual production time</value>
+  </data>
+  <data name="AvailableProductionTime" xml:space="preserve">
+    <value>Available production time</value>
+  </data>
+  <data name="Npb.InternalValues" xml:space="preserve">
+    <value>Internal values</value>
+  </data>
+  <data name="Npb.Unit" xml:space="preserve">
+    <value>Unit</value>
+  </data>
+  <data name="PreviousOee" xml:space="preserve">
+    <value>OEE (previous 3 months)</value>
+  </data>
+  <data name="PreviousOee.Abbr" xml:space="preserve">
+    <value>Accumulated</value>
+  </data>
+  <data name="LineExplanation" xml:space="preserve">
+    <value>For a line the values above shows the total downtime for all stations in the line. The downtime in a station does not always stop the whole line.</value>
+  </data>
+  <data name="Report.NpbMonthly.DocumentName" xml:space="preserve">
+    <value>Monthly report - {0} - {1}.{2}</value>
+  </data>
+  <data name="Report.NpbWeekly.DocumentName" xml:space="preserve">
+    <value>Weekly report - {0} - {1}.{2}</value>
+  </data>
+  <data name="ProducedItemsInThousands" xml:space="preserve">
+    <value>Items in thousands</value>
+  </data>
+  <data name="FlowError" xml:space="preserve">
+    <value>Flow error</value>
+  </data>
+  <data name="ShowSystemErrors" xml:space="preserve">
+    <value>Show system errors</value>
+  </data>
+  <data name="AvailabilityLossExtended" xml:space="preserve">
+    <value>Loss in availability (L = Ls + Lf)</value>
+  </data>
+  <data name="AvailabilityLossWithAbbr" xml:space="preserve">
+    <value>Loss in availability (L)</value>
+  </data>
+  <data name="ArticleOrActiveStop" xml:space="preserve">
+    <value>Article number / Active stop</value>
+  </data>
+  <data name="AvailabilityLoss.Abbr" xml:space="preserve">
+    <value>L</value>
+  </data>
+  <data name="AvailabilityLossBasedOnActualStops" xml:space="preserve">
+    <value>Loss in availability based on actual stops</value>
+  </data>
+  <data name="AvailabilityLossBasedOnActualStops.Abbr" xml:space="preserve">
+    <value>Ls</value>
+  </data>
+  <data name="AvailabilityLossBasedOnActualStopsWithAbbr" xml:space="preserve">
+    <value>Loss in availability based on actual stops (Ls)</value>
+  </data>
+  <data name="AvailabilityLossBasedOnFlowErrors" xml:space="preserve">
+    <value>Loss in availability based on flow errors</value>
+  </data>
+  <data name="AvailabilityLossBasedOnFlowErrors.Abbr" xml:space="preserve">
+    <value>Lf</value>
+  </data>
+  <data name="AvailabilityLossBasedOnFlowErrorsWithAbbr" xml:space="preserve">
+    <value>Loss in availability based on flow errors (Lf)</value>
+  </data>
+  <data name="CommunicationError" xml:space="preserve">
+    <value>Communication error</value>
+  </data>
+  <data name="CommunicationError.Abbr" xml:space="preserve">
+    <value>Com. error</value>
+  </data>
+  <data name="ActualDowntime" xml:space="preserve">
+    <value>Actual downtime</value>
+  </data>
+  <data name="BasedOnActualStopsWithAbbr" xml:space="preserve">
+    <value>...based on actual stops (Ls)</value>
+  </data>
+  <data name="BasedOnFlowErrorsWithAbbr" xml:space="preserve">
+    <value>...based on flow errors (Lf)</value>
+  </data>
+  <data name="FlowErrorDowntime" xml:space="preserve">
+    <value>Flow error downtime</value>
+  </data>
+  <data name="AdditionalModules" xml:space="preserve">
+    <value>Additional modules</value>
+  </data>
+  <data name="AddModules" xml:space="preserve">
+    <value>Add modules</value>
+  </data>
+  <data name="Analyze" xml:space="preserve">
+    <value>Events</value>
+  </data>
+  <data name="DowntimeCause" xml:space="preserve">
+    <value>Cause</value>
+  </data>
+  <data name="Report.StoppageAnalyzeWeekly.Description" xml:space="preserve">
+    <value>Stops per week for an individual downtime cause/category over 12 weeks</value>
+  </data>
+  <data name="Report.StoppageAnalyzeWeekly.DisplayName" xml:space="preserve">
+    <value>Machines - 12 weeks - Downtime cause analyze</value>
+  </data>
+  <data name="Report.StoppageAnalyzeWeekly.Header" xml:space="preserve">
+    <value>Analyze stop reasons</value>
+  </data>
+  <data name="Report.StoppageAnalyzeWeekly.SubHeader" xml:space="preserve">
+    <value>Stops per week</value>
+  </data>
+  <data name="WeekUntil" xml:space="preserve">
+    <value>Week, until</value>
+  </data>
+  <data name="OrderBy" xml:space="preserve">
+    <value>Order by</value>
+  </data>
+  <data name="ShowAdvancedView" xml:space="preserve">
+    <value>Advanced View</value>
+  </data>
+  <data name="ShowGraphicalView" xml:space="preserve">
+    <value>Graphical View</value>
+  </data>
+  <data name="StoppageOrderBy.Downtime" xml:space="preserve">
+    <value>Downtime</value>
+  </data>
+  <data name="StoppageOrderBy.NumberOfStops" xml:space="preserve">
+    <value>Number of stops</value>
+  </data>
+  <data name="Page.Title.Analyze.Division" xml:space="preserve">
+    <value>M2M OeeSystem - Events -  {0}</value>
+  </data>
+  <data name="Page.Title.Analyze.Facility" xml:space="preserve">
+    <value>M2M OeeSystem - Events -  Facility</value>
+  </data>
+  <data name="Page.Title.Analyze.Machine" xml:space="preserve">
+    <value>M2M OeeSystem - Events -  {0} -  {1}</value>
+  </data>
+  <data name="Page.Title.Status" xml:space="preserve">
+    <value>M2M OeeSystem - Status -  {0}</value>
+  </data>
+  <data name="Module.Analyze" xml:space="preserve">
+    <value>Events view</value>
+  </data>
+  <data name="Module.Status" xml:space="preserve">
+    <value>Graphical view</value>
+  </data>
+  <data name="ProductionView.Analytical" xml:space="preserve">
+    <value>Event view</value>
+  </data>
+  <data name="ProductionView.Default" xml:space="preserve">
+    <value>Default view</value>
+  </data>
+  <data name="ProductionView.Graphical" xml:space="preserve">
+    <value>Graphical view</value>
+  </data>
+  <data name="Report.StoppageAnalyze.Comment" xml:space="preserve">
+    <value>Only machines/stations with stoppages within selected category/cause are listed</value>
+  </data>
+  <data name="Report.StoppageAnalyzeDaily.Description" xml:space="preserve">
+    <value>Stops per day for an individual downtime cause/category over 14 days</value>
+  </data>
+  <data name="Report.StoppageAnalyzeDaily.DisplayName" xml:space="preserve">
+    <value>Machines - 14 days - Downtime cause analyze</value>
+  </data>
+  <data name="Report.StoppageAnalyzeDaily.Header" xml:space="preserve">
+    <value>Analyze stop reasons</value>
+  </data>
+  <data name="Report.StoppageAnalyzeDaily.SubHeader" xml:space="preserve">
+    <value>Stops per day</value>
+  </data>
+  <data name="Report.StoppageAnalyzeMonthly.Description" xml:space="preserve">
+    <value>Stops per month for an individual downtime cause/category over 12 months</value>
+  </data>
+  <data name="Report.StoppageAnalyzeMonthly.DisplayName" xml:space="preserve">
+    <value>Machines - 12 months - Downtime cause analyze</value>
+  </data>
+  <data name="Report.StoppageAnalyzeMonthly.Header" xml:space="preserve">
+    <value>Analyze stop reasons</value>
+  </data>
+  <data name="Report.StoppageAnalyzeMonthly.SubHeader" xml:space="preserve">
+    <value>Stops per month</value>
+  </data>
+  <data name="MonthUntil" xml:space="preserve">
+    <value>Month, until</value>
+  </data>
+  <data name="CurrentCulture" xml:space="preserve">
+    <value>English</value>
+  </data>
+  <data name="Help" xml:space="preserve">
+    <value>Help</value>
+  </data>
+  <data name="Help.About" xml:space="preserve">
+    <value>About M2M OEE System</value>
+  </data>
+  <data name="Help.Oee" xml:space="preserve">
+    <value>Description OEE</value>
+  </data>
+  <data name="AllRightsReserved" xml:space="preserve">
+    <value>All rights reserved</value>
+  </data>
+  <data name="CurrentVersion" xml:space="preserve">
+    <value>2017 Q1</value>
+  </data>
+  <data name="LicensedTo" xml:space="preserve">
+    <value>Licensed to</value>
+  </data>
+  <data name="Version" xml:space="preserve">
+    <value>Version</value>
+  </data>
+  <data name="Oee.Special" xml:space="preserve">
+    <value>APQ</value>
+  </data>
+  <data name="PaceInHour" xml:space="preserve">
+    <value>Pace/hour</value>
+  </data>
+  <data name="AllCategoriesSelected" xml:space="preserve">
+    <value>All categories selected</value>
+  </data>
+  <data name="CategoriesCheckedString" xml:space="preserve">
+    <value>categories selected</value>
+  </data>
+  <data name="NoCategoriesSelected" xml:space="preserve">
+    <value>No categories selected</value>
+  </data>
+  <data name="SelectAll" xml:space="preserve">
+    <value>Select all</value>
+  </data>
+  <data name="ShowAll" xml:space="preserve">
+    <value>- show all -</value>
+  </data>
+  <data name="Report.DivisionOeeDaily.DocumentName" xml:space="preserve">
+    <value>OEE and downtime - {0} - {1:d}</value>
+  </data>
+  <data name="Report.DivisionOeeMonthly.DocumentName" xml:space="preserve">
+    <value>OEE -  {0} - {1}.{2}</value>
+  </data>
+  <data name="Report.DivisionOeeWeekly.DocumentName" xml:space="preserve">
+    <value>OEE -  {0} - {1}.{2}</value>
+  </data>
+  <data name="Report.DivisionStoppageMonthly.DocumentName" xml:space="preserve">
+    <value>Downtime -  {0} - {1}.{2}</value>
+  </data>
+  <data name="Report.DivisionStoppageWeekly.DocumentName" xml:space="preserve">
+    <value>Downtime -  {0} - {1}.{2}</value>
+  </data>
+  <data name="Report.MachineOeeDaily.DocumentName" xml:space="preserve">
+    <value>OEE and downtime - {0} - {1:d}</value>
+  </data>
+  <data name="Report.MachineOeeMonthly.DocumentName" xml:space="preserve">
+    <value>OEE -  {0} - {1}.{2}</value>
+  </data>
+  <data name="Report.MachineOeeWeekly.DocumentName" xml:space="preserve">
+    <value>OEE -  {0} - {1}.{2}</value>
+  </data>
+  <data name="Report.MachineStoppageMonthly.DocumentName" xml:space="preserve">
+    <value>Downtime -  {0} - {1}.{2}</value>
+  </data>
+  <data name="Report.MachineStoppageWeekly.DocumentName" xml:space="preserve">
+    <value>Downtime -  {0} - {1}.{2}</value>
+  </data>
+  <data name="Report.StoppageAnalyzeDaily.DocumentName" xml:space="preserve">
+    <value> {0} - {1} - {2:d}</value>
+  </data>
+  <data name="Report.StoppageAnalyzeMonthly.DocumentName" xml:space="preserve">
+    <value>{0} - {1} - {2:yyyy MMM}</value>
+  </data>
+  <data name="Report.StoppageAnalyzeWeekly.DocumentName" xml:space="preserve">
+    <value>{0} - {1} - {2} w{3}</value>
+  </data>
+  <data name="Report.DivisionProductionWeekly.Description" xml:space="preserve">
+    <value>Production overview for a single division/line</value>
+  </data>
+  <data name="Report.DivisionProductionWeekly.DisplayName" xml:space="preserve">
+    <value>Division - Weekly report - Production</value>
+  </data>
+  <data name="Report.DivisionProductionWeekly.DocumentName" xml:space="preserve">
+    <value>UnitProduction -  {0} - {1}.{2}</value>
+  </data>
+  <data name="Report.DivisionProductionWeekly.Header" xml:space="preserve">
+    <value>Production</value>
+  </data>
+  <data name="Report.DivisionProductionWeekly.SubHeader" xml:space="preserve">
+    <value>Weekly report</value>
+  </data>
+  <data name="NonScheduled" xml:space="preserve">
+    <value>Non schedule</value>
+  </data>
+  <data name="StateType.NotConnected" xml:space="preserve">
+    <value>No communication</value>
+  </data>
+  <data name="Report.PlantProductionWeekly.Description" xml:space="preserve">
+    <value>Production overview for entire plant</value>
+  </data>
+  <data name="Report.PlantProductionWeekly.DisplayName" xml:space="preserve">
+    <value>Plant - Weekly report - Production</value>
+  </data>
+  <data name="Report.PlantProductionWeekly.Header" xml:space="preserve">
+    <value>Production</value>
+  </data>
+  <data name="Report.PlantProductionWeekly.SubHeader" xml:space="preserve">
+    <value>Weekly report</value>
+  </data>
+  <data name="Report.ProductionWeekly.DocumentName" xml:space="preserve">
+    <value>Production - Plant - {0}.{1}</value>
+  </data>
+  <data name="Logon.ShortFailure" xml:space="preserve">
+    <value>* Wrong password. Try again.</value>
+  </data>
+  <data name="Logon.ShortTitle" xml:space="preserve">
+    <value>Logon</value>
+  </data>
+  <data name="Panel.AddObject" xml:space="preserve">
+    <value>Add new object</value>
+  </data>
+  <data name="Panel.AlwaysUpdate" xml:space="preserve">
+    <value>Update reason view after each change</value>
+  </data>
+  <data name="Panel.ButtonPropertyForm.ConnectReason" xml:space="preserve">
+    <value>Connect reason to button</value>
+  </data>
+  <data name="Panel.ButtonPropertyForm.NotInUse" xml:space="preserve">
+    <value>Not used</value>
+  </data>
+  <data name="Panel.ButtonPropertyForm.Save" xml:space="preserve">
+    <value>Save</value>
+  </data>
+  <data name="Panel.ChooseSignal" xml:space="preserve">
+    <value>Choose signal from machine/line</value>
+  </data>
+  <data name="Panel.DoNotUse" xml:space="preserve">
+    <value>[Do not use]</value>
+  </data>
+  <data name="Panel.FailedToConnect.Local" xml:space="preserve">
+    <value>Failed to access local settings</value>
+  </data>
+  <data name="Panel.NoStopPending" xml:space="preserve">
+    <value>No pending stops</value>
+  </data>
+  <data name="Panel.PageViewPage1" xml:space="preserve">
+    <value>State</value>
+  </data>
+  <data name="Panel.PageViewPage1.StateNotOk" xml:space="preserve">
+    <value>State:  Not OK</value>
+  </data>
+  <data name="Panel.PageViewPage1.StateOk" xml:space="preserve">
+    <value>State: OK</value>
+  </data>
+  <data name="Panel.PageViewPage2" xml:space="preserve">
+    <value>Reason</value>
+  </data>
+  <data name="Panel.PageViewPage3" xml:space="preserve">
+    <value>OEE System</value>
+  </data>
+  <data name="Panel.PageViewPage4" xml:space="preserve">
+    <value>Settings</value>
+  </data>
+  <data name="Panel.PageViewPage5" xml:space="preserve">
+    <value>Shutdown</value>
+  </data>
+  <data name="Panel.PageViewPage6" xml:space="preserve">
+    <value>Admin mode</value>
+  </data>
+  <data name="Panel.PageViewPage6.Off" xml:space="preserve">
+    <value>Admin mode off</value>
+  </data>
+  <data name="Panel.PageViewPage6.On" xml:space="preserve">
+    <value>Admin mode on</value>
+  </data>
+  <data name="Panel.UpdateReasonView" xml:space="preserve">
+    <value>Update reason view</value>
+  </data>
+  <data name="Panel.Warning.Navigation" xml:space="preserve">
+    <value>Navigation not allowed. Please choose stop reason first.</value>
+  </data>
+  <data name="Panel.Warning.Title" xml:space="preserve">
+    <value>Warning message</value>
+  </data>
+  <data name="Reason" xml:space="preserve">
+    <value>Reason</value>
+  </data>
+  <data name="Auto" xml:space="preserve">
+    <value>Running</value>
+  </data>
+  <data name="ProductionSwitch" xml:space="preserve">
+    <value>Machine off</value>
+  </data>
+  <data name="AnalyzeShowType.NumberOfStops" xml:space="preserve">
+    <value>Stops</value>
+  </data>
+  <data name="AnalyzeShowType.WeightedNumberOfStops" xml:space="preserve">
+    <value>Stops / production hour</value>
+  </data>
+  <data name="Show" xml:space="preserve">
+    <value>Show</value>
+  </data>
+  <data name="Shows" xml:space="preserve">
+    <value>Shows</value>
+  </data>
+  <data name="Report.ChangeOverMonthly.Header" xml:space="preserve">
+    <value>Change-overs</value>
+  </data>
+  <data name="Report.ChangeOverWeekly.Header" xml:space="preserve">
+    <value>Change-overs</value>
+  </data>
+  <data name="Report.ChangeOverMonthly.Description" xml:space="preserve">
+    <value>Change-overs on a single machine</value>
+  </data>
+  <data name="Report.ChangeOverMonthly.DisplayName" xml:space="preserve">
+    <value>Machine - Monthly report - Change-overs</value>
+  </data>
+  <data name="Report.ChangeOverMonthly.DocumentName" xml:space="preserve">
+    <value>Change-overs  {0} - {1}.{2}</value>
+  </data>
+  <data name="Report.ChangeOverMonthly.SubHeader" xml:space="preserve">
+    <value>Monthly report</value>
+  </data>
+  <data name="Report.ChangeOverWeekly.Description" xml:space="preserve">
+    <value>Change-overs on a single machine</value>
+  </data>
+  <data name="Report.ChangeOverWeekly.DisplayName" xml:space="preserve">
+    <value>Machine - Weekly report - Change-overs</value>
+  </data>
+  <data name="Report.ChangeOverWeekly.DocumentName" xml:space="preserve">
+    <value>Change-overs  {0} - {1}.{2}</value>
+  </data>
+  <data name="Report.ChangeOverWeekly.SubHeader" xml:space="preserve">
+    <value>Weekly report</value>
+  </data>
+  <data name="Report.ChangeOverMonthly.GroupName" xml:space="preserve">
+    <value>Change-over</value>
+  </data>
+  <data name="Report.ChangeOverWeekly.GroupName" xml:space="preserve">
+    <value>Change-over</value>
+  </data>
+  <data name="Report.DivisionOeeDaily.GroupName" xml:space="preserve">
+    <value>Division/line</value>
+  </data>
+  <data name="Report.DivisionOeeMonthly.GroupName" xml:space="preserve">
+    <value>Division/line</value>
+  </data>
+  <data name="Report.DivisionOeeWeekly.GroupName" xml:space="preserve">
+    <value>Division/line</value>
+  </data>
+  <data name="Report.DivisionProductionWeekly.GroupName" xml:space="preserve">
+    <value>Production</value>
+  </data>
+  <data name="Report.DivisionStoppageMonthly.GroupName" xml:space="preserve">
+    <value>Division/line</value>
+  </data>
+  <data name="Report.DivisionStoppageWeekly.GroupName" xml:space="preserve">
+    <value>Division/line</value>
+  </data>
+  <data name="Report.MachineOeeDaily.GroupName" xml:space="preserve">
+    <value>Machine/station</value>
+  </data>
+  <data name="Report.MachineOeeMonthly.GroupName" xml:space="preserve">
+    <value>Machine/station</value>
+  </data>
+  <data name="Report.MachineOeeWeekly.GroupName" xml:space="preserve">
+    <value>Machine/station</value>
+  </data>
+  <data name="Report.MachineStoppageMonthly.GroupName" xml:space="preserve">
+    <value>Machine/station</value>
+  </data>
+  <data name="Report.MachineStoppageWeekly.GroupName" xml:space="preserve">
+    <value>Machine/station</value>
+  </data>
+  <data name="Report.NpbMonthly.GroupName" xml:space="preserve">
+    <value>- NPB -</value>
+  </data>
+  <data name="Report.NpbWeekly.GroupName" xml:space="preserve">
+    <value>- NPB -</value>
+  </data>
+  <data name="Report.PlantProductionWeekly.GroupName" xml:space="preserve">
+    <value>Production</value>
+  </data>
+  <data name="Report.StoppageAnalyzeDaily.GroupName" xml:space="preserve">
+    <value>Downtime analysis</value>
+  </data>
+  <data name="Report.StoppageAnalyzeMonthly.GroupName" xml:space="preserve">
+    <value>Downtime analysis</value>
+  </data>
+  <data name="Report.StoppageAnalyzeWeekly.GroupName" xml:space="preserve">
+    <value>Downtime analysis</value>
+  </data>
+  <data name="AnalyzeShowType.ElapsedTime" xml:space="preserve">
+    <value>Downtime (h)</value>
+  </data>
+  <data name="AnalyzeShowType.WeightedElapsedTime" xml:space="preserve">
+    <value>Downtime / production hour (%)</value>
+  </data>
+  <data name="Report.ArticleStoppageAnalyzeMonthly.Description" xml:space="preserve">
+    <value>Stops per month for an individual downtime cause/category over 12 months</value>
+  </data>
+  <data name="Report.ArticleStoppageAnalyzeMonthly.DisplayName" xml:space="preserve">
+    <value>Articles - 12 months - Downtime cause analyze</value>
+  </data>
+  <data name="Report.ArticleStoppageAnalyzeMonthly.DocumentName" xml:space="preserve">
+    <value>{0} - {1} - {2:yyyy MMM}</value>
+  </data>
+  <data name="Report.ArticleStoppageAnalyzeMonthly.GroupName" xml:space="preserve">
+    <value>Downtime analysis</value>
+  </data>
+  <data name="Report.ArticleStoppageAnalyzeMonthly.Header" xml:space="preserve">
+    <value>Analyze stop reasons</value>
+  </data>
+  <data name="Report.ArticleStoppageAnalyzeMonthly.SubHeader" xml:space="preserve">
+    <value>Stops per month</value>
+  </data>
+  <data name="Report.ArticleStoppageAnalyzeWeekly.Description" xml:space="preserve">
+    <value>Stops per week for an individual downtime cause/category over 12 weeks</value>
+  </data>
+  <data name="Report.ArticleStoppageAnalyzeWeekly.DisplayName" xml:space="preserve">
+    <value>Articles - 12 weeks - Downtime cause analyze</value>
+  </data>
+  <data name="Report.ArticleStoppageAnalyzeWeekly.DocumentName" xml:space="preserve">
+    <value>{0} - {1} - {2} w{3}</value>
+  </data>
+  <data name="Report.ArticleStoppageAnalyzeWeekly.GroupName" xml:space="preserve">
+    <value>Downtime analysis</value>
+  </data>
+  <data name="Report.ArticleStoppageAnalyzeWeekly.Header" xml:space="preserve">
+    <value>Analyze stop reasons</value>
+  </data>
+  <data name="Report.ArticleStoppageAnalyzeWeekly.SubHeader" xml:space="preserve">
+    <value>Stops per week</value>
+  </data>
+  <data name="StateType.ChangeOver" xml:space="preserve">
+    <value>Change-over</value>
+  </data>
+  <data name="StateType.FlowError" xml:space="preserve">
+    <value>Flow error</value>
+  </data>
+  <data name="ChangeOver" xml:space="preserve">
+    <value>Change-over</value>
+  </data>
+  <data name="Panel.ClearPending" xml:space="preserve">
+    <value>Clear pending</value>
+  </data>
+  <data name="From" xml:space="preserve">
+    <value>From</value>
+  </data>
+  <data name="PreviousArticle" xml:space="preserve">
+    <value>Previous article</value>
+  </data>
+  <data name="Subtotal" xml:space="preserve">
+    <value>Subtotal</value>
+  </data>
+  <data name="TimeConsumed" xml:space="preserve">
+    <value>Time consumed</value>
+  </data>
+  <data name="To" xml:space="preserve">
+    <value>To</value>
+  </data>
+  <data name="Total" xml:space="preserve">
+    <value>Total</value>
+  </data>
+  <data name="Report.NpbOee.Description" xml:space="preserve">
+    <value>Key figures (OEE) and downtime tracking for a unit</value>
+  </data>
+  <data name="Report.NpbOee.DisplayName" xml:space="preserve">
+    <value>Unit - Dynamic summary - OEE and downtime tracking</value>
+  </data>
+  <data name="Report.NpbOee.DocumentName" xml:space="preserve">
+    <value>Dynamic report - {0} - {1}.{2}</value>
+  </data>
+  <data name="Report.NpbOee.GroupName" xml:space="preserve">
+    <value>- NPB -</value>
+  </data>
+  <data name="Report.NpbOee.Header" xml:space="preserve">
+    <value>Report</value>
+  </data>
+  <data name="AvailabilityBasedOnActualStops" xml:space="preserve">
+    <value>Availability except flow errors (As)</value>
+  </data>
+  <data name="AvailabilityBasedOnActualStops.Abbr" xml:space="preserve">
+    <value>As</value>
+  </data>
+  <data name="AvailabilityLossBasedOnActualStops.Npb" xml:space="preserve">
+    <value>Availability loss except flow errors (As)</value>
+  </data>
+  <data name="ItemsHandled" xml:space="preserve">
+    <value>Items handled</value>
+  </data>
+  <data name="Oee.Npb" xml:space="preserve">
+    <value>OEEr</value>
+  </data>
+  <data name="Performance.Npb" xml:space="preserve">
+    <value>Performance (Pr)</value>
+  </data>
+  <data name="Performance.Npb.Abbr" xml:space="preserve">
+    <value>Pr</value>
+  </data>
+  <data name="PerformanceLoss.Npb" xml:space="preserve">
+    <value>Performance loss (Pr)</value>
+  </data>
+  <data name="RangeEnd" xml:space="preserve">
+    <value>To</value>
+  </data>
+  <data name="RangeStart" xml:space="preserve">
+    <value>From</value>
+  </data>
+  <data name="ScheduledProductionTime" xml:space="preserve">
+    <value>Scheduled production time</value>
+  </data>
+  <data name="AvailabilityBasedOnActualStopsNpb" xml:space="preserve">
+    <value>Availability except external faults (As)</value>
+  </data>
+  <data name="TimeBetweenStops" xml:space="preserve">
+    <value>Time between stops</value>
+  </data>
+  <data name="ToolNumber" xml:space="preserve">
+    <value>Tool number</value>
+  </data>
+  <data name="CommunicationBadQuality" xml:space="preserve">
+    <value>Communication failure (OPC)</value>
+  </data>
+  <data name="CommunicationBadQuality.Abbr" xml:space="preserve">
+    <value>Com. error OPC</value>
+  </data>
+  <data name="TagType.CommunicationBadQuality" xml:space="preserve">
+    <value>Communication failure (OPC)</value>
+  </data>
+  <data name="TagType.InitiatingCommunication" xml:space="preserve">
+    <value>Initiating communication</value>
+  </data>
+  <data name="ProductionModeSchedulerWarning" xml:space="preserve">
+    <value>Edit schedules in Purplepoint Production </value>
+  </data>
+  <data name="ProductionModeShiftWarning" xml:space="preserve">
+    <value>Edit shifts in Purplepoint Production </value>
+  </data>
+</root>

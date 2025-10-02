@@ -1,0 +1,322 @@
+﻿using System;
+using System.Collections;
+using System.Linq;
+using System.Text;
+using System.Globalization;
+using M2M.DataCenter.Utilities;
+
+namespace M2M.DataCenter
+{
+    public class AggregatedOeeData : CollectionBase
+    {
+       public AggregatedOeeData()
+        {
+            // default constructor
+        }
+
+        public int Add(TimePartItem item)
+        {
+            return List.Add(item);
+        }
+
+        public void Remove(TimePartItem item)
+        {
+            List.Remove(item);
+        }
+
+        public TimePartItem this[int index]
+        {
+            get
+            {
+                return ((TimePartItem)List[index]);
+            }
+            set
+            {
+                List[index] = value;
+            }
+        }
+
+        public void Sort()
+        {
+            IComparer DateSorter = new AscendingDateSorter();
+            InnerList.Sort(DateSorter);
+        }
+
+        public enum XTypes
+        {
+            None = 0,
+            Period = 1,
+            Article = 2
+        }
+
+        public class TimePartItem
+        {
+            private double m_Availability = 0.0;
+            private double m_Performance = 1.0;
+            private double m_Quality = 1.0;
+            private string m_ArticleNumber = ""; 
+            private Intervals m_Interval = Intervals.NotDefined;
+            private DateTime m_Date;
+            private XTypes m_XType = XTypes.None;
+            private TimeSpan m_AutoTime = new TimeSpan(0);
+            private TimeSpan m_TotalTime = new TimeSpan(0);
+            private double m_Produced = 0.0;
+            private double m_Discarded = 0.0;
+            private double m_IdealRunRate = 0.0;
+
+            public TimePartItem()
+            {
+
+            }
+
+            public XTypes XType
+            {
+                get
+                {
+                    return m_XType;
+                }
+                set
+                {
+                    m_XType = value;
+                }
+            }
+
+            public TimeSpan AutoTime
+            {
+                get
+                {
+                    return m_AutoTime;
+                }
+                set
+                {
+                    m_AutoTime = value;
+                }
+            }
+
+            public TimeSpan TotalTime
+            {
+                get
+                {
+                    return m_TotalTime;
+                }
+                set
+                {
+                    m_TotalTime = value;
+                }
+            }
+
+            public TimeSpan StopTime
+            {
+                get
+                {
+                    return m_TotalTime - m_AutoTime;
+                }
+            }
+
+            public double Produced
+            {
+                get
+                {
+                    return m_Produced;
+                }
+                set
+                {
+                    m_Produced = value;
+                }
+            }
+
+            public double Discarded
+            {
+                get
+                {
+                    return m_Discarded;
+                }
+                set
+                {
+                    m_Discarded = value;
+                }
+            }
+
+            public double RunRate
+            {
+                get
+                {
+                    if (TotalTime.Ticks > 0)
+                        return Produced / (TotalTime.TotalHours);
+
+                    return 0;
+                }
+            }
+
+            public double IdealRunRate
+            {
+                get
+                {
+                    return m_IdealRunRate;
+                }
+                set
+                {
+                    m_IdealRunRate = value;
+                }
+            }
+
+            public double Availability
+            {
+                get
+                {
+                    return m_Availability;
+                }
+                set
+                {
+                    m_Availability = value;
+                }
+            }
+
+            public double Performance
+            {
+                get
+                {
+                    return m_Performance;
+                }
+                set
+                {
+                    m_Performance = value;
+                }
+            }
+
+            public double Quality
+            {
+                get
+                {
+                    return m_Quality;
+                }
+                set
+                {
+                    m_Quality = value;
+                }
+            }
+
+            public double Oee
+            {
+                get
+                {
+                    return m_Availability * m_Performance * m_Quality;
+                }
+            }
+
+            public string ArticleNumber
+            {
+                get
+                {
+                    return m_ArticleNumber;
+                }
+                set
+                {
+                    m_ArticleNumber = value;
+                }
+            }
+
+            public double NonAvailability
+            {
+                get
+                {
+                    return 1.0 - m_Availability;
+                }
+            }
+
+            public double RunRateLoss
+            {
+                get
+                {
+                    return 1.0 - m_Performance;
+                }
+            }
+
+            public double QualityLoss
+            {
+                get
+                {
+                    return 1.0 - m_Quality;
+                }
+            }
+
+            public DateTime Date
+            {
+                get
+                {
+                    return m_Date;
+                }
+                set
+                {
+                    m_Date = value;
+                }
+            }
+
+            public double DateAsDouble
+            {
+                get
+                {
+                    return m_Date.ToOADate();
+                }
+            }
+
+            public Intervals Interval
+            {
+                get
+                {
+                    return m_Interval;
+                }
+                set
+                {
+                    m_Interval = value;
+                }
+            }
+
+            public string XLabel
+            {
+                get
+                {
+                    switch (m_XType)
+                    {
+                        case XTypes.Period:
+                            switch (m_Interval)
+                            {
+                                case Intervals.Daily:
+                                    return m_Date.ToString("MMM dd");
+                                case Intervals.Weekly:
+                                    CultureInfo culture = CultureInfo.CurrentCulture;
+                                    int weekNumber = culture.Calendar.GetWeekOfYear(m_Date, CalendarWeekRule.FirstFourDayWeek, DayOfWeek.Monday);
+                                    return String.Format("v {0}", weekNumber);
+                                case Intervals.Monthly:
+                                    return m_Date.ToString("yyyy MMM");
+                                case Intervals.Quarterly:
+                                    Quarter quarter = m_Date.GetQuarter();
+                                    return String.Format("{0} Q{1}", m_Date.ToString("yyyy"), (int)quarter);
+                                case Intervals.Yearly:
+                                    return m_Date.ToString("yyyy");
+                            }
+                            break;
+                        case XTypes.Article:
+                            return m_ArticleNumber;
+                    }
+
+                    return "";
+                }
+            }
+        }
+
+        private class AscendingDateSorter : IComparer
+        {
+            public int Compare(Object x, Object y)
+            {
+                AggregatedOeeData.TimePartItem item1 = (AggregatedOeeData.TimePartItem)x;
+                IComparable ic1 = (IComparable)item1.Date;
+
+                AggregatedOeeData.TimePartItem item2 = (AggregatedOeeData.TimePartItem)y;
+                IComparable ic2 = (IComparable)item2.Date;
+
+                return ic1.CompareTo(ic2);
+            }
+        }
+    }
+}

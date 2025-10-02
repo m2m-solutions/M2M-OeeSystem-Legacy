@@ -1,0 +1,526 @@
+﻿namespace M2M.DataCenter.Panel.FormsUI
+{
+    partial class Form1
+    {
+        /// <summary>
+        /// Required designer variable.
+        /// </summary>
+        private System.ComponentModel.IContainer components;
+
+        /// <summary>
+        /// Clean up any resources being used.
+        /// </summary>
+        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing && (components != null))
+            {
+                components.Dispose();
+            }
+            base.Dispose(disposing);
+        }
+
+        #region Windows Form Designer generated code
+
+        /// <summary>
+        /// Required method for Designer support - do not modify
+        /// the contents of this method with the code editor.
+        /// </summary>
+        private void InitializeComponent()
+        {
+            this.components = new System.ComponentModel.Container();
+            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn1 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
+            Telerik.WinControls.UI.GridViewDecimalColumn gridViewDecimalColumn1 = new Telerik.WinControls.UI.GridViewDecimalColumn();
+            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn2 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
+            Telerik.WinControls.UI.GridViewComboBoxColumn gridViewComboBoxColumn1 = new Telerik.WinControls.UI.GridViewComboBoxColumn();
+            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn3 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
+            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn4 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
+            Telerik.WinControls.UI.TableViewDefinition tableViewDefinition1 = new Telerik.WinControls.UI.TableViewDefinition();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
+            this.radGridViewReasonCodes = new Telerik.WinControls.UI.RadGridView();
+            this.radPageView1 = new Telerik.WinControls.UI.RadPageView();
+            this.radPageViewPage1 = new Telerik.WinControls.UI.RadPageViewPage();
+            this.radPageViewPage2 = new Telerik.WinControls.UI.RadPageViewPage();
+            this.radPanelButtonGrid = new Telerik.WinControls.UI.RadPanel();
+            this.radPanel3 = new Telerik.WinControls.UI.RadPanel();
+            this.radPanelAlert = new Telerik.WinControls.UI.RadPanel();
+            this.radLabelEventRaisedDate = new Telerik.WinControls.UI.RadLabel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.radLabelEventRaised = new Telerik.WinControls.UI.RadLabel();
+            this.radLabelAlert = new Telerik.WinControls.UI.RadLabel();
+            this.radLabel6 = new Telerik.WinControls.UI.RadLabel();
+            this.radPageViewPage3 = new Telerik.WinControls.UI.RadPageViewPage();
+            this.webBrowser1 = new System.Windows.Forms.WebBrowser();
+            this.radPageViewPage4 = new Telerik.WinControls.UI.RadPageViewPage();
+            this.btnClearPending = new Telerik.WinControls.UI.RadButton();
+            this.radLabel2 = new Telerik.WinControls.UI.RadLabel();
+            this.radButton1 = new Telerik.WinControls.UI.RadButton();
+            this.radDropDownListTags = new Telerik.WinControls.UI.RadDropDownList();
+            this.radPageViewPage5 = new Telerik.WinControls.UI.RadPageViewPage();
+            this.radPageViewPage6 = new Telerik.WinControls.UI.RadPageViewPage();
+            this.visualStudio2012DarkTheme1 = new Telerik.WinControls.Themes.VisualStudio2012DarkTheme();
+            this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
+            this.tagInfoBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.reasonBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this.radGridViewReasonCodes)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radGridViewReasonCodes.MasterTemplate)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radPageView1)).BeginInit();
+            this.radPageView1.SuspendLayout();
+            this.radPageViewPage2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.radPanelButtonGrid)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radPanel3)).BeginInit();
+            this.radPanel3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.radPanelAlert)).BeginInit();
+            this.radPanelAlert.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.radLabelEventRaisedDate)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radLabelEventRaised)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radLabelAlert)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radLabel6)).BeginInit();
+            this.radPageViewPage3.SuspendLayout();
+            this.radPageViewPage4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.btnClearPending)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radLabel2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radButton1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radDropDownListTags)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tagInfoBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.reasonBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
+            this.SuspendLayout();
+            // 
+            // radGridViewReasonCodes
+            // 
+            this.radGridViewReasonCodes.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.radGridViewReasonCodes.Location = new System.Drawing.Point(13, 40);
+            // 
+            // 
+            // 
+            this.radGridViewReasonCodes.MasterTemplate.AllowCellContextMenu = false;
+            this.radGridViewReasonCodes.MasterTemplate.AllowColumnChooser = false;
+            this.radGridViewReasonCodes.MasterTemplate.AllowColumnHeaderContextMenu = false;
+            this.radGridViewReasonCodes.MasterTemplate.AllowColumnReorder = false;
+            this.radGridViewReasonCodes.MasterTemplate.AllowDragToGroup = false;
+            this.radGridViewReasonCodes.MasterTemplate.AutoGenerateColumns = false;
+            this.radGridViewReasonCodes.MasterTemplate.AutoSizeColumnsMode = Telerik.WinControls.UI.GridViewAutoSizeColumnsMode.Fill;
+            gridViewTextBoxColumn1.FieldName = "TagId";
+            gridViewTextBoxColumn1.HeaderText = "TagId";
+            gridViewTextBoxColumn1.IsVisible = false;
+            gridViewTextBoxColumn1.Name = "TagId";
+            gridViewTextBoxColumn1.Width = 661;
+            gridViewDecimalColumn1.FieldName = "ReasonCode";
+            gridViewDecimalColumn1.HeaderText = "Orsakskod";
+            gridViewDecimalColumn1.IsVisible = false;
+            gridViewDecimalColumn1.Maximum = new decimal(new int[] {
+            100000,
+            0,
+            0,
+            0});
+            gridViewDecimalColumn1.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            gridViewDecimalColumn1.Name = "ReasonCode";
+            gridViewDecimalColumn1.Width = 49;
+            gridViewTextBoxColumn2.FieldName = "DisplayName";
+            gridViewTextBoxColumn2.HeaderText = "Orsak";
+            gridViewTextBoxColumn2.Name = "DisplayName";
+            gridViewTextBoxColumn2.Width = 524;
+            gridViewComboBoxColumn1.DisplayMember = "DisplayName";
+            gridViewComboBoxColumn1.FieldName = "CategoryId";
+            gridViewComboBoxColumn1.HeaderText = "Kategori";
+            gridViewComboBoxColumn1.Name = "Category";
+            gridViewComboBoxColumn1.ValueMember = "CategoryId";
+            gridViewComboBoxColumn1.Width = 453;
+            gridViewTextBoxColumn3.FieldName = "DivisionId";
+            gridViewTextBoxColumn3.HeaderText = "Avdelning";
+            gridViewTextBoxColumn3.IsVisible = false;
+            gridViewTextBoxColumn3.Name = "DivisionId";
+            gridViewTextBoxColumn3.Width = 38;
+            gridViewTextBoxColumn4.FieldName = "MachineId";
+            gridViewTextBoxColumn4.HeaderText = "Maskin";
+            gridViewTextBoxColumn4.IsVisible = false;
+            gridViewTextBoxColumn4.Name = "MachineId";
+            gridViewTextBoxColumn4.Width = 43;
+            this.radGridViewReasonCodes.MasterTemplate.Columns.AddRange(new Telerik.WinControls.UI.GridViewDataColumn[] {
+            gridViewTextBoxColumn1,
+            gridViewDecimalColumn1,
+            gridViewTextBoxColumn2,
+            gridViewComboBoxColumn1,
+            gridViewTextBoxColumn3,
+            gridViewTextBoxColumn4});
+            this.radGridViewReasonCodes.MasterTemplate.EnableFiltering = true;
+            this.radGridViewReasonCodes.MasterTemplate.ShowFilteringRow = false;
+            this.radGridViewReasonCodes.MasterTemplate.ShowRowHeaderColumn = false;
+            this.radGridViewReasonCodes.MasterTemplate.ViewDefinition = tableViewDefinition1;
+            this.radGridViewReasonCodes.Name = "radGridViewReasonCodes";
+            this.radGridViewReasonCodes.ShowNoDataText = false;
+            this.radGridViewReasonCodes.Size = new System.Drawing.Size(979, 525);
+            this.radGridViewReasonCodes.TabIndex = 5;
+            this.radGridViewReasonCodes.CellFormatting += new Telerik.WinControls.UI.CellFormattingEventHandler(this.radGridViewReasonCodes_CellFormatting);
+            this.radGridViewReasonCodes.RowValidating += new Telerik.WinControls.UI.RowValidatingEventHandler(this.radGridViewReasonCodes_RowValidating);
+            this.radGridViewReasonCodes.UserDeletingRow += new Telerik.WinControls.UI.GridViewRowCancelEventHandler(this.radGridViewReasonCodes_UserDeletingRow);
+            this.radGridViewReasonCodes.RowsChanged += new Telerik.WinControls.UI.GridViewCollectionChangedEventHandler(this.radGridViewReasonCodes_RowsChanged);
+            this.radGridViewReasonCodes.DefaultValuesNeeded += new Telerik.WinControls.UI.GridViewRowEventHandler(this.radGridViewReasonCodes_DefaultValuesNeeded);
+            this.radGridViewReasonCodes.CommandCellClick += new Telerik.WinControls.UI.CommandCellClickEventHandler(this.radGridViewReasonCodes_CommandCellClick);
+            // 
+            // radPageView1
+            // 
+            this.radPageView1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(219)))), ((int)(((byte)(255)))));
+            this.radPageView1.Controls.Add(this.radPageViewPage1);
+            this.radPageView1.Controls.Add(this.radPageViewPage2);
+            this.radPageView1.Controls.Add(this.radPageViewPage3);
+            this.radPageView1.Controls.Add(this.radPageViewPage4);
+            this.radPageView1.Controls.Add(this.radPageViewPage5);
+            this.radPageView1.Controls.Add(this.radPageViewPage6);
+            this.radPageView1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.radPageView1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
+            this.radPageView1.ItemSizeMode = ((Telerik.WinControls.UI.PageViewItemSizeMode)((Telerik.WinControls.UI.PageViewItemSizeMode.EqualWidth | Telerik.WinControls.UI.PageViewItemSizeMode.EqualHeight)));
+            this.radPageView1.Location = new System.Drawing.Point(0, 0);
+            this.radPageView1.Name = "radPageView1";
+            this.radPageView1.SelectedPage = this.radPageViewPage3;
+            this.radPageView1.Size = new System.Drawing.Size(1024, 768);
+            this.radPageView1.TabIndex = 0;
+            this.radPageView1.PageIndexChanging += new System.EventHandler<Telerik.WinControls.UI.RadPageViewIndexChangingEventArgs>(this.radPageView1_PageIndexChanging);
+            this.radPageView1.SelectedPageChanging += new System.EventHandler<Telerik.WinControls.UI.RadPageViewCancelEventArgs>(this.radPageView1_SelectedPageChanging);
+            ((Telerik.WinControls.UI.RadPageViewStripElement)(this.radPageView1.GetChildAt(0))).StripButtons = Telerik.WinControls.UI.StripViewButtons.None;
+            ((Telerik.WinControls.UI.RadPageViewStripElement)(this.radPageView1.GetChildAt(0))).ItemAlignment = Telerik.WinControls.UI.StripViewItemAlignment.Center;
+            ((Telerik.WinControls.UI.RadPageViewStripElement)(this.radPageView1.GetChildAt(0))).ItemFitMode = Telerik.WinControls.UI.StripViewItemFitMode.Fill;
+            ((Telerik.WinControls.UI.RadPageViewStripElement)(this.radPageView1.GetChildAt(0))).StripAlignment = Telerik.WinControls.UI.StripViewAlignment.Bottom;
+            ((Telerik.WinControls.UI.RadPageViewStripElement)(this.radPageView1.GetChildAt(0))).ItemSpacing = 0;
+            ((Telerik.WinControls.UI.RadPageViewStripElement)(this.radPageView1.GetChildAt(0))).ItemSizeMode = ((Telerik.WinControls.UI.PageViewItemSizeMode)((Telerik.WinControls.UI.PageViewItemSizeMode.EqualWidth | Telerik.WinControls.UI.PageViewItemSizeMode.EqualHeight)));
+            ((Telerik.WinControls.UI.StripViewItemContainer)(this.radPageView1.GetChildAt(0).GetChildAt(0))).BorderTopColor = System.Drawing.Color.FromArgb(((int)(((byte)(246)))), ((int)(((byte)(183)))), ((int)(((byte)(5)))));
+            ((Telerik.WinControls.UI.StripViewItemContainer)(this.radPageView1.GetChildAt(0).GetChildAt(0))).BorderBottomColor = System.Drawing.Color.FromArgb(((int)(((byte)(246)))), ((int)(((byte)(183)))), ((int)(((byte)(5)))));
+            ((Telerik.WinControls.UI.StripViewItemContainer)(this.radPageView1.GetChildAt(0).GetChildAt(0))).BorderTopShadowColor = System.Drawing.Color.FromArgb(((int)(((byte)(246)))), ((int)(((byte)(183)))), ((int)(((byte)(5)))));
+            ((Telerik.WinControls.UI.StripViewItemContainer)(this.radPageView1.GetChildAt(0).GetChildAt(0))).BorderBottomShadowColor = System.Drawing.Color.FromArgb(((int)(((byte)(246)))), ((int)(((byte)(183)))), ((int)(((byte)(5)))));
+            ((Telerik.WinControls.UI.StripViewButtonsPanel)(this.radPageView1.GetChildAt(0).GetChildAt(0).GetChildAt(1))).Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
+            ((Telerik.WinControls.UI.StripViewButtonsPanel)(this.radPageView1.GetChildAt(0).GetChildAt(0).GetChildAt(1))).Visibility = Telerik.WinControls.ElementVisibility.Collapsed;
+            // 
+            // radPageViewPage1
+            // 
+            this.radPageViewPage1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(233)))), ((int)(((byte)(244)))), ((int)(((byte)(249)))));
+            this.radPageViewPage1.BackgroundImage = global::M2M.DataCenter.Panel.FormsUI.Properties.Resources.Background1;
+            this.radPageViewPage1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.radPageViewPage1.ItemSize = new System.Drawing.SizeF(168F, 35F);
+            this.radPageViewPage1.Location = new System.Drawing.Point(10, 10);
+            this.radPageViewPage1.Name = "radPageViewPage1";
+            this.radPageViewPage1.Size = new System.Drawing.Size(1003, 717);
+            this.radPageViewPage1.Text = "Status: OK";
+            // 
+            // radPageViewPage2
+            // 
+            this.radPageViewPage2.BackgroundImage = global::M2M.DataCenter.Panel.FormsUI.Properties.Resources.BackgroundLogo1;
+            this.radPageViewPage2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.radPageViewPage2.Controls.Add(this.radPanelButtonGrid);
+            this.radPageViewPage2.Controls.Add(this.radPanel3);
+            this.radPageViewPage2.ItemSize = new System.Drawing.SizeF(168F, 35F);
+            this.radPageViewPage2.Location = new System.Drawing.Point(10, 10);
+            this.radPageViewPage2.Name = "radPageViewPage2";
+            this.radPageViewPage2.Size = new System.Drawing.Size(1003, 713);
+            this.radPageViewPage2.Text = "Orsak";
+            // 
+            // radPanelButtonGrid
+            // 
+            this.radPanelButtonGrid.BackColor = System.Drawing.Color.Transparent;
+            this.radPanelButtonGrid.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.radPanelButtonGrid.EnableTheming = false;
+            this.radPanelButtonGrid.Location = new System.Drawing.Point(0, 98);
+            this.radPanelButtonGrid.Name = "radPanelButtonGrid";
+            this.radPanelButtonGrid.Size = new System.Drawing.Size(1003, 615);
+            this.radPanelButtonGrid.TabIndex = 3;
+            ((Telerik.WinControls.Primitives.FillPrimitive)(this.radPanelButtonGrid.GetChildAt(0).GetChildAt(0))).Opacity = 0D;
+            ((Telerik.WinControls.Primitives.BorderPrimitive)(this.radPanelButtonGrid.GetChildAt(0).GetChildAt(1))).Visibility = Telerik.WinControls.ElementVisibility.Collapsed;
+            // 
+            // radPanel3
+            // 
+            this.radPanel3.BackColor = System.Drawing.Color.Transparent;
+            this.radPanel3.Controls.Add(this.radPanelAlert);
+            this.radPanel3.Controls.Add(this.radLabel6);
+            this.radPanel3.Dock = System.Windows.Forms.DockStyle.Top;
+            this.radPanel3.EnableTheming = false;
+            this.radPanel3.Location = new System.Drawing.Point(0, 0);
+            this.radPanel3.Name = "radPanel3";
+            this.radPanel3.Size = new System.Drawing.Size(1003, 98);
+            this.radPanel3.TabIndex = 2;
+            ((Telerik.WinControls.Primitives.BorderPrimitive)(this.radPanel3.GetChildAt(0).GetChildAt(1))).Visibility = Telerik.WinControls.ElementVisibility.Collapsed;
+            // 
+            // radPanelAlert
+            // 
+            this.radPanelAlert.BackColor = System.Drawing.Color.Transparent;
+            this.radPanelAlert.Controls.Add(this.radLabelEventRaisedDate);
+            this.radPanelAlert.Controls.Add(this.pictureBox1);
+            this.radPanelAlert.Controls.Add(this.radLabelEventRaised);
+            this.radPanelAlert.Controls.Add(this.radLabelAlert);
+            this.radPanelAlert.Dock = System.Windows.Forms.DockStyle.Top;
+            this.radPanelAlert.EnableTheming = false;
+            this.radPanelAlert.Location = new System.Drawing.Point(0, 0);
+            this.radPanelAlert.Name = "radPanelAlert";
+            this.radPanelAlert.Size = new System.Drawing.Size(1003, 95);
+            this.radPanelAlert.TabIndex = 3;
+            this.radPanelAlert.Visible = false;
+            ((Telerik.WinControls.Primitives.BorderPrimitive)(this.radPanelAlert.GetChildAt(0).GetChildAt(1))).Visibility = Telerik.WinControls.ElementVisibility.Collapsed;
+            // 
+            // radLabelEventRaisedDate
+            // 
+            this.radLabelEventRaisedDate.EnableTheming = false;
+            this.radLabelEventRaisedDate.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.radLabelEventRaisedDate.ForeColor = System.Drawing.Color.White;
+            this.radLabelEventRaisedDate.Location = new System.Drawing.Point(101, 13);
+            this.radLabelEventRaisedDate.Name = "radLabelEventRaisedDate";
+            this.radLabelEventRaisedDate.Size = new System.Drawing.Size(77, 21);
+            this.radLabelEventRaisedDate.TabIndex = 2;
+            this.radLabelEventRaisedDate.Text = "2015-03-12";
+            this.radLabelEventRaisedDate.UseMnemonic = false;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::M2M.DataCenter.Panel.FormsUI.Properties.Resources.warning;
+            this.pictureBox1.Location = new System.Drawing.Point(20, 21);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(48, 48);
+            this.pictureBox1.TabIndex = 2;
+            this.pictureBox1.TabStop = false;
+            // 
+            // radLabelEventRaised
+            // 
+            this.radLabelEventRaised.EnableTheming = false;
+            this.radLabelEventRaised.Font = new System.Drawing.Font("Segoe UI", 22F);
+            this.radLabelEventRaised.ForeColor = System.Drawing.Color.Red;
+            this.radLabelEventRaised.Location = new System.Drawing.Point(95, 29);
+            this.radLabelEventRaised.Name = "radLabelEventRaised";
+            this.radLabelEventRaised.Size = new System.Drawing.Size(123, 45);
+            this.radLabelEventRaised.TabIndex = 1;
+            this.radLabelEventRaised.Text = "20:00:12";
+            this.radLabelEventRaised.UseMnemonic = false;
+            // 
+            // radLabelAlert
+            // 
+            this.radLabelAlert.Font = new System.Drawing.Font("Segoe UI", 22F);
+            this.radLabelAlert.ForeColor = System.Drawing.Color.Red;
+            this.radLabelAlert.Location = new System.Drawing.Point(238, 28);
+            this.radLabelAlert.MaximumSize = new System.Drawing.Size(620, 0);
+            this.radLabelAlert.Name = "radLabelAlert";
+            // 
+            // 
+            // 
+            this.radLabelAlert.RootElement.MaxSize = new System.Drawing.Size(620, 0);
+            this.radLabelAlert.Size = new System.Drawing.Size(287, 45);
+            this.radLabelAlert.TabIndex = 0;
+            this.radLabelAlert.Text = "Stoppad av operatör";
+            // 
+            // radLabel6
+            // 
+            this.radLabel6.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Bold);
+            this.radLabel6.Location = new System.Drawing.Point(197, 36);
+            this.radLabel6.Name = "radLabel6";
+            this.radLabel6.Size = new System.Drawing.Size(411, 33);
+            this.radLabel6.TabIndex = 3;
+            this.radLabel6.Text = "Ingen orsak behöver anges för tillfället";
+            // 
+            // radPageViewPage3
+            // 
+            this.radPageViewPage3.BackgroundImage = global::M2M.DataCenter.Panel.FormsUI.Properties.Resources.Background1;
+            this.radPageViewPage3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.radPageViewPage3.Controls.Add(this.webBrowser1);
+            this.radPageViewPage3.ItemSize = new System.Drawing.SizeF(168F, 35F);
+            this.radPageViewPage3.Location = new System.Drawing.Point(10, 10);
+            this.radPageViewPage3.Name = "radPageViewPage3";
+            this.radPageViewPage3.Size = new System.Drawing.Size(1003, 713);
+            this.radPageViewPage3.Text = "Oee System";
+            // 
+            // webBrowser1
+            // 
+            this.webBrowser1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.webBrowser1.IsWebBrowserContextMenuEnabled = false;
+            this.webBrowser1.Location = new System.Drawing.Point(0, 0);
+            this.webBrowser1.MinimumSize = new System.Drawing.Size(20, 20);
+            this.webBrowser1.Name = "webBrowser1";
+            this.webBrowser1.ScriptErrorsSuppressed = true;
+            this.webBrowser1.Size = new System.Drawing.Size(1003, 713);
+            this.webBrowser1.TabIndex = 2;
+            // 
+            // radPageViewPage4
+            // 
+            this.radPageViewPage4.BackgroundImage = global::M2M.DataCenter.Panel.FormsUI.Properties.Resources.Background1;
+            this.radPageViewPage4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.radPageViewPage4.Controls.Add(this.btnClearPending);
+            this.radPageViewPage4.Controls.Add(this.radLabel2);
+            this.radPageViewPage4.Controls.Add(this.radButton1);
+            this.radPageViewPage4.Controls.Add(this.radGridViewReasonCodes);
+            this.radPageViewPage4.Controls.Add(this.radDropDownListTags);
+            this.radPageViewPage4.ItemSize = new System.Drawing.SizeF(168F, 35F);
+            this.radPageViewPage4.Location = new System.Drawing.Point(10, 10);
+            this.radPageViewPage4.Name = "radPageViewPage4";
+            this.radPageViewPage4.Size = new System.Drawing.Size(1003, 717);
+            this.radPageViewPage4.Text = "Inställningar";
+            // 
+            // btnClearPending
+            // 
+            this.btnClearPending.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnClearPending.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
+            this.btnClearPending.Location = new System.Drawing.Point(31, 611);
+            this.btnClearPending.Name = "btnClearPending";
+            this.btnClearPending.Size = new System.Drawing.Size(183, 39);
+            this.btnClearPending.TabIndex = 70;
+            this.btnClearPending.Text = "Rensa inkommande";
+            this.btnClearPending.Click += new System.EventHandler(this.btnClearPending_Click);
+            // 
+            // radLabel2
+            // 
+            this.radLabel2.BackColor = System.Drawing.Color.Transparent;
+            this.radLabel2.Font = new System.Drawing.Font("Segoe UI", 16F);
+            this.radLabel2.ForeColor = System.Drawing.Color.White;
+            this.radLabel2.Location = new System.Drawing.Point(343, 597);
+            this.radLabel2.Name = "radLabel2";
+            this.radLabel2.Size = new System.Drawing.Size(327, 61);
+            this.radLabel2.TabIndex = 69;
+            this.radLabel2.Text = "Uppdatera orsaksvyn varje gång ändringar har gjorts ";
+            ((Telerik.WinControls.UI.RadLabelElement)(this.radLabel2.GetChildAt(0))).Text = "Uppdatera orsaksvyn varje gång ändringar har gjorts ";
+            ((Telerik.WinControls.UI.RadLabelElement)(this.radLabel2.GetChildAt(0))).MaxSize = new System.Drawing.Size(400, 0);
+            // 
+            // radButton1
+            // 
+            this.radButton1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.radButton1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
+            this.radButton1.Location = new System.Drawing.Point(694, 586);
+            this.radButton1.Name = "radButton1";
+            this.radButton1.Size = new System.Drawing.Size(270, 73);
+            this.radButton1.TabIndex = 68;
+            this.radButton1.Text = "Uppdatera orsaksvy";
+            this.radButton1.Click += new System.EventHandler(this.radButton1_Click);
+            // 
+            // radDropDownListTags
+            // 
+            this.radDropDownListTags.AutoCompleteDisplayMember = "DisplayName";
+            this.radDropDownListTags.AutoCompleteValueMember = "TagId";
+            this.radDropDownListTags.DataMember = "TagId";
+            this.radDropDownListTags.DisplayMember = "DisplayName";
+            this.radDropDownListTags.DropDownStyle = Telerik.WinControls.RadDropDownStyle.DropDownList;
+            this.radDropDownListTags.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radDropDownListTags.Location = new System.Drawing.Point(13, 3);
+            this.radDropDownListTags.Name = "radDropDownListTags";
+            this.radDropDownListTags.NullText = "Välj signal från maskin/linje";
+            this.radDropDownListTags.Size = new System.Drawing.Size(519, 31);
+            this.radDropDownListTags.TabIndex = 6;
+            this.radDropDownListTags.ValueMember = "TagId";
+            this.radDropDownListTags.SelectedIndexChanged += new Telerik.WinControls.UI.Data.PositionChangedEventHandler(this.radDropDownListTags_SelectedIndexChanged);
+            this.radDropDownListTags.ItemDataBound += new Telerik.WinControls.UI.ListItemDataBoundEventHandler(this.radDropDownListTags_ItemDataBound);
+            // 
+            // radPageViewPage5
+            // 
+            this.radPageViewPage5.BackgroundImage = global::M2M.DataCenter.Panel.FormsUI.Properties.Resources.Background1;
+            this.radPageViewPage5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.radPageViewPage5.ItemSize = new System.Drawing.SizeF(168F, 35F);
+            this.radPageViewPage5.Location = new System.Drawing.Point(10, 10);
+            this.radPageViewPage5.Name = "radPageViewPage5";
+            this.radPageViewPage5.Size = new System.Drawing.Size(1003, 713);
+            this.radPageViewPage5.Text = "Avsluta";
+            // 
+            // radPageViewPage6
+            // 
+            this.radPageViewPage6.BackgroundImage = global::M2M.DataCenter.Panel.FormsUI.Properties.Resources.Background1;
+            this.radPageViewPage6.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.radPageViewPage6.ItemSize = new System.Drawing.SizeF(168F, 35F);
+            this.radPageViewPage6.Location = new System.Drawing.Point(10, 10);
+            this.radPageViewPage6.Name = "radPageViewPage6";
+            this.radPageViewPage6.Size = new System.Drawing.Size(1003, 713);
+            this.radPageViewPage6.Text = "Adminläge av";
+            // 
+            // notifyIcon1
+            // 
+            this.notifyIcon1.BalloonTipIcon = System.Windows.Forms.ToolTipIcon.Info;
+            this.notifyIcon1.BalloonTipText = "M2M Alerts";
+            this.notifyIcon1.Icon = ((System.Drawing.Icon)(resources.GetObject("notifyIcon1.Icon")));
+            this.notifyIcon1.Text = "M2M Operatörspanel";
+            this.notifyIcon1.Visible = true;
+            this.notifyIcon1.DoubleClick += new System.EventHandler(this.notifyIcon1_DoubleClick);
+            // 
+            // tagInfoBindingSource
+            // 
+            this.tagInfoBindingSource.DataSource = typeof(M2M.DataCenter.Panel.FormsUI.BusinessObjects.TagInfo);
+            // 
+            // reasonBindingSource
+            // 
+            this.reasonBindingSource.DataSource = typeof(M2M.DataCenter.Panel.FormsUI.BusinessObjects.Reason);
+            // 
+            // Form1
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ClientSize = new System.Drawing.Size(1024, 768);
+            this.Controls.Add(this.radPageView1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
+            this.Name = "Form1";
+            // 
+            // 
+            // 
+            this.RootElement.ApplyShapeToControl = true;
+            this.Text = "Form1";
+            this.Load += new System.EventHandler(this.Form1_Load);
+            this.Resize += new System.EventHandler(this.Form1_Resize);
+            ((System.ComponentModel.ISupportInitialize)(this.radGridViewReasonCodes.MasterTemplate)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radGridViewReasonCodes)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radPageView1)).EndInit();
+            this.radPageView1.ResumeLayout(false);
+            this.radPageViewPage2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.radPanelButtonGrid)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radPanel3)).EndInit();
+            this.radPanel3.ResumeLayout(false);
+            this.radPanel3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.radPanelAlert)).EndInit();
+            this.radPanelAlert.ResumeLayout(false);
+            this.radPanelAlert.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.radLabelEventRaisedDate)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radLabelEventRaised)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radLabelAlert)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radLabel6)).EndInit();
+            this.radPageViewPage3.ResumeLayout(false);
+            this.radPageViewPage4.ResumeLayout(false);
+            this.radPageViewPage4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.btnClearPending)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radLabel2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radButton1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radDropDownListTags)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tagInfoBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.reasonBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this)).EndInit();
+            this.ResumeLayout(false);
+
+        }
+
+        #endregion
+
+        private Telerik.WinControls.UI.RadPageView radPageView1;
+        private Telerik.WinControls.UI.RadPageViewPage radPageViewPage1;
+        private Telerik.WinControls.UI.RadPageViewPage radPageViewPage2;
+        private Telerik.WinControls.UI.RadPageViewPage radPageViewPage3;
+        private Telerik.WinControls.UI.RadPageViewPage radPageViewPage4;
+        private System.Windows.Forms.WebBrowser webBrowser1;
+        private Telerik.WinControls.UI.RadPageViewPage radPageViewPage5;
+        private Telerik.WinControls.UI.RadPanel radPanelButtonGrid;
+        private Telerik.WinControls.UI.RadPageViewPage radPageViewPage6;
+        private Telerik.WinControls.UI.RadGridView radGridViewReasonCodes;
+        private System.Windows.Forms.BindingSource tagInfoBindingSource;
+        private System.Windows.Forms.BindingSource reasonBindingSource;
+        private Telerik.WinControls.UI.RadDropDownList radDropDownListTags;
+        private Telerik.WinControls.UI.RadPanel radPanel3;
+        private Telerik.WinControls.UI.RadPanel radPanelAlert;
+        private Telerik.WinControls.UI.RadLabel radLabelEventRaised;
+        private Telerik.WinControls.UI.RadLabel radLabelAlert;
+        private Telerik.WinControls.UI.RadLabel radLabel6;
+        private Telerik.WinControls.Themes.VisualStudio2012DarkTheme visualStudio2012DarkTheme1;
+        private Telerik.WinControls.UI.RadLabel radLabel2;
+        private Telerik.WinControls.UI.RadButton radButton1;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.NotifyIcon notifyIcon1;
+        private Telerik.WinControls.UI.RadLabel radLabelEventRaisedDate;
+        private Telerik.WinControls.UI.RadButton btnClearPending;
+
+    }
+}
+

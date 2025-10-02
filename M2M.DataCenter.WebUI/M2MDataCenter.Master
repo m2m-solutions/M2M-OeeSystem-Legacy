@@ -1,0 +1,178 @@
+<%@ Master Language="C#"   AutoEventWireup="True" CodeBehind="M2MDataCenter.master.cs" Inherits="M2M.DataCenter.WebUI.M2MDataCenterMaster" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head id="head1" runat="server">
+    <title>M2M DataCenter</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <link rel="stylesheet" type="text/css" href="M2M.Classic.css" />
+    <link href="CustomerSpecifics/customer.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+    <form id="form1" runat="server">
+	<asp:ScriptManager ID="ScriptManager1" runat="server">
+	</asp:ScriptManager>
+    <telerik:RadCodeBlock ID="RadCodeBlock1" runat="server">
+			<script type="text/javascript">
+			    function requestStart()
+				{
+					centerUpdatePanel();
+				}
+				
+				function centerUpdatePanel()
+				{
+					positionElementOnScreen(document.getElementById("<%=LoadingPanelBackground.ClientID%>"));
+					centerElementOnScreen(document.getElementById("<%=LoadingPanel1.ClientID%>"));
+				}
+				
+				function positionElementOnScreen(element)
+				{
+					var scrollTop = document.body.scrollTop;
+					var scrollLeft = document.body.scrollLeft;
+					
+					if (document.compatMode == "CSS1Compat")
+					{
+						scrollTop = document.documentElement.scrollTop;
+						scrollLeft = document.documentElement.scrollLeft;
+					}
+									
+					element.style.position = "absolute";
+					element.style.top = scrollTop + "px";
+					element.style.left = scrollLeft + "px";
+				}
+
+				function centerElementOnScreen(element)
+				{
+					var scrollTop = document.body.scrollTop;
+					var scrollLeft = document.body.scrollLeft;
+
+					var viewPortHeight = document.body.clientHeight;
+					var viewPortWidth = document.body.clientWidth;
+
+					if (document.compatMode == "CSS1Compat")
+					{
+						viewPortHeight = document.documentElement.clientHeight;
+						viewPortWidth = document.documentElement.clientWidth;
+
+						scrollTop = document.documentElement.scrollTop;
+						scrollLeft = document.documentElement.scrollLeft;
+						
+					}
+
+					var topOffset = Math.ceil(viewPortHeight/2 - 100);
+					var leftOffset = Math.ceil(viewPortWidth/2 - 200);
+
+					var top = scrollTop + topOffset;
+					var left = scrollLeft + leftOffset;
+
+					element.style.position = "absolute";
+					element.style.top = top + "px";
+					element.style.left = left + "px";
+				}
+				
+								
+				window.onscroll = function () 
+				{
+					var layer = document.getElementById("<%=RadAjaxLoadingPanel1.ClientID%>").style;
+					
+					if(layer.display != "none")
+					{
+						centerUpdatePanel();
+					}
+	}
+
+	
+
+				
+//				window.onresize = function () 
+//				{
+//					var layer = document.getElementById("<%=RadAjaxLoadingPanel1.ClientID%>").style;
+//					
+//					if(layer.display != "none")
+//					{alert(layer.display);
+//						centerUpdatePanel();
+//					}
+//				}
+			 </script>
+		</telerik:RadCodeBlock> 
+		<telerik:RadAjaxManager ID="RadAjaxManager1" DefaultLoadingPanelID="RadAjaxLoadingPanel1"  EnableAJAX="True" runat="server" OnAjaxRequest="RadAjaxManager1_AjaxRequest" >
+			<ClientEvents OnRequestStart="requestStart" />
+		</telerik:RadAjaxManager>
+		<div id="masterpage">
+			<div class="body_header">
+				<asp:Image ID="image2" runat="server" ImageAlign="Left" ImageUrl="~/CustomerSpecifics/headerLogo.gif" />
+				<div class="divUser">
+					<div class="divUserInfo" runat="server" id="divUserInfo">
+						<div class="userRow1">
+							<asp:Label ID="Label4" runat="server" Text="<%$ DataCenter:Master.Logon %>"></asp:Label>
+						</div>
+						<div class="userRow2">
+							<asp:Label ID="lbUser" runat="server" Text=""></asp:Label>
+							<div class="divRight">
+								<asp:LinkButton ID="btnLogOut" runat="server" OnClick="btnLogOut_Click" Text="<%$ DataCenter:Master.Logout %>"></asp:LinkButton>
+							</div>
+						</div>
+					</div>
+				</div>
+				
+			</div>
+			<div class="divider"></div>
+			<div id="masterpage_header">
+				<div class="menu">
+					<telerik:RadMenu ID="radMainMenu" EnableAutoScroll="True"  
+                        CausesValidation="False" runat="server" style="z-index:100" ClickToOpen="False">
+                    	<CollapseAnimation Duration="200" Type="OutQuint" />
+					</telerik:RadMenu>
+				</div>
+			</div>
+			<div class="divider"></div>
+			<div id="masterpage_content">
+				<asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+				</asp:ContentPlaceHolder>
+			</div>
+			<div id="masterpage_footer">
+				<div class="grey_frame">
+					<div class="top">
+						<div class="bottom">
+							<div class="left">
+								<div class="right">
+									<div class="bottomleft">
+										<div class="bottomright">
+											<div class="topleft">
+												<div class="topright">
+													<div class="content">
+														<a href="http://www.m2msolutions.se">M2M Solutions AB</a>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="clear">&nbsp;</div>
+				</div>
+			</div>
+		</div>
+   
+     <telerik:RadAjaxLoadingPanel ID="RadAjaxLoadingPanel1" runat="server" InitialDelayTime="0" MinDisplayTime="0" IsSticky="true" Height="100%" Width="100%" EnableEmbeddedBaseStylesheet="false" EnableEmbeddedScripts="false" >
+	        <div id="LoadingPanelBackground" runat="server" style="height:100%; width:100%; z-index:1000;background-color:#d4d4d4;background-image:none;	position: absolute; filter: progid:DXImageTransform.Microsoft.Alpha(opacity=40);opacity: .4; -moz-opacity: .4; " >
+			</div>
+	        <div id="LoadingPanel1" runat="server" style="height: 200px; width: 400px; background-color:#fff;z-index:1001; border: solid 2px #000; text-align: center;	position: absolute;  " >
+					<br />
+					<br />
+					<br />
+					<div style="font-weight: bold; color: #808080; font-size: 14px;">
+						<asp:Literal ID="Literal1" runat="server" Text="<%$ DataCenter:Loading%>" /></div>
+					<br />
+					<br />
+					<asp:Image ID="LoadingImage" runat="server" AlternateText="" Height="62px" ImageUrl="~/images/splash.gif"
+						Width="62px" />
+				</div>
+				
+	</telerik:RadAjaxLoadingPanel>
+	 </form>
+    <iframe id="Defib" src="../Defibrillator.aspx" frameborder="0" width="0" height="0" runat="server"></iframe>
+</body>
+</html>

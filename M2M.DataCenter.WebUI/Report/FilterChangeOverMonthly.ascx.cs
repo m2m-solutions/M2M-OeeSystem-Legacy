@@ -1,0 +1,151 @@
+using System;
+using Telerik.Web.UI;
+using System.Collections.Generic;
+using System.Collections;
+
+namespace M2M.DataCenter.WebUI.Report
+{
+    public partial class FilterChangeOverMonthly : ReportFilterBase
+	{
+		#region Members
+
+        public int Year
+		{
+			get 
+			{
+				return Convert.ToInt32(Years.SelectedValue); 
+			}
+		}
+
+        public int Month
+        {
+            get
+            {
+                return Convert.ToInt32(Months.SelectedValue);
+            }
+        }
+
+		public string Article
+		{
+			get
+			{
+                return SelectedArticle.Text;
+			}
+		}
+
+		public string DivisionId
+		{
+			get
+			{
+				return Divisions.SelectedValue;
+			}
+		}
+
+        public string MachineId
+        {
+            get
+            {
+                return Machines.SelectedValue;
+            }
+        }
+
+       
+        #endregion
+
+		#region Event Handlers
+
+		protected void Page_Load(object sender, EventArgs e)
+		{
+			if (!Page.IsPostBack)
+			{
+				
+			}
+		}
+
+		protected void btnRefresh_Click(object sender, EventArgs e)
+		{
+            EventArgs ea = new EventArgs();
+            OnRefreshClick(ea);
+		}
+
+        protected void SelectCategories_ItemDataBound(object sender, RadComboBoxItemEventArgs e)
+        {
+            e.Item.Checked = true;
+        }
+
+        protected void Divisions_SelectedIndexChanged(object sender, RadComboBoxSelectedIndexChangedEventArgs e)
+        {
+            Machines.Text = "";
+            Machines.Items.Clear();
+
+            LoadMachines(e.Value);
+        }
+
+        #endregion
+
+		#region Methods
+
+        public override void BindData()
+        {
+            Divisions.DataTextField = "DisplayName";
+            Divisions.DataValueField = "DivisionId";
+            Divisions.DataSource = M2MDataCenter.GetDivisionsAccessibleForUser();
+            Divisions.DataBind();
+            
+            if (!Page.IsPostBack)
+            {
+                Divisions.SelectedIndex = 0;
+                LoadMachines(Divisions.SelectedValue);
+            }
+
+            ArrayList years = new ArrayList();
+            for (int i = DateTime.Today.Year; i >= 2005; i--)
+            {
+                years.Add(i.ToString());
+            }
+
+            Years.DataSource = years;
+            Years.DataBind();
+            Years.SelectedValue = DateTime.Today.AddMonths(-1).Year.ToString();
+
+            SortedList months = new SortedList();
+            for (int i = 12; i >= 1; i--)
+            {
+                months.Add(i, String.Format("{0:dMM}", new DateTime(2009, i, 1).ToString("MMMM")));
+            }
+
+            Months.DataTextField = "Value";
+            Months.DataValueField = "Key";
+            Months.DataSource = months;
+            Months.DataBind();
+            Months.SelectedValue = DateTime.Today.AddMonths(-1).Month.ToString();
+        }
+
+        protected void LoadMachines(string divisionId)
+        {
+            Machines.DataTextField = "DisplayName";
+            Machines.DataValueField = "MachineId";
+            Machines.DataSource = M2MDataCenter.GetMachineList(divisionId);
+            Machines.DataBind();
+
+        }
+
+        public override Dictionary<string, object> GetParameters()
+        {
+            Dictionary<string, object> parameters = new Dictionary<string, object>();
+            parameters.Add("DivisionId", this.DivisionId);
+            parameters.Add("MachineId", this.MachineId);
+            parameters.Add("Article", this.Article);
+            parameters.Add("Year", this.Year);
+            parameters.Add("Month", this.Month);
+    
+            return parameters;
+        }
+
+		#endregion
+
+        
+
+        
+	}
+}

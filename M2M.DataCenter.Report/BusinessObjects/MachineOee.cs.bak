@@ -1,0 +1,652 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using Csla;
+using System.Globalization;
+using M2M.DataCenter.Localization;
+using M2M.DataCenter.Utilities;
+
+namespace M2M.DataCenter
+{
+    [Serializable()]
+    public class MachineOee : ReadOnlyBase<MachineOee>
+    {
+        #region Business methods
+
+        private int m_GroupingId = 0;
+        private string m_DivisionId = "";
+        private string m_MachineId = "";
+        private string m_Shift = "";
+        private DateTime m_PeriodStart;
+        private DateTime m_PeriodEnd;
+        private OeeDataList m_OeeList = null;
+        private MachineOee m_PreviousOee = null;   
+        
+        private bool m_AggregateData = false;
+        
+        public int GroupingId
+        {
+            get { return m_GroupingId; }
+        }
+
+        public string GroupingName
+        {
+            get
+            {
+                GroupingListItem grouping = M2MDataCenter.GetGrouping(m_GroupingId);
+                if (grouping == null)
+                    return "";
+                return grouping.DisplayName;
+            }
+        }
+
+        public string DivisionId
+        {
+            get { return m_DivisionId; }
+        }
+
+        public string MachineId
+        {
+            get { return m_MachineId; }
+        }
+
+        public string Division
+        {
+            get
+            {
+                if (DivisionId == null)
+                    return "";
+                return M2MDataCenter.GetDivision(DivisionId).DisplayName;
+            }
+        }
+
+        public string Machine
+        {
+            get
+            {
+                if (DivisionId == null || MachineId == null)
+                    return "";
+                return M2MDataCenter.GetMachine(DivisionId, MachineId).DisplayName;
+            }
+        }
+
+        public string Shift
+        {
+            get { return m_Shift; }
+        }
+
+        public DateTime PeriodStart
+        {
+            get { return m_PeriodStart; }
+        }
+
+        public DateTime PeriodEnd
+        {
+            get { return m_PeriodEnd; }
+        }
+
+        public string Week
+        {
+            get { return String.Format("{0}. {1}, {2}", ResourceStrings.GetString("#-Week.Abbr"), m_PeriodStart.GetWeek(), m_PeriodStart.Year); }
+        }
+
+        public MachineOee PreviousOee
+        {
+            get { return m_PreviousOee; }
+            set { m_PreviousOee = value; }
+        }
+        
+        public List<AggregatedOeeDataItem> GetTotalData()
+        {
+            List<AggregatedOeeDataItem> oeeData = new List<AggregatedOeeDataItem>();
+
+            var grouped = m_OeeList.OrderBy(a => a.DivisionId).GroupBy(a => a.DivisionId);
+
+            double totalAutoTime = 0;
+            double totalAutoTimeForPerformance = 0;
+            double totalStopTimeForStations = 0;
+            double totalTotalTime = 0;
+            double totalNoProductionTime = 0;
+            double totalNotConnectedTime = 0;
+            int totalProducedItems = 0;
+            int totalDiscardedItems = m_OeeList.Sum(a => a.DiscardedItems);
+            double totalProductionTime = 0;
+            double totalStopTime = 0;
+            double totalActualStopTime = 0;
+            double totalFlowErrorTime = 0;
+            
+            foreach (var group in grouped)
+            {
+                totalAutoTime += (m_AggregateData) ? group.Where(a => a.AggregateAvailability).Sum(a => a.AutoTime) : group.Sum(a => a.AutoTime);
+                totalStopTime += (m_AggregateData) ? group.Where(a => a.AggregateAvailability).Sum(a => a.StopTime) : group.Sum(a => a.StopTime);
+                totalActualStopTime += (m_AggregateData) ? group.Where(a => a.AggregateAvailability).Sum(a => a.ActualStopTime) : group.Sum(a => a.ActualStopTime);
+                totalFlowErrorTime += (m_AggregateData) ? group.Where(a => a.AggregateAvailability).Sum(a => a.FlowErrorTime) : group.Sum(a => a.FlowErrorTime);
+                totalProductionTime += (m_AggregateData) ? group.Where(a => a.AggregateAvailability).Sum(a => a.ProductionTime) : group.Sum(a => a.ProductionTime);
+                totalAutoTimeForPerformance += (m_AggregateData) ? group.Where(a => a.AggregatePerformance).Sum(a => a.AutoTime) : group.Sum(a => a.AutoTime);
+                totalTotalTime += (m_AggregateData) ? group.Where(a => a.AggregateAvailability).Sum(a => a.TotalTime) : group.Sum(a => a.TotalTime);
+                totalNoProductionTime += (m_AggregateData) ? group.Where(a => a.AggregateAvailability).Sum(a => a.NoProductionTime) : group.Sum(a => a.NoProductionTime);
+                totalNotConnectedTime += (m_AggregateData) ? group.Where(a => a.AggregateAvailability).Sum(a => a.NotConnectedTime) : group.Sum(a => a.NotConnectedTime);
+                totalProducedItems += (m_AggregateData) ? group.Where(a => a.AggregateCounter).Sum(a => a.ProducedItems) : group.Sum(a => a.ProducedItems);
+                double stopTimeForStations = group.Sum(a => a.TotalTime) - group.Sum(a => a.NoProductionTime) -group.Sum(a => a.NotConnectedTime) - group.Sum(a => a.AutoTime);
+                if(stopTimeForStations > 0)
+                    totalStopTimeForStations += stopTimeForStations;            
+            }
+
+            AggregatedOeeDataItem timePart = new AggregatedOeeDataItem();
+            timePart.XType = XTypes.None;
+            timePart.AutoTime += TimeSpan.FromSeconds(totalAutoTime);
+            timePart.ScheduledTime += TimeSpan.FromSeconds(totalTotalTime);
+            timePart.NoProductionTime += TimeSpan.FromSeconds(totalNoProductionTime);
+            timePart.NotConnectedTime += TimeSpan.FromSeconds(totalNotConnectedTime);
+            timePart.StopTimeForStations = TimeSpan.FromSeconds(totalStopTimeForStations);
+            timePart.Produced = totalProducedItems;
+            timePart.Discarded = totalDiscardedItems;
+
+            if (totalProductionTime > 0)
+            {
+                timePart.Availability = totalAutoTime / totalProductionTime;
+                timePart.AvailabilityLoss = totalStopTime / totalProductionTime;
+                timePart.AvailabilityLossBasedOnActualStops = totalActualStopTime / totalProductionTime;
+                timePart.AvailabilityLossBasedOnFlowErrors = totalFlowErrorTime / totalProductionTime;
+            }
+
+            if(totalProducedItems > 0)
+                timePart.Quality = 1.0 - (double)totalDiscardedItems / (double)totalProducedItems;
+
+            if (totalAutoTimeForPerformance > 0)
+            {
+                timePart.Performance = 0;
+                
+                foreach (var item in m_OeeList)
+                {
+                    if (m_AggregateData && !item.AggregatePerformance)
+                        continue;
+
+                    double? idealRunRate = M2MDataCenter.GetIdealCycleTime(item.DivisionId, item.MachineId, item.ArticleNumber.Trim());
+
+                    if (idealRunRate != null && item.RunRate != 0)
+                    {
+                        timePart.Performance += ((double)idealRunRate / item.RunRate) * (item.AutoTime / totalAutoTimeForPerformance);
+                    }
+                }
+            }
+
+            if (m_PreviousOee != null)
+            {
+                List<AggregatedOeeDataItem> prevOeeData = m_PreviousOee.GetTotalData();
+
+                if (prevOeeData.Count == 1)
+                    timePart.PreviousOeeData = prevOeeData[0];
+            }
+
+            oeeData.Add(timePart);
+
+            return oeeData;
+        }
+
+        public List<AggregatedOeeDataItem> GetPeriodicData(Intervals interval)
+        {
+            List<AggregatedOeeDataItem> oeeData = new List<AggregatedOeeDataItem>();
+
+            var grouped = m_OeeList.OrderBy(s => s.StartTime.Date.Date).GroupBy(c => c.StartTime.Date.Date);
+            
+            foreach (var group in grouped)
+            {
+                double totalAutoTime = 0;
+                double totalTotalTime = 0;
+                double totalNoProductionTime = 0;
+                double totalNotConnectedTime = 0;
+                int totalProducedItems = 0;
+                int totalDiscardedItems = 0;
+                double totalAutoTimeForPerformance = 0;
+                double totalProductionTime = 0;
+                double totalStopTime = 0;
+                double totalActualStopTime = 0;
+                double totalFlowErrorTime = 0;
+                
+                var divisions = group.GroupBy(a => a.DivisionId);
+
+                foreach (var division in divisions)
+                {
+                    totalAutoTime += m_AggregateData ? group.Where(a => a.AggregateAvailability).Sum(a => a.AutoTime) : group.Sum(a => a.AutoTime);
+                    totalStopTime += (m_AggregateData) ? group.Where(a => a.AggregateAvailability).Sum(a => a.StopTime) : group.Sum(a => a.StopTime);
+                    totalActualStopTime += (m_AggregateData) ? group.Where(a => a.AggregateAvailability).Sum(a => a.ActualStopTime) : group.Sum(a => a.ActualStopTime);
+                    totalFlowErrorTime += (m_AggregateData) ? group.Where(a => a.AggregateAvailability).Sum(a => a.FlowErrorTime) : group.Sum(a => a.FlowErrorTime);
+                    totalProductionTime += (m_AggregateData) ? group.Where(a => a.AggregateAvailability).Sum(a => a.ProductionTime) : group.Sum(a => a.ProductionTime);
+                    totalAutoTimeForPerformance += m_AggregateData ? group.Where(a => a.AggregatePerformance).Sum(a => a.AutoTime) : group.Sum(a => a.AutoTime);
+                    totalTotalTime += m_AggregateData ? group.Where(a => a.AggregateAvailability).Sum(a => a.TotalTime) : group.Sum(a => a.TotalTime);
+                    totalNoProductionTime += m_AggregateData ? group.Where(a => a.AggregateAvailability).Sum(a => a.NoProductionTime) : group.Sum(a => a.NoProductionTime);
+                    totalNotConnectedTime += m_AggregateData ? group.Where(a => a.AggregateAvailability).Sum(a => a.NotConnectedTime) : group.Sum(a => a.NotConnectedTime);
+                    totalProducedItems += m_AggregateData ? group.Where(a => a.AggregateCounter).Sum(a => a.ProducedItems) : group.Sum(a => a.ProducedItems);
+                    totalDiscardedItems += group.Sum(a => a.DiscardedItems);
+                }
+
+                AggregatedOeeDataItem timePart = new AggregatedOeeDataItem();
+                timePart.XType = XTypes.Period;
+                timePart.Interval = Intervals.Daily;
+                timePart.Date = group.Key;
+
+                if (totalProductionTime > 0)
+                {
+                    timePart.Availability = totalAutoTime / totalProductionTime;
+                    timePart.AvailabilityLoss = totalStopTime / totalProductionTime;
+                    timePart.AvailabilityLossBasedOnActualStops = totalActualStopTime / totalProductionTime;
+                    timePart.AvailabilityLossBasedOnFlowErrors = totalFlowErrorTime / totalProductionTime;
+                }
+                
+                if (totalProducedItems > 0)
+                    timePart.Quality = 1.0 - (double)totalDiscardedItems / (double)totalProducedItems;
+
+                if(totalAutoTimeForPerformance > 0)
+                {
+                    timePart.Performance = 0;
+
+                    foreach (var subGroup in group.GroupBy(c => c.ArticleNumber))
+                    {
+                        foreach (var item in subGroup)
+                        {
+                            if (m_AggregateData && !item.AggregatePerformance)
+                                continue;
+
+                            timePart.Interval = interval;
+                            timePart.Date = item.StartTime.Date.Date;
+
+                            double? idealRunRate = M2MDataCenter.GetIdealCycleTime(item.DivisionId, item.MachineId, item.ArticleNumber.Trim());
+
+                            if (idealRunRate != null && item.RunRate != 0)
+                            {
+                                timePart.Performance += ((double)idealRunRate / item.RunRate) * (item.AutoTime / totalAutoTimeForPerformance);
+                            }
+                        }
+                    }
+                }
+
+                oeeData.Add(timePart);
+            }
+
+            return oeeData;
+        }
+
+        public List<AggregatedOeeDataItem> GetMachineData(string machineId)
+        {
+            List<AggregatedOeeDataItem> oeeData = new List<AggregatedOeeDataItem>();
+
+            var machineData = m_OeeList.Where(a => a.MachineId == machineId);
+
+
+            double totalAutoTime = machineData.Sum(a => a.AutoTime);
+            double totalTotalTime = machineData.Sum(a => a.TotalTime);
+            double totalNoProductionTime = machineData.Sum(a => a.NoProductionTime);
+            double totalNotConnectedTime = machineData.Sum(a => a.NotConnectedTime);
+            int totalProducedItems = machineData.Sum(a => a.ProducedItems);
+            int totalDiscardedItems = machineData.Sum(a => a.DiscardedItems);
+            double totalStopTime = machineData.Sum(a => a.StopTime);
+            double totalActualStopTime = machineData.Sum(a => a.ActualStopTime);
+            double totalFlowErrorTime = machineData.Sum(a => a.FlowErrorTime);
+            double totalProductionTime = machineData.Sum(a => a.ProductionTime);
+
+            AggregatedOeeDataItem timePart = new AggregatedOeeDataItem();
+            timePart.XType = XTypes.Machine;
+            timePart.MachineId = machineId;
+            timePart.Machine = M2MDataCenter.GetMachine(m_DivisionId, machineId).DisplayName;
+            timePart.AutoTime = TimeSpan.FromSeconds(totalAutoTime);
+            timePart.ScheduledTime = TimeSpan.FromSeconds(totalTotalTime);
+            timePart.NoProductionTime = TimeSpan.FromSeconds(totalNoProductionTime);
+            timePart.NotConnectedTime = TimeSpan.FromSeconds(totalNotConnectedTime);
+            timePart.Produced = totalProducedItems;
+            timePart.Discarded = totalDiscardedItems;
+
+            if (totalProductionTime > 0)
+            {
+                timePart.Availability = totalAutoTime / totalProductionTime;
+                timePart.AvailabilityLoss = totalStopTime / totalProductionTime;
+                timePart.AvailabilityLossBasedOnActualStops = totalActualStopTime / totalProductionTime;
+                timePart.AvailabilityLossBasedOnFlowErrors = totalFlowErrorTime / totalProductionTime;
+            }
+
+            if (totalProducedItems > 0)
+                timePart.Quality = 1.0 - (double)totalDiscardedItems / (double)totalProducedItems;
+
+            if (totalAutoTime > 0)
+            {
+                timePart.Performance = 0;
+
+                foreach (var item in machineData)
+                {
+                    double? idealRunRate = M2MDataCenter.GetIdealCycleTime(item.DivisionId, item.MachineId, item.ArticleNumber.Trim());
+
+                    if (idealRunRate != null && item.RunRate != 0)
+                    {
+                        timePart.Performance += ((double)idealRunRate / item.RunRate) * (item.AutoTime / totalAutoTime);
+                    }
+                }
+            }
+
+            if (m_PreviousOee != null)
+            {
+                List<AggregatedOeeDataItem> prevOeeData = m_PreviousOee.GetMachineData(machineId);
+
+                if (prevOeeData.Count == 1)
+                    timePart.PreviousOeeData = prevOeeData[0];
+            }
+
+            oeeData.Add(timePart);
+
+            return oeeData;
+        }
+
+        public List<AggregatedOeeDataItem> GetMachineData()
+        {
+            List<AggregatedOeeDataItem> oeeData = new List<AggregatedOeeDataItem>();
+
+            var grouped = m_OeeList.OrderBy(a => a.MachineId).GroupBy(a => a.MachineId);
+
+            foreach (var group in grouped)
+            {
+                double totalAutoTime = group.Sum(a => a.AutoTime);
+                double totalTotalTime = group.Sum(a => a.TotalTime);
+                double totalNoProductionTime = group.Sum(a => a.NoProductionTime);
+                double totalNotConnectedTime = group.Sum(a => a.NotConnectedTime);
+                int totalProducedItems = group.Sum(a => a.ProducedItems);
+                int totalDiscardedItems = group.Sum(a => a.DiscardedItems);
+                double totalStopTime = group.Sum(a => a.StopTime);
+                double totalActualStopTime = group.Sum(a => a.ActualStopTime);
+                double totalFlowErrorTime = group.Sum(a => a.FlowErrorTime);
+                double totalProductionTime = group.Sum(a => a.ProductionTime);
+                
+                AggregatedOeeDataItem timePart = new AggregatedOeeDataItem();
+                timePart.XType = XTypes.Machine;
+                timePart.MachineId = group.Key;
+                timePart.Machine = M2MDataCenter.GetMachine(group.Key).DisplayName;
+                timePart.AutoTime = TimeSpan.FromSeconds(totalAutoTime);
+                timePart.ScheduledTime = TimeSpan.FromSeconds(totalTotalTime);
+                timePart.NoProductionTime = TimeSpan.FromSeconds(totalNoProductionTime);
+                timePart.NotConnectedTime = TimeSpan.FromSeconds(totalNotConnectedTime);
+                timePart.Produced = totalProducedItems;
+                timePart.Discarded = totalDiscardedItems;
+
+                if (totalProductionTime > 0)
+                {
+                    timePart.Availability = totalAutoTime / totalProductionTime;
+                    timePart.AvailabilityLoss = totalStopTime / totalProductionTime;
+                    timePart.AvailabilityLossBasedOnActualStops = totalActualStopTime / totalProductionTime;
+                    timePart.AvailabilityLossBasedOnFlowErrors = totalFlowErrorTime / totalProductionTime;
+                }
+
+                if (totalProducedItems > 0)
+                    timePart.Quality = 1.0 - (double)totalDiscardedItems / (double)totalProducedItems;
+
+                if (totalAutoTime > 0)
+                {
+                    timePart.Performance = 0;
+
+                    foreach (var item in group)
+                    {
+                        double? idealRunRate = M2MDataCenter.GetIdealCycleTime(item.DivisionId, item.MachineId, item.ArticleNumber.Trim());
+
+                        if (idealRunRate != null && item.RunRate != 0)
+                        {
+                            timePart.Performance += ((double)idealRunRate / item.RunRate) * (item.AutoTime / totalAutoTime);
+                        }
+                    }
+                }
+
+                if (m_PreviousOee != null)
+                {
+                    List<AggregatedOeeDataItem> prevOeeData = m_PreviousOee.GetMachineData(group.Key);
+
+                    if (prevOeeData.Count == 1)
+                        timePart.PreviousOeeData = prevOeeData[0];
+                }
+
+                oeeData.Add(timePart);
+            }
+
+            return oeeData;
+        }
+
+        public List<AggregatedOeeDataItem> GetDivisionData(string divisionId)
+        {
+            List<AggregatedOeeDataItem> oeeData = new List<AggregatedOeeDataItem>();
+
+            var divisionData = m_OeeList.Where(a => a.DivisionId == divisionId);
+
+            double totalAutoTime = m_AggregateData ? divisionData.Where(a => a.AggregateAvailability).Sum(a => a.AutoTime) : divisionData.Sum(a => a.AutoTime);
+            double totalAutoTimeForPerformance = m_AggregateData ? divisionData.Where(a => a.AggregatePerformance).Sum(a => a.AutoTime) : divisionData.Sum(a => a.AutoTime);
+            double totalTotalTime = m_AggregateData ? divisionData.Where(a => a.AggregateAvailability).Sum(a => a.TotalTime) : divisionData.Sum(a => a.TotalTime);
+            double totalNoProductionTime = m_AggregateData ? divisionData.Where(a => a.AggregateAvailability).Sum(a => a.NoProductionTime) : divisionData.Sum(a => a.NoProductionTime);
+            double totalNotConnectedTime = m_AggregateData ? divisionData.Where(a => a.AggregateAvailability).Sum(a => a.NotConnectedTime) : divisionData.Sum(a => a.NotConnectedTime);
+            int totalProducedItems = m_AggregateData ? divisionData.Where(a => a.AggregateCounter).Sum(a => a.ProducedItems) : divisionData.Sum(a => a.ProducedItems);
+            int totalDiscardedItems = divisionData.Sum(a => a.DiscardedItems);
+            double totalStopTime = m_AggregateData ? divisionData.Where(a => a.AggregateAvailability).Sum(a => a.StopTime) : divisionData.Sum(a => a.StopTime);
+            double totalActualStopTime = m_AggregateData ? divisionData.Where(a => a.AggregateAvailability).Sum(a => a.ActualStopTime) : divisionData.Sum(a => a.ActualStopTime);
+            double totalFlowErrorTime = m_AggregateData ? divisionData.Where(a => a.AggregateAvailability).Sum(a => a.FlowErrorTime) : divisionData.Sum(a => a.FlowErrorTime);
+            double totalProductionTime = m_AggregateData ? divisionData.Where(a => a.AggregateAvailability).Sum(a => a.ProductionTime) : divisionData.Sum(a => a.ProductionTime);
+
+            AggregatedOeeDataItem timePart = new AggregatedOeeDataItem();
+            timePart.XType = XTypes.Division;
+            timePart.DivisionId = divisionId;
+            timePart.Division = M2MDataCenter.GetDivision(divisionId).DisplayName;
+            timePart.AutoTime = TimeSpan.FromSeconds(totalAutoTime);
+            timePart.ScheduledTime = TimeSpan.FromSeconds(totalTotalTime);
+            timePart.NoProductionTime = TimeSpan.FromSeconds(totalNoProductionTime);
+            timePart.NotConnectedTime = TimeSpan.FromSeconds(totalNotConnectedTime);
+            timePart.Produced = totalProducedItems;
+            timePart.Discarded = totalDiscardedItems;
+
+            if (totalProductionTime > 0)
+            {
+                timePart.Availability = totalAutoTime / totalProductionTime;
+                timePart.AvailabilityLoss = totalStopTime / totalProductionTime;
+                timePart.AvailabilityLossBasedOnActualStops = totalActualStopTime / totalProductionTime;
+                timePart.AvailabilityLossBasedOnFlowErrors = totalFlowErrorTime / totalProductionTime;
+            }
+
+            if (totalProducedItems > 0)
+                timePart.Quality = 1.0 - (double)totalDiscardedItems / (double)totalProducedItems;
+
+            if (totalAutoTimeForPerformance > 0)
+            {
+                timePart.Performance = 0;
+
+                foreach (var item in divisionData)
+                {
+                    if (m_AggregateData && !item.AggregatePerformance)
+                        continue;
+
+                    double? idealRunRate = M2MDataCenter.GetIdealCycleTime(item.DivisionId, item.MachineId, item.ArticleNumber.Trim());
+
+                    if (idealRunRate != null && item.RunRate != 0)
+                    {
+                        timePart.Performance += ((double)idealRunRate / item.RunRate) * (item.AutoTime / totalAutoTimeForPerformance);
+                    }
+                }
+            }
+
+            if (m_PreviousOee != null)
+            {
+                List<AggregatedOeeDataItem> prevOeeData = m_PreviousOee.GetDivisionData(divisionId);
+
+                if (prevOeeData.Count == 1)
+                    timePart.PreviousOeeData = prevOeeData[0];
+            }
+
+            oeeData.Add(timePart);
+    
+            return oeeData;
+        }
+
+        public List<AggregatedOeeDataItem> GetDivisionData()
+        {
+            List<AggregatedOeeDataItem> oeeData = new List<AggregatedOeeDataItem>();
+
+            var grouped = m_OeeList.OrderBy(a => a.DivisionId).GroupBy(a => a.DivisionId);
+
+            foreach (var group in grouped)
+            {
+                string divisionId = group.Key;
+                double totalAutoTime = m_AggregateData ? group.Where(a => a.AggregateAvailability).Sum(a => a.AutoTime) : group.Sum(a => a.AutoTime);
+                double totalAutoTimeForPerformance = m_AggregateData ? group.Where(a => a.AggregatePerformance).Sum(a => a.AutoTime) : group.Sum(a => a.AutoTime);
+                double totalTotalTime = m_AggregateData ? group.Where(a => a.AggregateAvailability).Sum(a => a.TotalTime) : group.Sum(a => a.TotalTime);
+                double totalNoProductionTime = m_AggregateData ? group.Where(a => a.AggregateAvailability).Sum(a => a.NoProductionTime) : group.Sum(a => a.NoProductionTime);
+                double totalNotConnectedTime = m_AggregateData ? group.Where(a => a.AggregateAvailability).Sum(a => a.NotConnectedTime) : group.Sum(a => a.NotConnectedTime);
+                int totalProducedItems = m_AggregateData ? group.Where(a => a.AggregateCounter).Sum(a => a.ProducedItems) : group.Sum(a => a.ProducedItems);
+                int totalDiscardedItems = group.Sum(a => a.DiscardedItems);
+                double totalStopTime = m_AggregateData ? group.Where(a => a.AggregateAvailability).Sum(a => a.StopTime) : group.Sum(a => a.StopTime);
+                double totalActualStopTime = m_AggregateData ? group.Where(a => a.AggregateAvailability).Sum(a => a.ActualStopTime) : group.Sum(a => a.ActualStopTime);
+                double totalFlowErrorTime = m_AggregateData ? group.Where(a => a.AggregateAvailability).Sum(a => a.FlowErrorTime) : group.Sum(a => a.FlowErrorTime);
+                double totalProductionTime = m_AggregateData ? group.Where(a => a.AggregateAvailability).Sum(a => a.ProductionTime) : group.Sum(a => a.ProductionTime);
+                
+
+                AggregatedOeeDataItem timePart = new AggregatedOeeDataItem();
+                timePart.XType = XTypes.Division;
+                timePart.DivisionId = divisionId;
+                timePart.Division = M2MDataCenter.GetDivision(divisionId).DisplayName;
+                timePart.AutoTime = TimeSpan.FromSeconds(totalAutoTime);
+                timePart.ScheduledTime = TimeSpan.FromSeconds(totalTotalTime);
+                timePart.NoProductionTime = TimeSpan.FromSeconds(totalNoProductionTime);
+                timePart.NotConnectedTime = TimeSpan.FromSeconds(totalNotConnectedTime);
+                timePart.Produced = totalProducedItems;
+                timePart.Discarded = totalDiscardedItems;
+
+                if (totalProductionTime > 0)
+                {
+                    timePart.Availability = totalAutoTime / totalProductionTime;
+                    timePart.AvailabilityLoss = totalStopTime / totalProductionTime;
+                    timePart.AvailabilityLossBasedOnActualStops = totalActualStopTime / totalProductionTime;
+                    timePart.AvailabilityLossBasedOnFlowErrors = totalFlowErrorTime / totalProductionTime;
+                }
+
+                if (totalProducedItems > 0)
+                    timePart.Quality = 1.0 - (double)totalDiscardedItems / (double)totalProducedItems;
+
+                if (totalAutoTimeForPerformance > 0)
+                {
+                    timePart.Performance = 0;
+
+                    foreach (var item in group)
+                    {
+                        if (m_AggregateData && !item.AggregatePerformance)
+                            continue;
+
+                        double? idealRunRate = M2MDataCenter.GetIdealCycleTime(item.DivisionId, item.MachineId, item.ArticleNumber.Trim());
+
+                        if (idealRunRate != null && item.RunRate != 0)
+                        {
+                            timePart.Performance += ((double)idealRunRate / item.RunRate) * (item.AutoTime / totalAutoTimeForPerformance);
+                        }
+                    }
+                }
+
+                if (m_PreviousOee != null)
+                {
+                    List<AggregatedOeeDataItem> prevOeeData = m_PreviousOee.GetDivisionData(group.Key);
+
+                    if (prevOeeData.Count == 1)
+                        timePart.PreviousOeeData = prevOeeData[0];
+                }
+
+                oeeData.Add(timePart);
+            }
+
+            return oeeData;
+        }
+
+
+        public List<AggregatedOeeDataItem> GetArticleData(string machineId)
+        {
+            List<AggregatedOeeDataItem> oeeData = new List<AggregatedOeeDataItem>();
+
+            var grouped = m_OeeList.Where(a => a.MachineId == machineId).OrderBy(a => a.ArticleNumber.Trim()).GroupBy(a => a.ArticleNumber.Trim());
+
+            foreach (var group in grouped)
+            {
+                double totalAutoTime = group.Sum(a => a.AutoTime);
+                double totalTotalTime = group.Sum(a => a.TotalTime);
+                double totalNoProductionTime = group.Sum(a => a.NoProductionTime);
+                double totalNotConnectedTime = m_OeeList.Sum(a => a.NotConnectedTime);
+                int totalProducedItems = group.Sum(a => a.ProducedItems);
+                int totalDiscardedItems = group.Sum(a => a.DiscardedItems);
+                double totalStopTime = group.Sum(a => a.StopTime);
+                double totalActualStopTime = group.Sum(a => a.ActualStopTime);
+                double totalFlowErrorTime = group.Sum(a => a.FlowErrorTime);
+                double totalProductionTime = group.Sum(a => a.ProductionTime);
+
+                AggregatedOeeDataItem timePart = new AggregatedOeeDataItem();
+                timePart.XType = XTypes.Article;
+                timePart.ArticleNumber = group.Key;
+                timePart.AutoTime = TimeSpan.FromSeconds(totalAutoTime);
+                timePart.ScheduledTime = TimeSpan.FromSeconds(totalTotalTime);
+                timePart.NoProductionTime = TimeSpan.FromSeconds(totalNoProductionTime);
+                timePart.NotConnectedTime = TimeSpan.FromSeconds(totalNotConnectedTime);
+                timePart.Produced = totalProducedItems;
+                timePart.Discarded = totalDiscardedItems;
+                timePart.IdealRunRate = 60 * 60 * 1000 / ((double)M2MDataCenter.GetIdealCycleTime(M2MDataCenter.GetMachine(machineId).DivisionId, machineId, group.Key));
+
+                if (totalProductionTime > 0)
+                {
+                    timePart.Availability = totalAutoTime / totalProductionTime;
+                    timePart.AvailabilityLoss = totalStopTime / totalProductionTime;
+                    timePart.AvailabilityLossBasedOnActualStops = totalActualStopTime / totalProductionTime;
+                    timePart.AvailabilityLossBasedOnFlowErrors = totalFlowErrorTime / totalProductionTime;
+                }
+
+                if (totalProducedItems > 0)
+                    timePart.Quality = 1.0 - (double)totalDiscardedItems / (double)totalProducedItems;
+
+                if (totalAutoTime > 0)
+                {
+                    timePart.Performance = 0;
+
+                    foreach (var item in group)
+                    {
+                        double? idealRunRate = M2MDataCenter.GetIdealCycleTime(item.DivisionId, item.MachineId, item.ArticleNumber.Trim());
+
+                        if (idealRunRate != null && item.RunRate != 0)
+                        {
+                            timePart.Performance += ((double)idealRunRate / item.RunRate) * (item.AutoTime / totalAutoTime);
+                        }
+                    }
+                }
+
+                oeeData.Add(timePart);
+            }
+
+            return oeeData;
+        }
+
+        protected override object GetIdValue()
+        {
+            return m_GroupingId.ToString() + " " + m_DivisionId + " " + m_MachineId;
+        }
+
+        #endregion
+
+        #region Constructors
+
+        public MachineOee(int groupingId, string divisionId, string machineId, int shift, DateTime startDate, DateTime endDate)
+        {
+            m_GroupingId = groupingId;
+            m_DivisionId = divisionId;
+            m_MachineId = machineId;
+            m_PeriodStart = startDate;
+            m_PeriodEnd = endDate;
+            m_Shift = M2MDataCenter.GetShiftName(shift);
+            
+            m_AggregateData = (machineId == null);
+            
+            OeeDataList.Criteria criteria = new OeeDataList.Criteria();
+            criteria.GroupingId = groupingId;
+            criteria.DivisionId = divisionId;
+            criteria.MachineId = machineId;
+            criteria.Shift = shift;
+            criteria.StartTime = startDate;
+            criteria.EndTime = endDate;
+            criteria.CalculateSums = false;
+
+            m_OeeList = OeeDataList.GetOeeDataList(criteria);
+        }
+
+        #endregion
+    }
+}

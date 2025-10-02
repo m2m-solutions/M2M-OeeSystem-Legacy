@@ -1,0 +1,107 @@
+<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="DivisionListControl.ascx.cs" Inherits="M2M.DataCenter.WebUI.Production.DivisionListControl" EnableViewState="False" %>
+<%@ Register Assembly="Telerik.Web.UI" Namespace="Telerik.Web.UI" TagPrefix="telerik" %>
+<telerik:RadCodeBlock ID="RadCodeBlock1" runat="server">
+	<script language="javascript" type="text/javascript">
+	    
+			function RowClick(sender, eventArgs)   
+			{ 
+			  
+			   window.location.href = "ProductionPage.aspx?DivisionId=" + eventArgs.getDataKeyValue("DivisionId");
+			}
+		
+	</script>
+</telerik:RadCodeBlock>
+<div class="content">
+	<telerik:RadGrid ID="gridDivisions"  runat="server" PageSize="20" AllowPaging="True" Skin="Default" AutoGenerateColumns="False" GridLines="None" OnItemDataBound="gridDivisions_ItemDataBound" OnNeedDataSource="gridDivisions_NeedDataSource"  OnDetailTableDataBind="gridDivisions_DetailTableDataBind">
+		<MasterTableView NoMasterRecordsText="Det finns inga avdelningar i anl&#228;ggningen" Name="Divisions" ClientDataKeyNames="DivisionId" DataKeyNames="DivisionId">
+			<%--<DetailTables>
+				<telerik:GridTableView DataKeyNames="MachineId" Name="Machines" Width="100%" runat="server" ShowHeader="False">
+					<ParentTableRelation>
+						<telerik:GridRelationFields DetailKeyField="DivisionId" MasterKeyField="DivisionId" />
+					</ParentTableRelation>
+					<Columns>
+						<telerik:GridBoundColumn DataField="MachineId" HeaderText="Id" ReadOnly="True" UniqueName="MachineId" Display="False" >
+						</telerik:GridBoundColumn>
+						<telerik:GridBoundColumn DataField="DisplayName" HeaderText="Maskin" ReadOnly="True" UniqueName="DisplayName">
+							<ItemStyle Font-Italic="True" />
+						</telerik:GridBoundColumn>
+						<telerik:GridBoundColumn DataField="AvailabilityAsString" HeaderText="Tillg&#228;nglighet" HeaderStyle-HorizontalAlign="Right" ItemStyle-HorizontalAlign="Right" ReadOnly="True" UniqueName="AvailabilityAsString">
+							<ItemStyle Font-Italic="True" />
+						</telerik:GridBoundColumn>
+						<telerik:GridBoundColumn DataField="PerformanceAsString" HeaderText="Anl&#228;ggningsutbyte" HeaderStyle-HorizontalAlign="Right" ItemStyle-HorizontalAlign="Right" ReadOnly="True" UniqueName="PerformanceAsString">
+							<ItemStyle Font-Italic="True" />
+						</telerik:GridBoundColumn>
+						<telerik:GridBoundColumn DataField="QualityAsString" HeaderText="Kvalitetsutbyte" HeaderStyle-HorizontalAlign="Right" ItemStyle-HorizontalAlign="Right" ReadOnly="True" UniqueName="QualityAsString">
+							<ItemStyle Font-Italic="True" />
+						</telerik:GridBoundColumn>
+						<telerik:GridBoundColumn DataField="OEEAsString" HeaderText="TAK" HeaderStyle-HorizontalAlign="Right" ItemStyle-HorizontalAlign="Right" ReadOnly="True" UniqueName="OEEAsString">
+							<ItemStyle Font-Italic="True" />
+						</telerik:GridBoundColumn>
+						<telerik:GridBoundColumn DataField="TrendAsString" HeaderText="Trend" HeaderStyle-HorizontalAlign="Right" ItemStyle-HorizontalAlign="Right" ReadOnly="True" UniqueName="TrendAsString">
+							<ItemStyle Font-Italic="True" />
+						</telerik:GridBoundColumn>
+						<telerik:GridBoundColumn DataField="Status" HeaderText="Status" ReadOnly="True" UniqueName="Status">
+							<ItemStyle Font-Italic="True" />
+						</telerik:GridBoundColumn>
+						<telerik:GridBoundColumn DataField="ArticleNumber" HeaderText="Artikel" ReadOnly="True" UniqueName="ArticleNumber">
+							<ItemStyle Font-Italic="True" />
+						</telerik:GridBoundColumn>
+						<telerik:GridBoundColumn DataField="NumberOfItems" DataType="System.Int32" HeaderStyle-HorizontalAlign="Right" ItemStyle-HorizontalAlign="Right" HeaderText="Tillv. antal" ReadOnly="True" UniqueName="NumberOfItems">
+							<ItemStyle Font-Italic="True" />
+						</telerik:GridBoundColumn>
+						<telerik:GridBoundColumn DataField="Trend" DataType="System.Decimal" Display="False" HeaderText="Trend" ReadOnly="True" UniqueName="Trend">
+							<ItemStyle Font-Italic="True" />
+						</telerik:GridBoundColumn>
+					</Columns>
+				</telerik:GridTableView>
+			</DetailTables>--%>
+			<Columns>
+				<telerik:GridBoundColumn DataField="DivisionId" HeaderText="Id" ReadOnly="True" UniqueName="DivisionId" Display="False" >
+				</telerik:GridBoundColumn>
+				<telerik:GridBoundColumn DataField="DisplayName" HeaderText="Avdelning" ReadOnly="True" UniqueName="DisplayName">
+					<ItemStyle Font-Bold="True" />
+				</telerik:GridBoundColumn>
+				<telerik:GridBoundColumn DataField="AvailabilityAsString" HeaderText="Tillg&#228;nglighet (T)" ReadOnly="True" UniqueName="AvailabilityAsString">
+					<ItemStyle HorizontalAlign="Right" />
+					<HeaderStyle HorizontalAlign="Right" />
+				</telerik:GridBoundColumn>
+				<telerik:GridBoundColumn DataField="PerformanceAsString" HeaderText="Anl&#228;ggningsutbyte (A)" ReadOnly="True" UniqueName="PerformanceAsString">
+					<ItemStyle HorizontalAlign="Right" />
+					<HeaderStyle HorizontalAlign="Right" />
+				</telerik:GridBoundColumn>
+				<telerik:GridBoundColumn DataField="QualityAsString" HeaderText="Kvalitetsutbyte (K)" ReadOnly="True" UniqueName="QualityAsString">
+					<ItemStyle HorizontalAlign="Right" />
+					<HeaderStyle HorizontalAlign="Right" />
+				</telerik:GridBoundColumn>
+				<telerik:GridBoundColumn DataField="OEEAsString" HeaderText="TAK" ReadOnly="True" UniqueName="OEEAsString">
+					<ItemStyle HorizontalAlign="Right" />
+					<HeaderStyle HorizontalAlign="Right" />
+				</telerik:GridBoundColumn>
+				<telerik:GridBoundColumn DataField="TrendAsString" HeaderText="Trend" ReadOnly="True" UniqueName="TrendAsString">
+					<ItemStyle HorizontalAlign="Right" />
+					<HeaderStyle HorizontalAlign="Right" />
+				</telerik:GridBoundColumn>
+				<%--<telerik:GridTemplateColumn  HeaderText="Status" UniqueName="Status">
+					<ItemTemplate>
+					</ItemTemplate> 
+				</telerik:GridTemplateColumn>
+				<telerik:GridTemplateColumn HeaderText="Artikel" UniqueName="ArticleNumber">
+					<ItemTemplate>
+					</ItemTemplate>
+				</telerik:GridTemplateColumn>
+				<telerik:GridTemplateColumn HeaderText="Tillv. antal" UniqueName="NumberOfItems">
+					<ItemTemplate>
+					</ItemTemplate>
+				</telerik:GridTemplateColumn>--%>
+				<telerik:GridBoundColumn DataField="Trend" DataType="System.Decimal" Display="False" HeaderText="Trend" ReadOnly="True" UniqueName="Trend">
+				</telerik:GridBoundColumn>
+			</Columns>
+			<PagerStyle Mode="NextPrevAndNumeric" PagerTextFormat="Byt sida: {4} &amp;nbsp;|&amp;nbsp; Visar sida {0} av {1}, post {2} - {3} av {5}." />
+		</MasterTableView>
+		<ClientSettings EnableRowHoverStyle="True">
+			<ClientEvents OnRowClick="RowClick"	 />
+			<Selecting AllowRowSelect="True" />
+			<Resizing AllowColumnResize="True" />
+		</ClientSettings>
+	</telerik:RadGrid>
+</div>

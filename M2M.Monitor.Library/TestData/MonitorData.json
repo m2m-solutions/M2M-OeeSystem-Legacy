@@ -1,0 +1,24 @@
+{
+	"Pace": "264",
+	"PaceColor": "#32cd32",
+	"PaceIdeal": "(289)",
+	"Oee": "40%",
+	"ChangeOvers": "110",
+	"Latest": "123",
+	"Average": "11",
+	"Ideal": "10",
+	"MonitorDetails": [{
+			"MachineId": "Kit_Pack1",
+			"Value": "15.8",
+			"Color": "#00ff00"
+		}, {
+			"MachineId": "Kit_Pack2",
+			"Value": "45.8",
+			"Color": "#ff0000"
+		}, {
+			"MachineId": "Kit_Robot",
+			"Value": "31.3",
+			"Color": "#ffba00"
+		}
+	]
+}

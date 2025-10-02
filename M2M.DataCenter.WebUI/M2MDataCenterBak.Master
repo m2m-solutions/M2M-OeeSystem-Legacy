@@ -1,0 +1,195 @@
+<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="M2MDataCenter.master.cs" Inherits="M2M.DataCenter.WebUI.M2MDataCenterMaster" %>
+<%@ Register Assembly="RadWindow.Net2" Namespace="Telerik.WebControls" TagPrefix="radW" %>
+<%@ Register Assembly="RadMenu.Net2" Namespace="Telerik.WebControls" TagPrefix="radM" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head id="head1" runat="server">
+    <title>M2M DataCenter</title>
+    <link rel="stylesheet" type="text/css" href="M2M.Classic.css" />
+
+</head>
+<body>
+    <form id="form1" runat="server">
+		<radW:RadWindowManager ID="RadWindowManager1" runat="server" Skin="Default" SkinsPath="~/Skins">
+		<ConfirmTemplate>
+				<style type="text/css">
+				        body
+				        {
+					        background: white;
+					        font: normal 11px Arial, Verdana, Sans-serif;
+					        overflow: hidden;
+				        }
+				        .InputText
+                        {
+	                        padding-left: 2px;
+	                        padding-right: 2px;
+	                        font-size: 12px;
+	                        font-family: Arial, Verdana;
+	                    }	
+				        .bButton
+		                {
+			                width: 80px;
+			                height: 20px;
+			                border: 1px;
+			                background-image: url(images/bgConfirmButton.gif);
+			                background-repeat: no-repeat;
+			                background-color: #fff;			
+			                color: #666666;
+			                vertical-align: middle;
+			                
+		                }
+				        .FixedDiv
+				        {
+					        font: normal 11px Arial, Verdana, Sans-serif;
+					        margin: 3px;
+					        color: black;
+					        text-align: center;
+				        }
+			        </style>
+
+				<script type="text/javascript"> 
+                        var totalTimeoutMilliseconds = 300000; 
+                        var leftTimeoutMilliseconds = 300000; 
+
+                        var temp = "<asp:Literal runat="server" Text="<%$ Resources: Javascript, MinutesLeft1%>" />";
+                        var temp3 = "<asp:Literal runat="server" Text="<%$ Resources: Javascript, MinutesLeft2%>" />";
+                        
+                        window.setInterval(showMinutesLeft, 60000);
+
+                        function showMinutesLeft()
+                        {
+                            var minutes = leftTimeoutMilliseconds / 60000;
+                            var temp2;
+                            
+                            if(minutes == 0)
+                            {
+                                GetRadWindow().ModalDialogCallBack('No');
+                            }
+                            else
+                            {
+                                if(minutes == 1)
+                                {
+                                    temp2 = "<b> < 1 </b>";
+                                }
+                                else
+                                {
+                                    temp2 = "<b> "+ minutes +"</b> ";
+                                }
+
+                                document.getElementById("message").innerHTML = temp + temp2 + temp3;
+                                leftTimeoutMilliseconds -= 60000;
+                            }
+                        }
+				</script>
+
+				<table>
+					<tr>
+						<td align="center" class="InputText" colspan="2">
+							<div id="message">
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td colspan="2">
+						</td>
+					</tr>
+					<tr>
+						<td align="center" class="InputText">
+							<button class="bButton" onclick="javascript:GetRadWindow().ModalDialogCallBack('Yes');"
+								visible="true">
+								<asp:Literal ID="Literal1" runat="server" Text="<%$ Resources: Javascript, Yes%>">
+								</asp:Literal>
+							</button>
+						</td>
+						<td align="center" class="InputText">
+							<button class="bButton" onclick="javascript:GetRadWindow().ModalDialogCallBack('No');"
+								visible="true">
+								<asp:Literal ID="Literal2" runat="server" Text="<%$ Resources: Javascript, No%>">
+								</asp:Literal>
+							</button>
+						</td>
+					</tr>
+				</table>
+
+				<script type="text/javascript"> 
+                        showMinutesLeft();
+				</script>
+
+			</ConfirmTemplate>
+			<SplashTemplate>
+				<div style="height: 200px; width: 400px; border: solid 1px #808080; text-align: center;	position: fixed; background-color: #fff;">
+					<br />
+					<br />
+					<br />
+					<div style="font-weight: bold; color: #808080; font-size: 16px;">
+						Laddar...</div>
+					<br />
+					<asp:Image ID="LoadingImage" runat="server" AlternateText="" Height="62" ImageUrl="~/images/splash.gif"
+						Width="62" />
+				</div>
+			</SplashTemplate>
+			<Windows>
+				<radW:RadWindow ID="Radwindow1" runat="server" Modal="true" Splash="true" />
+			</Windows>
+		</radW:RadWindowManager>
+		
+		<div id="masterpage">
+			<div class="body_header">
+				<asp:Image ID="image2" runat="server" ImageAlign="Left" ImageUrl="~/images/headerLogo.gif" />
+				<div class="divRight">
+					<div class="divUserInfo" runat="server" id="divUserInfo">
+						<div class="userRow">
+							<asp:Label ID="Label4" runat="server" Text="Du är inloggad som"></asp:Label>
+						</div>
+						<div class="userRow">
+							<asp:Label ID="lbUser" runat="server" Text=""></asp:Label>
+							<div class="divRight">
+								<asp:LinkButton ID="btnLogOut" runat="server" OnClick="btnLogOut_Click" Text="Logga ut"></asp:LinkButton>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div id="masterpage_header">
+				<div class="menu">
+					<radM:RadMenu ID="radMainMenu" EnableAutoScroll="true" CausesValidation="false" runat="server" Skin="Default" SkinsPath="~/Skins">
+					</radM:RadMenu>
+					
+				</div>
+			</div>
+			<div class="divider"></div>
+			<div id="masterpage_content">
+				<asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+				</asp:ContentPlaceHolder>
+			</div>
+			<div id="masterpage_footer">
+				<div class="grey_frame">
+					<div class="top">
+						<div class="bottom">
+							<div class="left">
+								<div class="right">
+									<div class="bottomleft">
+										<div class="bottomright">
+											<div class="topleft">
+												<div class="topright">
+													<div class="content">
+														<a href="http://www.m2msolutions.se">M2M Solutions AB</a>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="clear">&nbsp;</div>
+				</div>
+			</div>
+	    </div>
+		
+    </form>
+</body>
+</html>
